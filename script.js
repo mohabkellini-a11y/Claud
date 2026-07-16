@@ -124,7 +124,7 @@
       "Name: " + name + "\n" +
       "Email: " + email + "\n\n" +
       "Project details:\n" + (message || "(none provided)") + "\n";
-    window.location.href = "mailto:info@eversafefl.com" +
+    window.location.href = "mailto:info@eversafe-fire.com" +
       "?subject=" + encodeURIComponent(subject) +
       "&body=" + encodeURIComponent(body);
   }
@@ -155,7 +155,7 @@
 
       /* Endpoint not configured yet → open the visitor's email client */
       if (FORMSPREE_ENDPOINT.indexOf("your-form-id") !== -1) {
-        setNote("Opening your email app… If nothing happens, email info@eversafefl.com directly.", "success");
+        setNote("Opening your email app… If nothing happens, email info@eversafe-fire.com directly.", "success");
         mailtoFallback(name, email, message);
         return;
       }
@@ -179,10 +179,10 @@
           var msg = (data && data.errors && data.errors.length)
             ? data.errors.map(function (er) { return er.message; }).join(", ")
             : "Something went wrong sending your request.";
-          setNote(msg + " You can also email info@eversafefl.com.", "error");
+          setNote(msg + " You can also email info@eversafe-fire.com.", "error");
         });
       }).catch(function () {
-        setNote("Network error — please email info@eversafefl.com directly.", "error");
+        setNote("Network error — please email info@eversafe-fire.com directly.", "error");
       }).finally(function () {
         submitBtn.disabled = false;
         submitBtn.textContent = originalLabel;

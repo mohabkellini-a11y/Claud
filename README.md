@@ -29,7 +29,7 @@ Who We Serve → Contact → Footer.
 ## Editing common content
 
 - **Phone number:** search `386-837-4057` (and the `tel:+13868374057` links) in `index.html`.
-- **Email / domain:** `info@eversafefl.com` / `www.eversafefl.com` in `index.html`.
+- **Email / domain:** `info@eversafe-fire.com` / `www.eversafe-fire.com` in `index.html`.
 - **Services copy:** the `.service-card` blocks in `index.html`.
 
 ### Placeholders to fill in later
@@ -42,7 +42,7 @@ The form submits to **[Formspree](https://formspree.io)** via AJAX (no page relo
 with inline success/error messages, a loading state, and a hidden honeypot field for spam.
 
 ### One-step setup
-1. Create a free form at [formspree.io](https://formspree.io) (point it at `info@eversafefl.com`).
+1. Create a free form at [formspree.io](https://formspree.io) (point it at `info@eversafe-fire.com`).
 2. Copy your form ID (looks like `xmyzabcd`).
 3. In `script.js`, set `FORMSPREE_ENDPOINT` near the top of the contact-form section:
    ```js
