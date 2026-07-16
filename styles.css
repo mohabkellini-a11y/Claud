@@ -194,9 +194,11 @@ p { color: var(--slate); }
   padding: 34px 40px 30px; backdrop-filter: blur(6px); text-align: center;
   box-shadow: 0 30px 70px rgba(0, 0, 0, .3);
 }
-.hero-shield { width: clamp(150px, 20vw, 190px); height: auto; margin: 0 auto 14px; }
-.flame-path { transform-origin: 45px 72px; animation: flameFlicker 2.8s ease-in-out infinite; }
-@keyframes flameFlicker { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.04, 1.07); opacity: .92; } }
+.hero-shield { width: clamp(150px, 20vw, 190px); height: auto; margin: 0 auto 14px; transform-origin: 50% 86%; will-change: transform, filter; animation: heroFlame 2.8s ease-in-out infinite; }
+@keyframes heroFlame {
+  0%, 100% { transform: scale(1, 1); filter: drop-shadow(0 6px 16px rgba(195, 10, 43, .22)); }
+  50% { transform: scale(1.012, 1.035); filter: drop-shadow(0 10px 28px rgba(245, 140, 25, .5)) brightness(1.06); }
+}
 .hero-shield-caption strong { display: block; color: #fff; font-size: 1.02rem; }
 .hero-shield-caption span { font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; color: var(--amber); white-space: nowrap; }
 
