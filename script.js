@@ -96,32 +96,6 @@
     counters.forEach(function (el) { co.observe(el); });
   }
 
-  /* ---- Fixed pipe rail: drafts down the page with overall scroll ---- */
-  var rail = document.getElementById("pipeRail");
-  if (rail) {
-    var railNodes = rail.querySelectorAll(".pr-node");
-    function railUpdate() {
-      var total = document.documentElement.scrollHeight - window.innerHeight;
-      var p = total > 0 ? window.scrollY / total : 0;
-      p = p < 0 ? 0 : p > 1 ? 1 : p;
-      rail.style.setProperty("--pr-p", String(p));
-      railNodes.forEach(function (n) {
-        n.style.opacity = p >= parseFloat(n.dataset.at) ? "1" : "0";
-      });
-    }
-    if (reduceMotion) {
-      rail.style.setProperty("--pr-p", "1");
-      railNodes.forEach(function (n) { n.style.opacity = "1"; });
-    } else {
-      var rTick = false;
-      window.addEventListener("scroll", function () {
-        if (!rTick) { rTick = true; requestAnimationFrame(function () { railUpdate(); rTick = false; }); }
-      }, { passive: true });
-      window.addEventListener("resize", railUpdate);
-      railUpdate();
-    }
-  }
-
   /* ---- Contact form ----
      Submits to Formspree (works on any static host). Until the endpoint
      below is set to your real form ID, it falls back to the visitor's
