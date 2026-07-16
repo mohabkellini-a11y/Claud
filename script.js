@@ -105,9 +105,9 @@
     function glowLoop() {
       gx += (tx - gx) * 0.11;           // lag: ease toward the cursor
       gy += (ty - gy) * 0.11;
-      var t = performance.now() / 260;  // flame flicker
-      var flick = 1 + Math.sin(t) * 0.045 + Math.sin(t * 2.7) * 0.03;
-      var sway = Math.sin(t * 1.9) * 4 + Math.sin(t * 3.3) * 2;
+      var t = performance.now() / 320;  // gentle flame flicker
+      var flick = 1 + Math.sin(t) * 0.02 + Math.sin(t * 2.7) * 0.015;
+      var sway = Math.sin(t * 1.9) * 2 + Math.sin(t * 3.3) * 1;
       glow.style.transform = "translate(" + gx.toFixed(1) + "px," + (gy - Math.abs(sway)).toFixed(1) + "px) scale(" + flick.toFixed(3) + ")";
       rafId = requestAnimationFrame(glowLoop);
     }

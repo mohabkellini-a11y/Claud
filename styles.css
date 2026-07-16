@@ -228,16 +228,15 @@ p { color: var(--slate); }
 .services > .container { position: relative; z-index: 1; }
 .cursor-glow {
   position: absolute; top: 0; left: 0; z-index: 0;
-  width: 520px; height: 520px; margin: -260px 0 0 -260px; border-radius: 50%;
-  pointer-events: none; opacity: 0; transition: opacity .6s ease;
+  width: 480px; height: 480px; margin: -240px 0 0 -240px; border-radius: 50%;
+  pointer-events: none; opacity: 0; transition: opacity .8s ease;
   will-change: transform, opacity; mix-blend-mode: multiply;
-  filter: blur(26px);
-  background: radial-gradient(circle at 50% 44%,
-    rgba(255, 214, 150, .60) 0%,
-    rgba(245, 140, 60, .34) 34%,
-    rgba(214, 81, 25, .16) 56%,
-    rgba(195, 10, 43, .05) 72%,
-    transparent 80%);
+  filter: blur(40px);
+  background: radial-gradient(circle at 50% 46%,
+    rgba(255, 224, 175, .34) 0%,
+    rgba(245, 155, 80, .17) 38%,
+    rgba(214, 81, 25, .07) 60%,
+    transparent 78%);
 }
 .cursor-glow.on { opacity: 1; }
 @media (hover: none) { .cursor-glow { display: none; } }
