@@ -200,6 +200,77 @@
       </div>
     </section>
 
+    <!-- ============ BLUEPRINT / PIPE DRAW ============ -->
+    <section class="blueprint" id="blueprint" aria-label="Sprinkler layout drawn to scale">
+      <div class="blueprint-track" id="bpTrack">
+        <div class="blueprint-sticky">
+          <div class="blueprint-grid" aria-hidden="true"></div>
+          <div class="container blueprint-inner">
+            <div class="blueprint-head">
+              <span class="eyebrow eyebrow-light">Engineered To Scale</span>
+              <h2>From the riser to the last head — drawn to code</h2>
+              <p class="section-sub">Every line hydraulically calculated, every pipe sized, every head placed. Scroll to watch a branch layout come together.</p>
+            </div>
+            <svg class="pipe-svg" viewBox="0 0 1000 460" role="img" aria-label="Fire sprinkler piping schematic">
+              <defs>
+                <symbol id="sph" viewBox="-10 -10 20 20">
+                  <circle r="7.5" fill="#04182b" stroke="#c30a2b" stroke-width="2.4"/>
+                  <path d="M-4 0H4M0 -4V4" stroke="#c30a2b" stroke-width="2" stroke-linecap="round"/>
+                </symbol>
+              </defs>
+
+              <!-- pipes (draw with scroll) -->
+              <path class="pipe" d="M100 360 V240" pathLength="1" data-start="0" data-end="0.08"/>
+              <path class="pipe" d="M100 240 H900" pathLength="1" data-start="0.08" data-end="0.40"/>
+              <path class="pipe" d="M280 80 V400" pathLength="1" data-start="0.36" data-end="0.55"/>
+              <path class="pipe" d="M520 80 V400" pathLength="1" data-start="0.48" data-end="0.68"/>
+              <path class="pipe" d="M760 80 V400" pathLength="1" data-start="0.60" data-end="0.80"/>
+
+              <!-- flow direction + riser valve -->
+              <path class="dim" data-at="0.05" d="M92 316 L108 328 M108 316 L92 328" stroke="#c30a2b" stroke-width="2.4" fill="none"/>
+              <path class="dim" data-at="0.34" d="M330 233 L340 240 L330 247" fill="none" stroke="#c30a2b" stroke-width="2" stroke-linecap="round"/>
+              <path class="dim" data-at="0.38" d="M650 233 L660 240 L650 247" fill="none" stroke="#c30a2b" stroke-width="2" stroke-linecap="round"/>
+
+              <!-- sprinkler heads -->
+              <use class="head" href="#sph" x="270" y="70"  width="20" height="20" data-at="0.37"/>
+              <use class="head" href="#sph" x="270" y="155" width="20" height="20" data-at="0.42"/>
+              <use class="head" href="#sph" x="270" y="305" width="20" height="20" data-at="0.51"/>
+              <use class="head" href="#sph" x="270" y="390" width="20" height="20" data-at="0.55"/>
+              <use class="head" href="#sph" x="510" y="70"  width="20" height="20" data-at="0.49"/>
+              <use class="head" href="#sph" x="510" y="155" width="20" height="20" data-at="0.54"/>
+              <use class="head" href="#sph" x="510" y="305" width="20" height="20" data-at="0.64"/>
+              <use class="head" href="#sph" x="510" y="390" width="20" height="20" data-at="0.68"/>
+              <use class="head" href="#sph" x="750" y="70"  width="20" height="20" data-at="0.61"/>
+              <use class="head" href="#sph" x="750" y="155" width="20" height="20" data-at="0.66"/>
+              <use class="head" href="#sph" x="750" y="305" width="20" height="20" data-at="0.76"/>
+              <use class="head" href="#sph" x="750" y="390" width="20" height="20" data-at="0.80"/>
+
+              <!-- dimension annotations -->
+              <g class="dim" data-at="0.06">
+                <path class="dim-line" d="M100 300 H118"/>
+                <text x="122" y="304" text-anchor="start">6&#8243; RISER</text>
+              </g>
+              <g class="dim" data-at="0.30">
+                <path class="dim-line" d="M175 232 V240"/>
+                <text x="175" y="226" text-anchor="middle">6&#8243; CROSS MAIN</text>
+              </g>
+              <g class="dim" data-at="0.44">
+                <path class="dim-line" d="M280 64 V80"/>
+                <text x="280" y="56" text-anchor="middle">2&#189;&#8243; BRANCH</text>
+              </g>
+              <g class="dim" data-at="0.66">
+                <path class="dim-line" d="M760 64 V80"/>
+                <text x="760" y="56" text-anchor="middle">1&#8243; DROP (TYP.)</text>
+              </g>
+              <g class="dim" data-at="0.86">
+                <text x="900" y="430" text-anchor="end">NFPA 13 &#183; HYDRAULICALLY CALCULATED</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ WHY EVERSAFE ============ -->
     <section class="section why" id="why">
       <div class="container why-inner">

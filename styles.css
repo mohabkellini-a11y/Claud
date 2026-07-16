@@ -354,6 +354,29 @@ a.contact-method:hover span { color: var(--amber); }
 .footer-bottom-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; padding: 22px 0; font-size: .84rem; color: rgba(255, 255, 255, .55); }
 .footer-tagline { font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange); font-size: .78rem; }
 
+/* ---------- Blueprint / scroll pipe-draw ---------- */
+.blueprint { background: var(--navy-900); color: #fff; }
+.blueprint-track { position: relative; height: 210vh; }
+.blueprint-sticky { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; overflow: hidden; }
+.blueprint-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  -webkit-mask-image: radial-gradient(ellipse 82% 72% at 50% 46%, #000 55%, transparent 100%);
+  mask-image: radial-gradient(ellipse 82% 72% at 50% 46%, #000 55%, transparent 100%);
+}
+.blueprint-inner { position: relative; z-index: 2; width: 100%; }
+.blueprint-head { text-align: center; max-width: 720px; margin: 0 auto clamp(22px, 3vw, 40px); }
+.blueprint-head h2 { color: #fff; }
+.pipe-svg { display: block; width: 100%; max-width: 1000px; height: auto; margin: 0 auto; }
+.pipe { fill: none; stroke: var(--red); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: 1; stroke-dashoffset: 1; filter: drop-shadow(0 0 5px rgba(195, 10, 43, .55)); }
+.head, .dim { opacity: 0; }
+.dim-line { stroke: rgba(205, 216, 228, .5); stroke-width: 1; fill: none; }
+.dim text { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; fill: #cdd8e4; font-size: 13px; letter-spacing: .03em; }
+
 /* ---------- Reveal animation ---------- */
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 .reveal.in { opacity: 1; transform: none; }

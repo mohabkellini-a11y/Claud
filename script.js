@@ -96,6 +96,43 @@
     counters.forEach(function (el) { co.observe(el); });
   }
 
+  /* ---- Blueprint: draw the sprinkler layout on scroll ---- */
+  var bpTrack = document.getElementById("bpTrack");
+  if (bpTrack) {
+    var pipes = bpTrack.querySelectorAll(".pipe");
+    var marks = bpTrack.querySelectorAll(".head, .dim");
+    function drawLayout(p) {
+      pipes.forEach(function (el) {
+        var s = parseFloat(el.dataset.start), e = parseFloat(el.dataset.end);
+        var f = e > s ? (p - s) / (e - s) : 1;
+        f = f < 0 ? 0 : f > 1 ? 1 : f;
+        el.style.strokeDashoffset = String(1 - f);
+      });
+      marks.forEach(function (el) {
+        var at = parseFloat(el.dataset.at);
+        var o = (p - at) / 0.05;
+        el.style.opacity = String(o < 0 ? 0 : o > 1 ? 1 : o);
+      });
+    }
+    if (reduceMotion) {
+      drawLayout(1);
+    } else {
+      var bpTicking = false;
+      function bpUpdate() {
+        var total = bpTrack.offsetHeight - window.innerHeight;
+        var scrolled = -bpTrack.getBoundingClientRect().top;
+        var p = total > 0 ? scrolled / total : 0;
+        drawLayout(p < 0 ? 0 : p > 1 ? 1 : p);
+        bpTicking = false;
+      }
+      window.addEventListener("scroll", function () {
+        if (!bpTicking) { bpTicking = true; requestAnimationFrame(bpUpdate); }
+      }, { passive: true });
+      window.addEventListener("resize", bpUpdate);
+      bpUpdate();
+    }
+  }
+
   /* ---- Contact form ----
      Submits to Formspree (works on any static host). Until the endpoint
      below is set to your real form ID, it falls back to the visitor's
