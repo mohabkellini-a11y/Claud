@@ -104,7 +104,7 @@
      SETUP: create a free form at https://formspree.io, then replace
      "your-form-id" with your form ID (e.g. "xmyzabcd").
   */
-  var FORMSPREE_ENDPOINT = "https://formspree.io/f/your-form-id";
+  var FORMSPREE_ENDPOINT = "https://formspree.io/f/xgogaeww";
 
   var form = document.getElementById("contactForm");
   var note = document.getElementById("formNote");
