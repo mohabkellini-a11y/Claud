@@ -403,11 +403,20 @@ a.contact-method:hover span { color: var(--amber); }
   .lbl-compact { display: inline; }
 }
 @media (max-width: 560px) {
+  .section { padding: 58px 0; }
+  .section-head { margin-bottom: 34px; }
+  .section-sub { font-size: 1rem; }
   .service-grid, .why-grid, .trustbar-grid, .process-list { grid-template-columns: 1fr; }
-  .trust-item { border-right: none !important; border-bottom: 1px solid var(--border); }
+  .service-grid { gap: 18px; }
+  .service-card { padding: 26px 22px 28px; }
+  .why-grid { gap: 16px; }
+  .why-card { padding: 24px 22px; }
+  .trust-item { border-right: none !important; border-bottom: 1px solid var(--border); padding: 24px 20px; }
   .trust-item:last-child { border-bottom: none; }
-  .footer-inner { grid-template-columns: 1fr; }
-  .floaty-1 { left: 0; } .floaty-2 { right: 0; }
+  .footer-inner { grid-template-columns: 1fr; gap: 30px; }
+  .footer-nav, .footer-contact { gap: 9px; }
+  .floaty { display: none; }
+  .hero { padding-bottom: 64px; }
   .hero-cta .btn { flex: 1 1 auto; }
 }
 @media (max-width: 380px) {
