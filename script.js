@@ -84,42 +84,97 @@
     counters.forEach(function (el) { co.observe(el); });
   }
 
-  /* ---- Contact form (backend-free: opens email client via mailto) ---- */
+  /* ---- Contact form ----
+     Submits to Formspree (works on any static host). Until the endpoint
+     below is set to your real form ID, it falls back to the visitor's
+     email client so the form is never dead.
+
+     SETUP: create a free form at https://formspree.io, then replace
+     "your-form-id" with your form ID (e.g. "xmyzabcd").
+  */
+  var FORMSPREE_ENDPOINT = "https://formspree.io/f/your-form-id";
+
   var form = document.getElementById("contactForm");
   var note = document.getElementById("formNote");
+  var submitBtn = document.getElementById("cfSubmit");
+  var nameEl = document.getElementById("cf-name");
+  var emailEl = document.getElementById("cf-email");
+  var messageEl = document.getElementById("cf-message");
+
+  function setNote(msg, type) {
+    note.className = "form-note" + (type ? " " + type : "");
+    note.textContent = msg;
+  }
+
+  function mailtoFallback(name, email, message) {
+    var subject = "Proposal request — " + name;
+    var body =
+      "Name: " + name + "\n" +
+      "Email: " + email + "\n\n" +
+      "Project details:\n" + (message || "(none provided)") + "\n";
+    window.location.href = "mailto:info@eversafefl.com" +
+      "?subject=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(body);
+  }
+
   if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      note.className = "form-note";
-      note.textContent = "";
+      setNote("", "");
 
-      var name = form.name.value.trim();
-      var email = form.email.value.trim();
-      var message = form.message.value.trim();
+      var name = nameEl.value.trim();
+      var email = emailEl.value.trim();
+      var message = messageEl.value.trim();
       var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
       if (!name || !emailOk) {
-        note.classList.add("error");
-        note.textContent = !name
-          ? "Please enter your name."
-          : "Please enter a valid email address.";
-        (!name ? form.name : form.email).focus();
+        setNote(!name ? "Please enter your name." : "Please enter a valid email address.", "error");
+        (!name ? nameEl : emailEl).focus();
         return;
       }
 
-      var subject = "Proposal request — " + name;
-      var body =
-        "Name: " + name + "\n" +
-        "Email: " + email + "\n\n" +
-        "Project details:\n" + (message || "(none provided)") + "\n";
+      /* Honeypot filled = bot: silently pretend success, send nothing */
+      var honeypot = form.querySelector('[name="_gotcha"]');
+      if (honeypot && honeypot.value) {
+        form.reset();
+        setNote("Thank you — we'll be in touch shortly.", "success");
+        return;
+      }
 
-      var mailto = "mailto:info@eversafefl.com" +
-        "?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(body);
+      /* Endpoint not configured yet → open the visitor's email client */
+      if (FORMSPREE_ENDPOINT.indexOf("your-form-id") !== -1) {
+        setNote("Opening your email app… If nothing happens, email info@eversafefl.com directly.", "success");
+        mailtoFallback(name, email, message);
+        return;
+      }
 
-      note.classList.add("success");
-      note.textContent = "Opening your email app… If nothing happens, email info@eversafefl.com directly.";
-      window.location.href = mailto;
+      /* Submit to Formspree via AJAX (no page redirect) */
+      var originalLabel = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending…";
+
+      fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { "Accept": "application/json" },
+        body: new FormData(form)
+      }).then(function (res) {
+        if (res.ok) {
+          form.reset();
+          setNote("Thank you — your request has been sent. We'll reply within one business day.", "success");
+          return;
+        }
+        return res.json().then(function (data) {
+          var msg = (data && data.errors && data.errors.length)
+            ? data.errors.map(function (er) { return er.message; }).join(", ")
+            : "Something went wrong sending your request.";
+          setNote(msg + " You can also email info@eversafefl.com.", "error");
+        });
+      }).catch(function () {
+        setNote("Network error — please email info@eversafefl.com directly.", "error");
+      }).finally(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      });
     });
   }
 

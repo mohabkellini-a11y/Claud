@@ -321,6 +321,8 @@ a.contact-method:hover span { color: var(--amber); }
 .field input:focus, .field textarea:focus { outline: none; border-color: var(--blue); background: #fff; box-shadow: 0 0 0 4px rgba(2, 68, 121, .1); }
 .field textarea { resize: vertical; min-height: 96px; }
 .field input:user-invalid { border-color: var(--red); }
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.btn:disabled { opacity: .7; cursor: progress; }
 .form-note { margin-top: 14px; font-size: .88rem; text-align: center; min-height: 1.2em; }
 .form-note.error { color: var(--red); }
 .form-note.success { color: #1a7f4b; font-weight: 600; }

@@ -38,9 +38,22 @@ omitted. When ready, add them to the Contact and Footer sections.
 
 ## Contact form
 
-The form is backend-free: on submit it opens the visitor's email client (via `mailto:`)
-pre-filled to `info@eversafefl.com`. To capture submissions server-side instead, point the
-form at a service like Formspree, Netlify Forms, or your own endpoint in `script.js`.
+The form submits to **[Formspree](https://formspree.io)** via AJAX (no page reload),
+with inline success/error messages, a loading state, and a hidden honeypot field for spam.
+
+### One-step setup
+1. Create a free form at [formspree.io](https://formspree.io) (point it at `info@eversafefl.com`).
+2. Copy your form ID (looks like `xmyzabcd`).
+3. In `script.js`, set `FORMSPREE_ENDPOINT` near the top of the contact-form section:
+   ```js
+   var FORMSPREE_ENDPOINT = "https://formspree.io/f/xmyzabcd";
+   ```
+
+Until that ID is set, the form **falls back to the visitor's email client** (`mailto:`), so
+it's never dead. Formspree's free tier covers 50 submissions/month; paid plans add more.
+
+**Prefer Netlify Forms?** If you deploy to Netlify, add `data-netlify="true"` and a hidden
+`form-name` field to the `<form>` and Netlify captures submissions with no JS — ask and I'll wire it.
 
 ## Local preview
 

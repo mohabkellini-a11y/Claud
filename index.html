@@ -357,6 +357,7 @@
         </div>
 
         <form class="contact-form reveal" id="contactForm" novalidate>
+          <input type="hidden" name="_subject" value="New proposal request — EverSafe website" />
           <div class="field">
             <label for="cf-name">Name</label>
             <input type="text" id="cf-name" name="name" autocomplete="name" required />
@@ -369,7 +370,9 @@
             <label for="cf-message">Project details <span class="optional">(optional)</span></label>
             <textarea id="cf-message" name="message" rows="4" placeholder="Occupancy type, scope, location, timeline…"></textarea>
           </div>
-          <button type="submit" class="btn btn-flame btn-block">Request a Proposal</button>
+          <!-- Honeypot: hidden from users, catches spam bots -->
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp-field" />
+          <button type="submit" class="btn btn-flame btn-block" id="cfSubmit">Request a Proposal</button>
           <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
         </form>
       </div>
