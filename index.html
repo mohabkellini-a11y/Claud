@@ -27,49 +27,31 @@
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
       <a href="#top" class="brand" aria-label="EverSafe Fire Protection home">
-        <svg class="brand-mark" viewBox="0 0 48 56" aria-hidden="true">
-          <defs>
-            <linearGradient id="brand-split" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="50%" stop-color="#024479"/>
-              <stop offset="50%" stop-color="#c30a2b"/>
-            </linearGradient>
-          </defs>
-          <path d="M24 1.5 45 9.2v16.4c0 13.4-8.7 23.3-21 27.4C11.7 48.9 3 39 3 25.6V9.2L24 1.5Z" fill="url(#brand-split)"/>
-          <path d="M24 1.5 45 9.2v16.4c0 13.4-8.7 23.3-21 27.4C11.7 48.9 3 39 3 25.6V9.2L24 1.5Z" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="1.4"/>
-          <path d="M24 13.5c1.6 3 4.9 4.7 4.9 9.1 0 2.2-1 4.1-2.6 5.3.3-1.4-.1-3-1.2-4.2.2 2.1-.9 3.4-2.3 4.4-1.1.8-2.2 1.9-2.2 3.6 0 .7.2 1.3.5 1.9-2.5-.9-4.3-3.3-4.3-6.1 0-3.2 2.2-4.9 3.4-7.3.6 1.2 1 1.9 1.9 2.4-.6-2.4-.2-5.4 1.9-7.6-.1 1.7.4 2.9 1.3 3.9-.1-2.4.1-4.1 0-5.4Z" fill="#fff"/>
-        </svg>
-        <span class="brand-word">Ever<span>Safe</span></span>
+        <img class="brand-logo" src="assets/eversafe-mark.svg" alt="" aria-hidden="true" width="100" height="118" />
+        <span class="brand-lockup">
+          <span class="brand-word">Ever<span>Safe</span></span>
+          <span class="brand-tag"><i class="dash"></i>Fire Protection<i class="dash"></i></span>
+        </span>
       </a>
-
-      <nav class="nav" aria-label="Primary">
-        <a href="#services">Services</a>
-        <a href="#why">Why EverSafe</a>
-        <a href="#process">Process</a>
-        <a href="#clients">Who We Serve</a>
-        <a href="#contact">Contact</a>
-      </nav>
 
       <div class="header-actions">
         <a class="phone-link" href="tel:+13868374057" aria-label="Call EverSafe at 386-837-4057">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3.5c.4 0 .8.3.9.7l1 3.2c.1.4 0 .8-.3 1.1L6.7 10c1 2 2.6 3.6 4.6 4.6l1.5-1.4c.3-.3.7-.4 1.1-.3l3.2 1c.4.1.7.5.7.9v3.4c0 .6-.5 1.1-1.1 1C9.6 18.6 5.4 14.4 4.8 6.6c0-.6.4-1.1 1-1.1h.7Z"/></svg>
           <span>386-837-4057</span>
         </a>
-        <a class="btn btn-primary" href="#contact">Request a Proposal</a>
+        <a class="btn btn-primary" href="#contact"><span class="lbl-full">Request a Proposal</span><span class="lbl-compact">Get Proposal</span></a>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="menuPanel">
+          <span></span><span></span><span></span>
+        </button>
       </div>
 
-      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-    <div class="mobile-nav" id="mobileNav" hidden>
-      <a href="#services">Services</a>
-      <a href="#why">Why EverSafe</a>
-      <a href="#process">Process</a>
-      <a href="#clients">Who We Serve</a>
-      <a href="#contact">Contact</a>
-      <a class="btn btn-primary btn-block" href="#contact">Request a Proposal</a>
-      <a class="mobile-phone" href="tel:+13868374057">Call 386-837-4057</a>
+      <nav class="menu-panel" id="menuPanel" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#why">Why EverSafe</a>
+        <a href="#process">Process</a>
+        <a href="#clients">Who We Serve</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
   </header>
 
@@ -137,7 +119,7 @@
               <span>Precision · Ownership · Assurance</span>
             </div>
           </div>
-          <div class="floaty floaty-1"><span class="code-chip">NFPA&nbsp;13</span> Hydraulic calcs</div>
+          <div class="floaty floaty-1"><span class="code-chip">NFPA/IBC</span> Code-compliant</div>
           <div class="floaty floaty-2"><span class="code-chip">PE&nbsp;SEAL</span> Permit-ready</div>
         </div>
       </div>
@@ -146,10 +128,6 @@
     <!-- ============ TRUST BAR ============ -->
     <section class="trustbar" aria-label="Key credentials">
       <div class="container trustbar-grid">
-        <div class="trust-item reveal">
-          <span class="trust-num" data-count="4">4</span>
-          <span class="trust-label">Core NFPA codes we design &amp; review to</span>
-        </div>
         <div class="trust-item reveal">
           <span class="trust-num" data-count="1" data-suffix="-Day">1-Day</span>
           <span class="trust-label">Typical fixed-fee proposal turnaround</span>
@@ -384,12 +362,11 @@
     <div class="container footer-inner">
       <div class="footer-brand">
         <a href="#top" class="brand brand-footer" aria-label="EverSafe Fire Protection home">
-          <svg class="brand-mark" viewBox="0 0 48 56" aria-hidden="true">
-            <path d="M24 1.5 45 9.2v16.4c0 13.4-8.7 23.3-21 27.4C11.7 48.9 3 39 3 25.6V9.2L24 1.5Z" fill="#ffffff" fill-opacity="0.1"/>
-            <path d="M24 1.5 45 9.2v16.4c0 13.4-8.7 23.3-21 27.4C11.7 48.9 3 39 3 25.6V9.2L24 1.5Z" fill="none" stroke="#fff" stroke-opacity=".4" stroke-width="1.4"/>
-            <path d="M24 13.5c1.6 3 4.9 4.7 4.9 9.1 0 2.2-1 4.1-2.6 5.3.3-1.4-.1-3-1.2-4.2.2 2.1-.9 3.4-2.3 4.4-1.1.8-2.2 1.9-2.2 3.6 0 .7.2 1.3.5 1.9-2.5-.9-4.3-3.3-4.3-6.1 0-3.2 2.2-4.9 3.4-7.3.6 1.2 1 1.9 1.9 2.4-.6-2.4-.2-5.4 1.9-7.6-.1 1.7.4 2.9 1.3 3.9-.1-2.4.1-4.1 0-5.4Z" fill="#fff"/>
-          </svg>
-          <span class="brand-word">Ever<span>Safe</span></span>
+          <img class="brand-logo" src="assets/eversafe-mark.svg" alt="" aria-hidden="true" width="100" height="118" />
+          <span class="brand-lockup">
+            <span class="brand-word">Ever<span>Safe</span></span>
+            <span class="brand-tag"><i class="dash"></i>Fire Protection<i class="dash"></i></span>
+          </span>
         </a>
         <p class="footer-tag">Protection you can trust. Compliance you can prove.</p>
         <p class="footer-mission">A Florida-licensed professional engineering practice protecting people, property, and operations through engineered fire safety.</p>

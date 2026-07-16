@@ -19,27 +19,39 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* ---- Mobile nav ---- */
+  /* ---- Dropdown menu ---- */
   var toggle = document.getElementById("navToggle");
-  var mobileNav = document.getElementById("mobileNav");
-  function closeMenu() {
-    header.classList.remove("menu-open");
-    toggle.setAttribute("aria-expanded", "false");
-    mobileNav.hidden = true;
+  var menuPanel = document.getElementById("menuPanel");
+  function openMenu() {
+    menuPanel.classList.add("open");
+    toggle.setAttribute("aria-expanded", "true");
+    toggle.setAttribute("aria-label", "Close menu");
   }
-  if (toggle) {
-    toggle.addEventListener("click", function () {
-      var open = toggle.getAttribute("aria-expanded") === "true";
-      if (open) {
+  function closeMenu() {
+    menuPanel.classList.remove("open");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "Open menu");
+  }
+  if (toggle && menuPanel) {
+    toggle.addEventListener("click", function (e) {
+      e.stopPropagation();
+      if (toggle.getAttribute("aria-expanded") === "true") closeMenu();
+      else openMenu();
+    });
+    menuPanel.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", closeMenu);
+    });
+    document.addEventListener("click", function (e) {
+      if (menuPanel.classList.contains("open") &&
+          !menuPanel.contains(e.target) && !toggle.contains(e.target)) {
         closeMenu();
-      } else {
-        header.classList.add("menu-open");
-        toggle.setAttribute("aria-expanded", "true");
-        mobileNav.hidden = false;
       }
     });
-    mobileNav.querySelectorAll("a").forEach(function (a) {
-      a.addEventListener("click", closeMenu);
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && menuPanel.classList.contains("open")) {
+        closeMenu();
+        toggle.focus();
+      }
     });
   }
 
