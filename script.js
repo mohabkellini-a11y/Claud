@@ -96,40 +96,29 @@
     counters.forEach(function (el) { co.observe(el); });
   }
 
-  /* ---- Blueprint: draw the sprinkler layout on scroll ---- */
-  var bpTrack = document.getElementById("bpTrack");
-  if (bpTrack) {
-    var pipes = bpTrack.querySelectorAll(".pipe");
-    var marks = bpTrack.querySelectorAll(".head, .dim");
-    function drawLayout(p) {
-      pipes.forEach(function (el) {
-        var s = parseFloat(el.dataset.start), e = parseFloat(el.dataset.end);
-        var f = e > s ? (p - s) / (e - s) : 1;
-        f = f < 0 ? 0 : f > 1 ? 1 : f;
-        el.style.strokeDashoffset = String(1 - f);
-      });
-      marks.forEach(function (el) {
-        var at = parseFloat(el.dataset.at);
-        var o = (p - at) / 0.05;
-        el.style.opacity = String(o < 0 ? 0 : o > 1 ? 1 : o);
+  /* ---- Fixed pipe rail: drafts down the page with overall scroll ---- */
+  var rail = document.getElementById("pipeRail");
+  if (rail) {
+    var railNodes = rail.querySelectorAll(".pr-node");
+    function railUpdate() {
+      var total = document.documentElement.scrollHeight - window.innerHeight;
+      var p = total > 0 ? window.scrollY / total : 0;
+      p = p < 0 ? 0 : p > 1 ? 1 : p;
+      rail.style.setProperty("--pr-p", String(p));
+      railNodes.forEach(function (n) {
+        n.style.opacity = p >= parseFloat(n.dataset.at) ? "1" : "0";
       });
     }
     if (reduceMotion) {
-      drawLayout(1);
+      rail.style.setProperty("--pr-p", "1");
+      railNodes.forEach(function (n) { n.style.opacity = "1"; });
     } else {
-      var bpTicking = false;
-      function bpUpdate() {
-        var total = bpTrack.offsetHeight - window.innerHeight;
-        var scrolled = -bpTrack.getBoundingClientRect().top;
-        var p = total > 0 ? scrolled / total : 0;
-        drawLayout(p < 0 ? 0 : p > 1 ? 1 : p);
-        bpTicking = false;
-      }
+      var rTick = false;
       window.addEventListener("scroll", function () {
-        if (!bpTicking) { bpTicking = true; requestAnimationFrame(bpUpdate); }
+        if (!rTick) { rTick = true; requestAnimationFrame(function () { railUpdate(); rTick = false; }); }
       }, { passive: true });
-      window.addEventListener("resize", bpUpdate);
-      bpUpdate();
+      window.addEventListener("resize", railUpdate);
+      railUpdate();
     }
   }
 

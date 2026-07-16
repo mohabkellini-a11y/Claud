@@ -354,28 +354,18 @@ a.contact-method:hover span { color: var(--amber); }
 .footer-bottom-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; padding: 22px 0; font-size: .84rem; color: rgba(255, 255, 255, .55); }
 .footer-tagline { font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange); font-size: .78rem; }
 
-/* ---------- Blueprint / scroll pipe-draw ---------- */
-.blueprint { background: var(--navy-900); color: #fff; }
-.blueprint-track { position: relative; height: 210vh; }
-.blueprint-sticky { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; overflow: hidden; }
-.blueprint-grid {
-  position: absolute; inset: 0; pointer-events: none;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, .05) 1px, transparent 1px);
-  background-size: 40px 40px;
-  -webkit-mask-image: radial-gradient(ellipse 82% 72% at 50% 46%, #000 55%, transparent 100%);
-  mask-image: radial-gradient(ellipse 82% 72% at 50% 46%, #000 55%, transparent 100%);
+/* ---------- Fixed sprinkler pipe rail (scroll-drawn) ---------- */
+.pipe-rail { position: fixed; left: 0; top: 0; height: 100vh; width: 92px; z-index: 4; pointer-events: none; display: none; }
+@media (min-width: 1280px) { .pipe-rail { display: block; } }
+.pr-main {
+  position: absolute; left: 16px; top: 0; width: 3px; height: 100%; border-radius: 2px;
+  background: var(--red); box-shadow: 0 0 7px rgba(195, 10, 43, .5);
+  transform-origin: top center; transform: scaleY(var(--pr-p, 0));
 }
-.blueprint-inner { position: relative; z-index: 2; width: 100%; }
-.blueprint-head { text-align: center; max-width: 720px; margin: 0 auto clamp(22px, 3vw, 40px); }
-.blueprint-head h2 { color: #fff; }
-.pipe-svg { display: block; width: 100%; max-width: 1000px; height: auto; margin: 0 auto; }
-.pipe { fill: none; stroke: var(--red); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round;
-  stroke-dasharray: 1; stroke-dashoffset: 1; filter: drop-shadow(0 0 5px rgba(195, 10, 43, .55)); }
-.head, .dim { opacity: 0; }
-.dim-line { stroke: rgba(205, 216, 228, .5); stroke-width: 1; fill: none; }
-.dim text { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; fill: #cdd8e4; font-size: 13px; letter-spacing: .03em; }
+.pr-node { position: absolute; left: 16px; display: flex; align-items: center; transform: translateY(-50%); opacity: 0; transition: opacity .35s var(--ease); }
+.pr-stub { width: 13px; height: 2px; border-radius: 2px; background: var(--red); }
+.pr-dot { width: 12px; height: 12px; border: 2.5px solid var(--red); border-radius: 50%; box-sizing: border-box; flex: none; box-shadow: 0 0 6px rgba(195, 10, 43, .45); }
+.pr-lbl { margin-left: 6px; font: 700 11px/1 ui-monospace, "SF Mono", Menlo, Consolas, monospace; color: var(--red); letter-spacing: .02em; }
 
 /* ---------- Reveal animation ---------- */
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
