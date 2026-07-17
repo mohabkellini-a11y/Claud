@@ -202,7 +202,8 @@ p { color: var(--slate); }
   50% { transform: scale(1.012, 1.035); filter: drop-shadow(0 10px 28px rgba(245, 140, 25, .5)) brightness(1.06); }
 }
 .hero-shield-caption strong { display: block; color: #fff; font-size: 1.02rem; }
-.hero-shield-caption span { font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; color: var(--amber); white-space: nowrap; }
+.hero-shield-caption { text-align: center; }
+.hero-shield-caption span { display: block; font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; color: var(--amber); white-space: normal; }
 
 .floaty {
   position: absolute; z-index: 3; background: #fff; color: var(--ink);
@@ -244,22 +245,18 @@ p { color: var(--slate); }
 .service-card {
   position: relative; background: var(--surface); border: 1px solid var(--border);
   border-radius: var(--radius-lg); padding: 34px 30px 32px; overflow: hidden;
-  transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
+  box-shadow: var(--shadow-sm);
 }
 .service-card::before {
   content: ""; position: absolute; left: 0; top: 0; height: 4px; width: 100%;
-  background: var(--grad-flame); transform: scaleX(0); transform-origin: left; transition: transform .35s var(--ease);
+  background: var(--grad-flame);
 }
-.service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: var(--border-strong); }
-.service-card:hover::before { transform: scaleX(1); }
 .service-icon {
   width: 58px; height: 58px; border-radius: 15px; display: grid; place-items: center;
   background: linear-gradient(135deg, rgba(2, 68, 121, .1), rgba(2, 68, 121, .04));
-  margin-bottom: 20px; transition: background .3s var(--ease);
+  margin-bottom: 20px;
 }
-.service-icon svg { width: 30px; height: 30px; fill: none; stroke: var(--blue); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; transition: stroke .3s var(--ease); }
-.service-card:hover .service-icon { background: var(--grad-flame); }
-.service-card:hover .service-icon svg { stroke: #fff; }
+.service-icon svg { width: 30px; height: 30px; fill: none; stroke: var(--blue); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .service-code {
   display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .1em;
   text-transform: uppercase; color: var(--red); background: rgba(195, 10, 43, .07);
@@ -295,8 +292,7 @@ p { color: var(--slate); }
   color: var(--blue); border: 1px solid var(--border-strong); padding: 8px 16px; border-radius: 999px;
 }
 .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.why-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 26px; transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
-.why-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.why-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 26px; }
 .why-icon { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; background: var(--grad-blue); margin-bottom: 18px; }
 .why-icon svg { width: 26px; height: 26px; fill: none; stroke: #fff; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .why-card h3 { margin-bottom: 8px; font-size: 1.12rem; }
@@ -324,14 +320,13 @@ p { color: var(--slate); }
 .clients { background: var(--surface); }
 .clients-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(34px, 5vw, 70px); align-items: center; }
 .clients-copy .section-sub { margin: 14px 0 30px; }
-.clients-list { list-style: none; padding: 0; display: grid; gap: 14px; }
+.clients-list { list-style: none; padding: 0; display: grid; gap: 2px; }
 .clients-list li {
-  display: flex; align-items: center; gap: 16px; background: var(--bg);
-  border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px;
+  display: flex; align-items: center; gap: 16px; padding: 16px 2px;
+  border-bottom: 1px solid var(--border);
   font-weight: 600; font-size: 1.02rem; color: var(--ink);
-  transition: transform .25s var(--ease), border-color .25s var(--ease);
 }
-.clients-list li:hover { transform: translateX(6px); border-color: var(--blue); }
+.clients-list li:last-child { border-bottom: none; }
 .tick { flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--grad-flame); position: relative; }
 .tick::after { content: ""; position: absolute; left: 9px; top: 6px; width: 6px; height: 11px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
 
