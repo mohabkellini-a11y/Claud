@@ -195,6 +195,7 @@ p { color: var(--slate); }
   border: 1px solid rgba(255, 255, 255, .14); border-radius: var(--radius-lg);
   padding: 34px 40px 30px; backdrop-filter: blur(6px); text-align: center;
   box-shadow: 0 30px 70px rgba(0, 0, 0, .3);
+  container-type: inline-size;
 }
 .hero-shield { width: clamp(150px, 20vw, 190px); height: auto; margin: 0 auto 14px; transform-origin: 50% 86%; will-change: transform, filter; animation: heroFlame 2.8s ease-in-out infinite; }
 @keyframes heroFlame {
@@ -203,7 +204,7 @@ p { color: var(--slate); }
 }
 .hero-shield-caption strong { display: block; color: #fff; font-size: 1.02rem; }
 .hero-shield-caption { text-align: center; }
-.hero-shield-caption span { display: block; font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; color: var(--amber); white-space: normal; }
+.hero-shield-caption span { display: block; font-size: clamp(7.5px, 3.9cqw, 12px); letter-spacing: .03em; text-transform: uppercase; color: var(--amber); white-space: nowrap; }
 
 .floaty {
   position: absolute; z-index: 3; background: #fff; color: var(--ink);
@@ -476,6 +477,7 @@ a.contact-method:hover span { color: var(--amber); }
   .footer-inner { grid-template-columns: 1fr; gap: 30px; }
   .footer-nav, .footer-contact { gap: 9px; }
   .floaty { display: none; }
+  .hero-shield-card { width: min(340px, 92%); padding: 26px 18px 24px; }
   .hero { padding-bottom: 64px; }
   .hero-cta .btn { flex: 1 1 auto; }
 }
