@@ -129,106 +129,12 @@
   }
 
   /* ---- Contact form ----
-     Submits to Formspree (works on any static host). Until the endpoint
-     below is set to your real form ID, it falls back to the visitor's
-     email client so the form is never dead.
-
-     SETUP: create a free form at https://formspree.io, then replace
-     "your-form-id" with your form ID (e.g. "xmyzabcd").
+     Submits as a native HTML POST to FormSubmit.co (see index.html form
+     action). A native submission is required for FormSubmit's autoresponse
+     and _next redirect to work, so there is no JS submit handler here.
+     Client-side "required" validation is enforced by the browser via the
+     required attributes on the Name, Email, and Phone fields.
   */
-  var FORMSPREE_ENDPOINT = "https://formspree.io/f/xgogaeww";
-
-  var form = document.getElementById("contactForm");
-  var note = document.getElementById("formNote");
-  var submitBtn = document.getElementById("cfSubmit");
-  var nameEl = document.getElementById("cf-name");
-  var emailEl = document.getElementById("cf-email");
-  var phoneEl = document.getElementById("cf-phone");
-  var messageEl = document.getElementById("cf-message");
-
-  function setNote(msg, type) {
-    note.className = "form-note" + (type ? " " + type : "");
-    note.textContent = msg;
-  }
-
-  function mailtoFallback(name, email, phone, message) {
-    var subject = "Proposal request from " + name;
-    var body =
-      "Name: " + name + "\n" +
-      "Email: " + email + "\n" +
-      "Phone: " + phone + "\n\n" +
-      "Project details:\n" + (message || "(none provided)") + "\n";
-    window.location.href = "mailto:info@eversafe-fire.com" +
-      "?subject=" + encodeURIComponent(subject) +
-      "&body=" + encodeURIComponent(body);
-  }
-
-  if (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      setNote("", "");
-
-      var name = nameEl.value.trim();
-      var email = emailEl.value.trim();
-      var phone = phoneEl.value.trim();
-      var message = messageEl.value.trim();
-      var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-      var phoneOk = (phone.match(/\d/g) || []).length >= 7;
-
-      if (!name || !emailOk || !phoneOk) {
-        var msg, focusEl;
-        if (!name) { msg = "Please enter your name."; focusEl = nameEl; }
-        else if (!emailOk) { msg = "Please enter a valid email address."; focusEl = emailEl; }
-        else { msg = "Please enter a valid phone number."; focusEl = phoneEl; }
-        setNote(msg, "error");
-        focusEl.focus();
-        return;
-      }
-
-      /* Honeypot filled = bot: silently pretend success, send nothing */
-      var honeypot = form.querySelector('[name="_gotcha"]');
-      if (honeypot && honeypot.value) {
-        form.reset();
-        setNote("Thank you, we'll be in touch shortly.", "success");
-        return;
-      }
-
-      /* Endpoint not configured yet → open the visitor's email client */
-      if (FORMSPREE_ENDPOINT.indexOf("your-form-id") !== -1) {
-        setNote("Opening your email app… If nothing happens, email info@eversafe-fire.com directly.", "success");
-        mailtoFallback(name, email, phone, message);
-        return;
-      }
-
-      /* Submit to Formspree via AJAX (no page redirect) */
-      var originalLabel = submitBtn.textContent;
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Sending…";
-
-      fetch(FORMSPREE_ENDPOINT, {
-        method: "POST",
-        headers: { "Accept": "application/json" },
-        body: new FormData(form)
-      }).then(function (res) {
-        if (res.ok) {
-          form.reset();
-          setNote("Thank you. Your request has been sent, we'll reply within one business day.", "success");
-          return;
-        }
-        return res.json().then(function (data) {
-          var msg = (data && data.errors && data.errors.length)
-            ? data.errors.map(function (er) { return er.message; }).join(", ")
-            : "Something went wrong sending your request.";
-          setNote(msg + " You can also email info@eversafe-fire.com.", "error");
-        });
-      }).catch(function () {
-        setNote("Network error. Please email info@eversafe-fire.com directly.", "error");
-      }).finally(function () {
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalLabel;
-      });
-    });
-  }
 
   /* ---- Smooth-scroll offset correction for sticky header ---- */
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
