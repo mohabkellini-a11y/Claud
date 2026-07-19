@@ -396,6 +396,15 @@ a.contact-method:hover span { color: var(--amber); }
 .brand-footer .brand-logo { height: 46px; }
 .footer-tag { color: #fff; font-weight: 600; margin: 18px 0 12px; font-size: 1.02rem; }
 .footer-mission { font-size: .92rem; max-width: 380px; line-height: 1.7; }
+.footer-social { display: flex; gap: 12px; margin-top: 20px; }
+.social-link {
+  display: inline-grid; place-items: center; width: 42px; height: 42px; border-radius: 50%;
+  background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .14);
+  color: rgba(255, 255, 255, .78);
+  transition: background .2s var(--ease), color .2s var(--ease), transform .2s var(--ease), border-color .2s var(--ease);
+}
+.social-link svg { width: 20px; height: 20px; }
+.social-link:hover { background: #0a66c2; border-color: transparent; color: #fff; transform: translateY(-2px); }
 .footer-nav, .footer-contact { display: flex; flex-direction: column; gap: 11px; }
 .footer-nav h4, .footer-contact h4 { color: #fff; font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 6px; }
 .footer-nav a, .footer-contact a { font-size: .92rem; color: rgba(255, 255, 255, .72); transition: color .2s var(--ease); width: fit-content; }
