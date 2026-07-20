@@ -55,8 +55,9 @@ header{background:var(--navy-deep);color:#fff;border-bottom:5px solid var(--red)
 /* Inputs */
 label.f{display:block;font-size:11.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--ink-soft);margin:14px 0 6px}
 label.f:first-child{margin-top:0}
-input[type=number],select{width:100%;padding:11px 12px;font-family:'Montserrat';font-weight:600;font-size:15px;border:1.5px solid var(--line);border-radius:7px;background:#FBFCFD;color:var(--ink);font-variant-numeric:tabular-nums}
-input[type=number]:focus,select:focus{outline:2px solid var(--navy);outline-offset:1px;border-color:var(--navy)}
+input[type=number],input[type=text],select{width:100%;padding:11px 12px;font-family:'Montserrat';font-weight:600;font-size:15px;border:1.5px solid var(--line);border-radius:7px;background:#FBFCFD;color:var(--ink);font-variant-numeric:tabular-nums}
+input[type=text]{font-weight:500}
+input[type=number]:focus,input[type=text]:focus,select:focus{outline:2px solid var(--navy);outline-offset:1px;border-color:var(--navy)}
 select{font-weight:500}
 .svc{display:flex;align-items:flex-start;gap:10px;padding:11px 12px;border:1.5px solid var(--line);border-radius:8px;margin-bottom:8px;cursor:pointer;transition:border-color .15s,background .15s;background:#FBFCFD}
 .svc:hover{border-color:#A9B7C8}
@@ -195,6 +196,9 @@ body.client .client-badge{display:inline-block}
     <div class="panel inputs">
       <div class="panel-h"><h2>Project Inputs</h2></div>
       <div class="panel-b">
+        <label class="f" for="preparer">Prepared by</label>
+        <input type="text" id="preparer" placeholder="Name, title / license (optional)" autocomplete="name">
+
         <label class="f" for="sqft">Project area (ft²)</label>
         <input type="number" id="sqft" value="10000" min="0" step="500">
 
@@ -281,7 +285,7 @@ body.client .client-badge{display:inline-block}
       </svg>
       <b>Ever<span>Safe</span> Fire Protection</b>
     </div>
-    <div>Tested. Certified. EverSafe. &nbsp;·&nbsp; Prepared by Mohab Kellini, PE · FL #PE104588</div>
+    <div>Tested. Certified. EverSafe.</div>
   </footer>
 </div>
 
@@ -314,6 +318,7 @@ function loadSaved(){
     const raw = localStorage.getItem(STORAGE_KEY);
     if(raw){
       const saved = JSON.parse(raw);
+      if(saved.preparer) $('preparer').value = saved.preparer;
       if(saved.hourly) cfg.hourly = saved.hourly;
       if(Array.isArray(saved.services)){
         saved.services.forEach(s=>{
@@ -385,7 +390,9 @@ function render(){
   $('mType').textContent = typeTxt;
   $('mHours').textContent = q.hours ? q.hours.toFixed(1)+' hrs' : '—';
   $('mPsf').textContent = (q.sqft && q.total) ? '$'+(q.total/q.sqft).toFixed(2) : '—';
-  $('quoteMeta').textContent = new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}) + ' · Prepared by Mohab Kellini, PE · FL #PE104588';
+  const dateStr = new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  const preparer = $('preparer').value.trim();
+  $('quoteMeta').textContent = preparer ? dateStr + ' · Prepared by ' + preparer : dateStr;
 
   const body = $('quoteBody');
   if(!q.items.length){
@@ -417,6 +424,7 @@ function render(){
 
 /* Wiring */
 $('sqft').addEventListener('input', render);
+$('preparer').addEventListener('input', render);
 $('ptype').addEventListener('change', render);
 $('hourly').addEventListener('input', e=>{ cfg.hourly = parseFloat(e.target.value)||0; render(); });
 $('settingsToggle').addEventListener('click', ()=> $('settings').classList.toggle('open'));
@@ -427,6 +435,7 @@ $('clientToggle').addEventListener('click', function(){
 $('saveRates').addEventListener('click', ()=>{
   try{
     localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      preparer: $('preparer').value.trim(),
       hourly: cfg.hourly,
       services: cfg.services.map(s=>({id:s.id,base:s.base,perKsf:s.perKsf,min:s.min}))
     }));
