@@ -264,8 +264,8 @@ body.client .client-badge{display:inline-block}
         <div class="q-meta">
           <div><div class="k">Area</div><div class="v" id="mArea">—</div></div>
           <div><div class="k">Type</div><div class="v" id="mType" style="font-size:14px">—</div></div>
-          <div class="internal"><div class="k">Total hours</div><div class="v" id="mHours">—</div></div>
-          <div class="internal"><div class="k">Effective $/ft²</div><div class="v" id="mPsf">—</div></div>
+          <div><div class="k">Total hours</div><div class="v" id="mHours">—</div></div>
+          <div><div class="k">Effective $/ft²</div><div class="v" id="mPsf">—</div></div>
         </div>
         <div id="quoteBody"></div>
       </div>
@@ -424,13 +424,13 @@ function render(){
   let rows = q.items.map(it=>`
     <tr>
       <td><b>${it.name}</b><div class="sub">${it.desc}</div></td>
-      <td class="num internal">${it.hrs.toFixed(1)}</td>
+      <td class="num">${it.hrs.toFixed(1)}</td>
       <td class="num">${usd(it.price)}${it.atMin?'<span class="min-flag internal">MIN</span>':''}</td>
     </tr>`).join('');
   body.innerHTML = `<table>
-    <thead><tr><th>Scope item</th><th class="num internal">Hours</th><th class="num">Fixed fee</th></tr></thead>
+    <thead><tr><th>Scope item</th><th class="num">Hours</th><th class="num">Fixed fee</th></tr></thead>
     <tbody>${rows}
-      <tr class="total-row"><td>Total — Standard engagement</td><td class="internal"></td><td class="num grand">${usd(q.total)}</td></tr>
+      <tr class="total-row"><td>Total — Standard engagement</td><td class="num">${q.hours.toFixed(1)}</td><td class="num grand">${usd(q.total)}</td></tr>
     </tbody></table>`;
 
   $('tierGrid').innerHTML = TIERS.map(t=>`
