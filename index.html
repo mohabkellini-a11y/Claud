@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EverSafe Fire Protection — Project Pricing Tool</title>
+<meta name="description" content="EverSafe Fire Protection — internal fee proposal builder. Protection you can trust. Compliance you can prove.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 3 6 9v14c0 11 8 18 18 22 10-4 18-11 18-22V9L24 3z' fill='%23173E77'/%3E%3Cpath d='M24 3 42 9v14c0 11-8 18-18 22z' fill='%23C8202E'/%3E%3Cpath d='M24 14c3 4 6 6 6 11a6 6 0 01-12 0c0-3 1.5-4.5 3-7 1 2 2 2.5 3 4 .5-3-.5-5 0-8z' fill='%23F26A21'/%3E%3C/svg%3E">
+<style>
+:root{
+  /* EverSafe brand palette */
+  --navy:#173E77; --navy-deep:#0F2A54; --navy-ink:#10294F;
+  --red:#C8202E; --red-dark:#A11824;
+  --flame:#F26A21; --flame-2:#F59E3C;
+  --paper:#F5F7FA; --card:#FFFFFF; --line:#DCE1E8; --ink:#1B2430; --ink-soft:#5B6675;
+  --ok:#1E7A46; --radius:10px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Montserrat',system-ui,sans-serif;font-weight:500;background:var(--paper);color:var(--ink);line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 60px}
+
+/* Header */
+header{background:var(--navy-deep);color:#fff;border-bottom:5px solid var(--red)}
+.head-inner{max-width:1180px;margin:0 auto;padding:20px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:14px}
+.logo{width:52px;height:52px;flex:none}
+.brand .word{font-family:'Montserrat';font-weight:800;font-size:27px;letter-spacing:-.5px;line-height:1;color:#fff}
+.brand .word span{color:#F26A21}
+.brand .tag{font-size:10.5px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#93A6C2;margin-top:5px}
+.brand .role{font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:#7D93B4;margin-top:2px}
+.head-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{font-family:'Montserrat';font-weight:600;font-size:13.5px;letter-spacing:.3px;border:none;border-radius:7px;padding:10px 16px;cursor:pointer;transition:background .15s,border-color .15s}
+.btn-ghost{background:transparent;color:#C9D6E8;border:1px solid #37527C}
+.btn-ghost:hover{background:#1B3A66}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:var(--red-dark)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:#1F4C90}
+
+/* Tagline strip */
+.strip{background:var(--navy);color:#fff;text-align:center;padding:9px 20px;font-size:13px;font-weight:600;letter-spacing:1.2px}
+.strip span{color:#F59E3C}
+
+/* Layout */
+.grid{display:grid;grid-template-columns:400px 1fr;gap:24px;margin-top:26px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius)}
+.panel-h{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.panel-h h2{font-family:'Montserrat';font-size:17px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--navy)}
+.panel-b{padding:18px}
+
+/* Inputs */
+label.f{display:block;font-size:11.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--ink-soft);margin:14px 0 6px}
+label.f:first-child{margin-top:0}
+input[type=number],select{width:100%;padding:11px 12px;font-family:'Montserrat';font-weight:600;font-size:15px;border:1.5px solid var(--line);border-radius:7px;background:#FBFCFD;color:var(--ink);font-variant-numeric:tabular-nums}
+input[type=number]:focus,select:focus{outline:2px solid var(--navy);outline-offset:1px;border-color:var(--navy)}
+select{font-weight:500}
+.svc{display:flex;align-items:flex-start;gap:10px;padding:11px 12px;border:1.5px solid var(--line);border-radius:8px;margin-bottom:8px;cursor:pointer;transition:border-color .15s,background .15s;background:#FBFCFD}
+.svc:hover{border-color:#A9B7C8}
+.svc.on{border-color:var(--navy);background:#EEF3FA}
+.svc input{margin-top:3px;accent-color:var(--red);width:16px;height:16px}
+.svc b{display:block;font-size:14px;font-weight:700}
+.svc small{color:var(--ink-soft);font-size:12.5px;font-weight:500}
+.hint{font-size:12px;color:var(--ink-soft);margin-top:4px;font-weight:500}
+
+/* Quote sheet */
+.quote{position:relative;overflow:hidden}
+.quote-head{background:var(--navy);color:#fff;padding:18px 22px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;border-radius:var(--radius) var(--radius) 0 0}
+.quote-head h2{font-family:'Montserrat';font-size:23px;font-weight:800;text-transform:uppercase;letter-spacing:1px}
+.quote-head p{color:#9FB1C9;font-size:12.5px;margin-top:3px;font-weight:500}
+.seal{width:78px;height:78px;flex:none;opacity:.97}
+.q-meta{display:flex;gap:0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.q-meta div{flex:1;min-width:130px;padding:12px 18px;border-right:1px solid var(--line)}
+.q-meta div:last-child{border-right:none}
+.q-meta .k{font-size:10.5px;letter-spacing:1.3px;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+.q-meta .v{font-weight:700;font-size:16px;margin-top:3px;font-variant-numeric:tabular-nums}
+table{width:100%;border-collapse:collapse}
+th{font-family:'Montserrat';font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--ink-soft);text-align:left;padding:12px 18px;border-bottom:2px solid var(--navy)}
+th.num,td.num{text-align:right;font-variant-numeric:tabular-nums}
+td{padding:13px 18px;border-bottom:1px solid var(--line);font-size:14.5px;vertical-align:top;font-weight:500}
+td b{font-weight:700}
+td .sub{font-size:12.5px;color:var(--ink-soft);margin-top:3px;font-weight:500}
+td.num{font-weight:600}
+.total-row td{background:#EEF3FA;font-weight:700;border-bottom:none}
+.total-row .grand{font-weight:800;font-size:22px;color:var(--navy)}
+.min-flag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--red);border:1px solid var(--red);border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:middle}
+.empty{padding:44px 20px;text-align:center;color:var(--ink-soft)}
+.empty b{display:block;font-family:'Montserrat';font-size:19px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}
+
+/* Tiers */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:18px}
+@media(max-width:720px){.tiers{grid-template-columns:1fr}}
+.tier{border:1.5px solid var(--line);border-radius:10px;padding:18px 16px;position:relative;background:#FBFCFD}
+.tier.rec{border-color:var(--red);background:#fff;box-shadow:0 4px 14px rgba(15,42,84,.09)}
+.tier .badge{position:absolute;top:-10px;left:14px;background:var(--red);color:#fff;font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;padding:3px 9px;border-radius:4px}
+.tier h3{font-family:'Montserrat';font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--navy)}
+.tier .price{font-weight:800;font-size:24px;margin:8px 0 10px;font-variant-numeric:tabular-nums}
+.tier ul{list-style:none}
+.tier li{font-size:13px;padding:4px 0 4px 18px;position:relative;color:var(--ink-soft);font-weight:500}
+.tier li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;background:var(--red)}
+.tier.rec li{color:var(--ink)}
+
+/* Settings drawer */
+#settings{display:none}
+#settings.open{display:block}
+.set-grid{display:grid;grid-template-columns:1fr;gap:0}
+.set-row{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:10px;align-items:center;padding:10px 18px;border-bottom:1px solid var(--line)}
+.set-row.head{font-size:10.5px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;color:var(--ink-soft);border-bottom:2px solid var(--navy)}
+.set-row .name{font-size:14px;font-weight:600}
+.set-row input{padding:8px 10px;font-size:13.5px}
+.global-rate{display:flex;align-items:center;gap:14px;padding:16px 18px;background:#EEF3FA;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.global-rate label{font-size:12.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--navy)}
+.global-rate input{width:120px}
+.set-actions{padding:14px 18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.save-note{font-size:12.5px;color:var(--ok);font-weight:700;display:none}
+
+/* Market panel */
+details.market{margin-top:24px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius)}
+details.market summary{padding:14px 18px;font-family:'Montserrat';font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--navy);cursor:pointer;list-style:none}
+details.market summary::before{content:"▸ ";color:var(--red)}
+details.market[open] summary::before{content:"▾ "}
+.market-b{padding:0 18px 18px;font-size:14px;color:var(--ink-soft);font-weight:500}
+.market-b table td,.market-b table th{padding:9px 12px;font-size:13.5px}
+.market-b p{margin-top:10px}
+
+/* Footer */
+.site-foot{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;color:var(--ink-soft);font-size:12.5px;font-weight:500}
+.site-foot .fbrand{display:flex;align-items:center;gap:10px}
+.site-foot .fbrand b{font-family:'Montserrat';font-weight:800;color:var(--navy);font-size:15px;letter-spacing:-.3px}
+.site-foot .fbrand b span{color:var(--red)}
+
+/* Client mode */
+body.client .internal{display:none!important}
+body.client .svc small{display:none}
+.client-badge{display:none;background:var(--ok);color:#fff;font-size:11px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;padding:3px 10px;border-radius:5px}
+body.client .client-badge{display:inline-block}
+@media print{header .head-actions,.strip,.panel.inputs,#settings,details.market{display:none}.grid{grid-template-columns:1fr}}
+:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="head-inner">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M24 3 6 9v14c0 11 8 18 18 22 10-4 18-11 18-22V9L24 3z" fill="#173E77"/>
+        <path d="M24 3 42 9v14c0 11-8 18-18 22z" fill="#C8202E"/>
+        <path d="M24 8 11 12v11c0 8 5 14 13 18 8-4 13-10 13-18V12L24 8z" fill="none" stroke="#fff" stroke-width="1.4" opacity=".55"/>
+        <path d="M24 14c3 4 6 6 6 11a6 6 0 01-12 0c0-3 1.5-4.5 3-7 1 2 2 2.5 3 4 .5-3-.5-5 0-8z" fill="#F26A21"/>
+        <path d="M24 20c1.5 2 3 3 3 5.5a3 3 0 01-6 0c0-1.6 1-2.4 1.6-3.6.6 1 1 1.2 1.6 2 .2-1.6-.3-2.6-.2-3.9z" fill="#F59E3C"/>
+      </svg>
+      <div>
+        <div class="word">Ever<span>Safe</span></div>
+        <div class="tag">Fire Protection</div>
+        <div class="role internal">Pricing Desk — Internal Quote Builder</div>
+      </div>
+    </div>
+    <div class="head-actions">
+      <span class="client-badge">Client View</span>
+      <button class="btn btn-ghost" id="clientToggle" type="button">Client view</button>
+      <button class="btn btn-ghost internal" id="settingsToggle" type="button">Edit my rates</button>
+      <button class="btn btn-red" type="button" onclick="window.print()">Print / PDF</button>
+    </div>
+  </div>
+</header>
+<div class="strip">Protection you can trust. <span>Compliance you can prove.</span></div>
+
+<div class="wrap">
+
+  <!-- SETTINGS DRAWER -->
+  <div class="panel internal" id="settings" style="margin-top:24px">
+    <div class="panel-h"><h2>My Rates &amp; Hours</h2></div>
+    <div class="global-rate">
+      <label for="hourly">My hourly rate ($/hr)</label>
+      <input type="number" id="hourly" min="50" step="5">
+      <span class="hint">Market: $150–$250/hr for PE-level FPE work. Every price below = hours × this rate, floored at the minimum fee.</span>
+    </div>
+    <div class="set-grid" id="rateRows">
+      <div class="set-row head"><div>Service</div><div>Base hours</div><div>Hrs / 1,000 ft²</div><div>Minimum fee $</div></div>
+    </div>
+    <div class="set-actions">
+      <button class="btn btn-navy" id="saveRates" type="button">Save my rates</button>
+      <button class="btn btn-ghost" id="resetRates" type="button" style="color:var(--navy);border-color:var(--line)">Reset to market defaults</button>
+      <span class="save-note" id="saveNote">Saved — these rates will load next time.</span>
+    </div>
+  </div>
+
+  <div class="grid">
+
+    <!-- INPUTS -->
+    <div class="panel inputs">
+      <div class="panel-h"><h2>Project Inputs</h2></div>
+      <div class="panel-b">
+        <label class="f" for="sqft">Project area (ft²)</label>
+        <input type="number" id="sqft" value="10000" min="0" step="500">
+
+        <label class="f" for="ptype">Project type</label>
+        <select id="ptype">
+          <option value="0.85">Residential (×0.85)</option>
+          <option value="1" selected>Commercial / Office / Retail (×1.00)</option>
+          <option value="1.3">Warehouse / Storage (×1.30)</option>
+          <option value="1.4">High-rise (×1.40)</option>
+          <option value="1.5">Healthcare / Institutional (×1.50)</option>
+          <option value="1.6">Data center / Mission-critical (×1.60)</option>
+        </select>
+        <p class="hint internal">Multiplier reflects design complexity: storage commodities, standpipes, smoke control, redundancy.</p>
+
+        <label class="f" style="margin-top:18px">Scope of work</label>
+        <div id="svcList"></div>
+      </div>
+    </div>
+
+    <!-- QUOTE -->
+    <div>
+      <div class="panel quote">
+        <div class="quote-head">
+          <div>
+            <h2>Fee Proposal</h2>
+            <p id="quoteMeta">—</p>
+          </div>
+          <svg class="seal" viewBox="0 0 100 100" aria-hidden="true">
+            <circle cx="50" cy="50" r="47" fill="none" stroke="#F59E3C" stroke-width="2.5"/>
+            <circle cx="50" cy="50" r="38" fill="none" stroke="#F59E3C" stroke-width="1"/>
+            <path id="arcT" d="M 50 50 m -32 0 a 32 32 0 1 1 64 0" fill="none"/>
+            <path id="arcB" d="M 50 50 m -32 0 a 32 32 0 1 0 64 0" fill="none"/>
+            <text font-size="9.2" fill="#F59E3C" letter-spacing="2" font-family="Montserrat" font-weight="700"><textPath href="#arcT" startOffset="7%">EVERSAFE FIRE PROTECTION</textPath></text>
+            <text font-size="8.6" fill="#F59E3C" letter-spacing="1.8" font-family="Montserrat" font-weight="600"><textPath href="#arcB" startOffset="24%">FLORIDA LICENSED PE</textPath></text>
+            <text x="50" y="47" text-anchor="middle" font-size="12.5" font-weight="800" fill="#fff" font-family="Montserrat">FIXED</text>
+            <text x="50" y="61" text-anchor="middle" font-size="12.5" font-weight="800" fill="#fff" font-family="Montserrat">FEE</text>
+          </svg>
+        </div>
+        <div class="q-meta">
+          <div><div class="k">Area</div><div class="v" id="mArea">—</div></div>
+          <div><div class="k">Type</div><div class="v" id="mType" style="font-size:14px">—</div></div>
+          <div class="internal"><div class="k">Total hours</div><div class="v" id="mHours">—</div></div>
+          <div class="internal"><div class="k">Effective $/ft²</div><div class="v" id="mPsf">—</div></div>
+        </div>
+        <div id="quoteBody"></div>
+      </div>
+
+      <!-- TIERS -->
+      <div class="panel" style="margin-top:24px" id="tierPanel">
+        <div class="panel-h">
+          <h2>Engagement Options</h2>
+          <span class="hint internal">Present all three — most clients pick Standard. Anchor with Priority first.</span>
+        </div>
+        <div class="tiers" id="tierGrid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARKET REVIEW -->
+  <details class="market internal">
+    <summary>Market Review — where these defaults come from</summary>
+    <div class="market-b">
+      <table>
+        <tr><th>Benchmark</th><th>Market range</th><th>EverSafe default position</th></tr>
+        <tr><td>PE-level FPE consulting, hourly</td><td class="num">$150 – $250/hr (FL expert top-end ~$275)</td><td>$165/hr — mid-market, room to discount</td></tr>
+        <tr><td>Preliminary sprinkler design</td><td class="num">25 – 40% of a full design fee ($0.03 – $0.08/ft²)</td><td>Base 4 hrs + 0.35 hrs/kft², $750 min</td></tr>
+        <tr><td>Preliminary fire alarm design</td><td class="num">Slightly under sprinkler prelim for same building</td><td>Base 3 hrs + 0.30 hrs/kft², $600 min</td></tr>
+        <tr><td>PE review &amp; stamp</td><td class="num">$350 – $750/sheet · $1,000 – $2,500/package</td><td>$1,000 min per package</td></tr>
+        <tr><td>Code consulting / life safety report</td><td class="num">$2,000 – $7,500 flat</td><td>$2,000 min, 12 base hrs</td></tr>
+        <tr><td>FDS smoke modeling</td><td class="num">Rarely under $10,000 per study at large firms</td><td>$8,000 min; +report $12,000 min — priced under market</td></tr>
+      </table>
+      <p><b>Positioning strategy:</b> sit ~10–15% under large-firm pricing, never 40% under. Compete on one-business-day proposals and direct engineer-of-record access, not on being cheapest. If three clients in a row accept without hesitation, raise rates 15%.</p>
+      <p><b>Note:</b> figures are planning benchmarks compiled from public sources and industry practice, not a guarantee of local pricing. Validate against your first real proposals.</p>
+    </div>
+  </details>
+
+  <!-- FOOTER -->
+  <footer class="site-foot">
+    <div class="fbrand">
+      <svg width="30" height="30" viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M24 3 6 9v14c0 11 8 18 18 22 10-4 18-11 18-22V9L24 3z" fill="#173E77"/>
+        <path d="M24 3 42 9v14c0 11-8 18-18 22z" fill="#C8202E"/>
+        <path d="M24 14c3 4 6 6 6 11a6 6 0 01-12 0c0-3 1.5-4.5 3-7 1 2 2 2.5 3 4 .5-3-.5-5 0-8z" fill="#F26A21"/>
+      </svg>
+      <b>Ever<span>Safe</span> Fire Protection</b>
+    </div>
+    <div>Tested. Certified. EverSafe. &nbsp;·&nbsp; Prepared by Mohab Kellini, PE · FL #PE104588</div>
+  </footer>
+</div>
+
+<script>
+const DEFAULTS = {
+  hourly: 165,
+  services: [
+    {id:"spr_prelim", name:"Sprinkler Preliminary Design", desc:"Schematic layout, density criteria, riser location, water supply check — contractor produces shop drawings (NFPA 13)", base:4,  perKsf:0.35, min:750,  scale:true},
+    {id:"fa_prelim", name:"Fire Alarm Preliminary Design", desc:"Device placement concept, riser concept, initiation & notification criteria — contractor produces shop drawings (NFPA 72)", base:3,  perKsf:0.3,  min:600,  scale:true},
+    {id:"pe_review", name:"PE Review & Stamp", desc:"Third-party review and sealing of contractor drawings, per package", base:5,  perKsf:0.3,  min:1000, scale:true},
+    {id:"code", name:"PE Code Consulting / Life Safety", desc:"Egress & code compliance analysis, AHJ variance support, written report", base:12, perKsf:0.25, min:2000, scale:true},
+    {id:"fds", name:"FDS Fire & Smoke Simulation", desc:"Performance-based CFD model: smoke control, tenability, egress timing", base:50, perKsf:0.25,  min:8000, scale:true},
+    {id:"fds_report", name:"FDS Simulation + Analysis Report", desc:"Full simulation plus sealed engineering analysis report for AHJ approval", base:75, perKsf:0.35,  min:12000, scale:true}
+  ]
+};
+const TIERS = [
+  {id:"essential", name:"Essential", mult:0.88, rec:false, feats:["Standard turnaround (7–10 business days)","One revision round included","Email support","PE-sealed deliverables"]},
+  {id:"standard", name:"Standard", mult:1.00, rec:true, feats:["Fast turnaround (5–7 business days)","Two revision rounds included","AHJ comment response through approval","Direct line to the engineer of record"]},
+  {id:"priority", name:"Priority", mult:1.25, rec:false, feats:["Rush turnaround (2–3 business days)","Unlimited revisions until approved","AHJ comments + resubmittals handled","One site visit / coordination call included"]}
+];
+
+const STORAGE_KEY = 'eversafe-rates-v1';
+let cfg = JSON.parse(JSON.stringify(DEFAULTS));
+const $ = id => document.getElementById(id);
+const usd = n => new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n);
+const round50 = n => Math.round(n/50)*50;
+
+function loadSaved(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(raw){
+      const saved = JSON.parse(raw);
+      if(saved.hourly) cfg.hourly = saved.hourly;
+      if(Array.isArray(saved.services)){
+        saved.services.forEach(s=>{
+          const t = cfg.services.find(x=>x.id===s.id);
+          if(t){ t.base=s.base; t.perKsf=s.perKsf; t.min=s.min; }
+        });
+      }
+    }
+  }catch(e){/* no saved rates yet — defaults stand */}
+}
+
+function buildServices(){
+  const box = $('svcList'); box.innerHTML='';
+  cfg.services.forEach((s,i)=>{
+    const l = document.createElement('label');
+    l.className='svc'; l.innerHTML =
+      `<input type="checkbox" data-i="${i}" ${i===0?'checked':''}>
+       <span><b>${s.name}</b><small>${s.desc}</small></span>`;
+    l.querySelector('input').addEventListener('change',e=>{
+      l.classList.toggle('on', e.target.checked); render();
+    });
+    if(i===0) l.classList.add('on');
+    box.appendChild(l);
+  });
+}
+
+function buildSettings(){
+  $('hourly').value = cfg.hourly;
+  const rows = $('rateRows');
+  rows.querySelectorAll('.set-row:not(.head)').forEach(r=>r.remove());
+  cfg.services.forEach((s,i)=>{
+    const d = document.createElement('div');
+    d.className='set-row';
+    d.innerHTML = `<div class="name">${s.name}</div>
+      <input type="number" step="1" min="0" value="${s.base}" data-i="${i}" data-k="base" aria-label="Base hours">
+      <input type="number" step="0.05" min="0" value="${s.perKsf}" data-i="${i}" data-k="perKsf" aria-label="Hours per 1000 sq ft">
+      <input type="number" step="50" min="0" value="${s.min}" data-i="${i}" data-k="min" aria-label="Minimum fee">`;
+    rows.appendChild(d);
+  });
+  rows.querySelectorAll('input').forEach(inp=>{
+    inp.addEventListener('input',e=>{
+      const {i,k} = e.target.dataset;
+      cfg.services[i][k] = parseFloat(e.target.value)||0;
+      render();
+    });
+  });
+}
+
+function calc(){
+  const sqft = Math.max(0, parseFloat($('sqft').value)||0);
+  const mult = parseFloat($('ptype').value)||1;
+  const items = [];
+  document.querySelectorAll('#svcList input:checked').forEach(chk=>{
+    const s = cfg.services[chk.dataset.i];
+    const hrs = (s.base + (s.scale ? s.perKsf * sqft/1000 : 0)) * mult;
+    const raw = hrs * cfg.hourly;
+    const price = round50(Math.max(s.min, raw));
+    items.push({...s, hrs, price, atMin: raw < s.min});
+  });
+  return {sqft, mult, items,
+    total: items.reduce((a,b)=>a+b.price,0),
+    hours: items.reduce((a,b)=>a+b.hrs,0)};
+}
+
+function render(){
+  const q = calc();
+  const typeTxt = $('ptype').options[$('ptype').selectedIndex].text.replace(/\s*\(.*\)/,'');
+  $('mArea').textContent = q.sqft.toLocaleString()+' ft²';
+  $('mType').textContent = typeTxt;
+  $('mHours').textContent = q.hours ? q.hours.toFixed(1)+' hrs' : '—';
+  $('mPsf').textContent = (q.sqft && q.total) ? '$'+(q.total/q.sqft).toFixed(2) : '—';
+  $('quoteMeta').textContent = new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}) + ' · Prepared by Mohab Kellini, PE · FL #PE104588';
+
+  const body = $('quoteBody');
+  if(!q.items.length){
+    body.innerHTML = `<div class="empty"><b>No scope selected</b>Select at least one service on the left to build the proposal.</div>`;
+    $('tierGrid').innerHTML=''; $('tierPanel').style.display='none';
+    return;
+  }
+  $('tierPanel').style.display='';
+  let rows = q.items.map(it=>`
+    <tr>
+      <td><b>${it.name}</b><div class="sub">${it.desc}</div></td>
+      <td class="num internal">${it.hrs.toFixed(1)}</td>
+      <td class="num">${usd(it.price)}${it.atMin?'<span class="min-flag internal">MIN</span>':''}</td>
+    </tr>`).join('');
+  body.innerHTML = `<table>
+    <thead><tr><th>Scope item</th><th class="num internal">Hours</th><th class="num">Fixed fee</th></tr></thead>
+    <tbody>${rows}
+      <tr class="total-row"><td>Total — Standard engagement</td><td class="internal"></td><td class="num grand">${usd(q.total)}</td></tr>
+    </tbody></table>`;
+
+  $('tierGrid').innerHTML = TIERS.map(t=>`
+    <div class="tier ${t.rec?'rec':''}">
+      ${t.rec?'<span class="badge">Recommended</span>':''}
+      <h3>${t.name}</h3>
+      <div class="price">${usd(round50(q.total*t.mult))}</div>
+      <ul>${t.feats.map(f=>`<li>${f}</li>`).join('')}</ul>
+    </div>`).join('');
+}
+
+/* Wiring */
+$('sqft').addEventListener('input', render);
+$('ptype').addEventListener('change', render);
+$('hourly').addEventListener('input', e=>{ cfg.hourly = parseFloat(e.target.value)||0; render(); });
+$('settingsToggle').addEventListener('click', ()=> $('settings').classList.toggle('open'));
+$('clientToggle').addEventListener('click', function(){
+  document.body.classList.toggle('client');
+  this.textContent = document.body.classList.contains('client') ? 'Back to my view' : 'Client view';
+});
+$('saveRates').addEventListener('click', ()=>{
+  try{
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      hourly: cfg.hourly,
+      services: cfg.services.map(s=>({id:s.id,base:s.base,perKsf:s.perKsf,min:s.min}))
+    }));
+    $('saveNote').style.display='inline'; setTimeout(()=>$('saveNote').style.display='none', 2500);
+  }catch(e){ alert('Could not save rates — they will still apply for this session.'); }
+});
+$('resetRates').addEventListener('click', ()=>{
+  cfg = JSON.parse(JSON.stringify(DEFAULTS));
+  buildSettings(); render();
+});
+
+(function init(){
+  loadSaved();
+  buildServices();
+  buildSettings();
+  render();
+})();
+</script>
+</body>
+</html>
