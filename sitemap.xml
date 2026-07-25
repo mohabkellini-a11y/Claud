@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  EverSafe Fire Protection — XML Sitemap
+  Location on Hostinger: public_html/sitemap.xml
+  Submit at: https://search.google.com/search-console
+
+  NOTE: The site is a single-page design. Its sections (#services, #why,
+  #process, #clients, #contact) are anchors on the homepage, NOT separate
+  URLs — Google ignores "#" fragments in sitemaps, so listing them would
+  do nothing. The homepage below covers all of that content.
+
+  Deliberately EXCLUDED:
+    /pricing-tool/  — internal fee-proposal builder, not for public search
+    /thank-you/     — form confirmation page (already marked noindex)
+
+  When you add real pages later (e.g. /services/sprinkler-design/),
+  copy a <url> block, update <loc> and <lastmod>, and re-submit.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://www.eversafe-fire.com/</loc>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+</urlset>

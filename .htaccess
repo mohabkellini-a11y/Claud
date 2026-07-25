@@ -1,0 +1,89 @@
+# ============================================================
+#  EverSafe Fire Protection — Apache / LiteSpeed configuration
+#  Location on Hostinger: public_html/.htaccess
+# ============================================================
+
+# ------------------------------------------------------------
+# 1. FORCE HTTPS + CANONICAL www HOST
+#    Sends every visitor to a single secure address:
+#    http://eversafe-fire.com  ->  https://www.eversafe-fire.com
+#    This is what removes the browser "Not secure" warning and
+#    prevents duplicate-content penalties in Google.
+# ------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # (a) Any non-HTTPS request -> HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # (b) Bare domain -> www.  (matches sitemap.xml, robots.txt and your OG tags)
+  #     Prefer the non-www domain instead? Delete this block, then change
+  #     www.eversafe-fire.com to eversafe-fire.com in sitemap.xml and robots.txt.
+  RewriteCond %{HTTP_HOST} !^www\. [NC]
+  RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ------------------------------------------------------------
+# 2. SECURITY HEADERS  (builds domain trust; keeps scanners happy)
+# ------------------------------------------------------------
+<IfModule mod_headers.c>
+  # Tell browsers to always use HTTPS for this domain.
+  # Enable ONLY after you've confirmed https:// loads correctly.
+  # (No "preload" yet — add that once the site is stable for a few weeks.)
+  Header always set Strict-Transport-Security "max-age=15768000; includeSubDomains"
+
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# ------------------------------------------------------------
+# 3. HARDENING
+# ------------------------------------------------------------
+# Don't expose directory file listings (e.g. /assets/ or /pricing-tool/)
+Options -Indexes
+
+# Block access to hidden/system files (.htaccess, .env, etc.)
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+# Block hidden DIRECTORIES — critical when deploying via Hostinger's Git
+# integration, which clones the repo in place and can otherwise leave
+# .git/ readable. An exposed .git/ leaks full source and commit history.
+# (FilesMatch above only covers files, not directory paths.)
+RedirectMatch 404 /\.git
+RedirectMatch 404 /\.github
+
+# Don't serve repo/docs files that ride along with a git deploy.
+<FilesMatch "\.(md|yml|yaml|json|lock)$">
+  Require all denied
+</FilesMatch>
+
+# ------------------------------------------------------------
+# 4. PERFORMANCE — compression + browser caching
+#    Faster loads also help pages get crawled and indexed.
+# ------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml \
+    application/javascript application/json image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html            "access plus 0 seconds"
+  ExpiresByType text/css             "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+  ExpiresByType image/svg+xml        "access plus 1 month"
+  ExpiresByType image/png            "access plus 1 month"
+  ExpiresByType image/jpeg           "access plus 1 month"
+  ExpiresByType image/x-icon         "access plus 1 month"
+</IfModule>
+
+# ------------------------------------------------------------
+# 5. DEFAULTS
+# ------------------------------------------------------------
+AddDefaultCharset UTF-8
+DirectoryIndex index.html

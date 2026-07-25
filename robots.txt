@@ -1,0 +1,22 @@
+# ============================================================
+#  EverSafe Fire Protection — robots.txt
+#  Served from: https://www.eversafe-fire.com/robots.txt
+# ============================================================
+
+# Googlebot — explicitly welcomed, full crawl.
+User-agent: Googlebot
+Allow: /
+Disallow: /thank-you/
+
+# Bing / Yahoo — many corporate web filters seed their reputation
+# data from Bing's index, so keep this open too.
+User-agent: Bingbot
+Allow: /
+Disallow: /thank-you/
+
+# All other well-behaved crawlers.
+User-agent: *
+Allow: /
+Disallow: /thank-you/        # form confirmation page, no standalone value
+
+Sitemap: https://www.eversafe-fire.com/sitemap.xml
