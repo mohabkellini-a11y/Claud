@@ -45,8 +45,20 @@
 # Don't expose directory file listings (e.g. /assets/ or /pricing-tool/)
 Options -Indexes
 
-# Block access to hidden/system files (.htaccess, .git, etc.)
+# Block access to hidden/system files (.htaccess, .env, etc.)
 <FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+# Block hidden DIRECTORIES — critical when deploying via Hostinger's Git
+# integration, which clones the repo in place and can otherwise leave
+# .git/ readable. An exposed .git/ leaks full source and commit history.
+# (FilesMatch above only covers files, not directory paths.)
+RedirectMatch 404 /\.git
+RedirectMatch 404 /\.github
+
+# Don't serve repo/docs files that ride along with a git deploy.
+<FilesMatch "\.(md|yml|yaml|json|lock)$">
   Require all denied
 </FilesMatch>
 
