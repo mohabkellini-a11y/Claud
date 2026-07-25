@@ -34,7 +34,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  PUBLIC_FILES: "index.html styles.css script.js .htaccess robots.txt sitemap.xml"
+  PUBLIC_FILES: "index.html styles.css script.js .htaccess robots.txt sitemap.xml favicon.ico"
   PUBLIC_DIRS: "assets thank-you"
 
 jobs:
