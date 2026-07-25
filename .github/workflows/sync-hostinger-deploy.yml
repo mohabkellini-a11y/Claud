@@ -1,0 +1,111 @@
+# Publishes the public website from `main` to the `hostinger-deploy` branch,
+# which is what Hostinger's Git integration pulls into public_html.
+#
+# Why this exists: `main` holds things that must never reach the web server —
+# `pricing-tool/` (internal rates and margins), `.claude/`, `README.md`,
+# `DEPLOYMENT.md`. Pointing Hostinger at `main` would publish all of them.
+#
+# This uses an ALLOWLIST: only the paths named in PUBLIC_FILES/PUBLIC_DIRS are
+# copied. Anything new added to `main` stays private by default. If you add a
+# genuinely public page later, add it to the allowlist below AND to sitemap.xml.
+
+name: Sync public site to hostinger-deploy
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "styles.css"
+      - "script.js"
+      - "assets/**"
+      - "thank-you/**"
+      - ".htaccess"
+      - "robots.txt"
+      - "sitemap.xml"
+      - ".github/workflows/sync-hostinger-deploy.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-hostinger-deploy
+  cancel-in-progress: false
+
+env:
+  PUBLIC_FILES: "index.html styles.css script.js .htaccess robots.txt sitemap.xml"
+  PUBLIC_DIRS: "assets thank-you"
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Stage the public files
+        run: |
+          set -euo pipefail
+          staging="$RUNNER_TEMP/site"
+          rm -rf "$staging"
+          mkdir -p "$staging"
+
+          for f in $PUBLIC_FILES; do
+            if [ -f "$f" ]; then
+              cp "$f" "$staging/"
+            else
+              echo "::warning::allowlisted file '$f' not found on main"
+            fi
+          done
+
+          for d in $PUBLIC_DIRS; do
+            if [ -d "$d" ]; then
+              cp -R "$d" "$staging/"
+            else
+              echo "::warning::allowlisted directory '$d' not found on main"
+            fi
+          done
+
+          echo "Staged for deployment:"
+          find "$staging" -mindepth 1 -maxdepth 1 -printf '  %f\n' | sort
+
+      - name: Guard against leaking private paths
+        run: |
+          set -euo pipefail
+          staging="$RUNNER_TEMP/site"
+          # Belt and braces: the allowlist should already exclude these, but a
+          # copy of the pricing tool reaching the public web root would expose
+          # internal fee and margin data, so fail loudly rather than publish.
+          for forbidden in pricing-tool .claude .github README.md DEPLOYMENT.md; do
+            if [ -e "$staging/$forbidden" ]; then
+              echo "::error::'$forbidden' reached the deploy staging area - refusing to publish."
+              exit 1
+            fi
+          done
+          echo "No private paths present."
+
+      - name: Publish to hostinger-deploy
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git fetch origin hostinger-deploy
+          git checkout -B hostinger-deploy origin/hostinger-deploy
+
+          # Replace the tree wholesale so deletions on main propagate.
+          find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+          cp -R "$RUNNER_TEMP/site/." .
+
+          git add -A
+          if git diff --cached --quiet; then
+            echo "hostinger-deploy already matches main - nothing to publish."
+            exit 0
+          fi
+
+          git commit -m "Sync public site from main @ ${GITHUB_SHA:0:7}"
+          git push origin hostinger-deploy
+          echo "Published. Redeploy in Hostinger hPanel to pull it."
