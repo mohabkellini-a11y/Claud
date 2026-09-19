@@ -1,0 +1,41 @@
+# EverSafe Fire Protection
+
+> Florida-licensed fire protection engineering and consulting.
+
+EverSafe Fire Protection is a Florida-licensed professional engineering practice.
+We design and review fire protection systems.
+A Florida-licensed Professional Engineer prepares or reviews every deliverable.
+We produce code-compliant, permit-ready documents.
+Most fixed-fee proposals go out within one business day.
+
+Service area: Florida. We are based in Central Florida and serve the whole state.
+
+We work with MEP engineering firms, architecture firms, design-build sprinkler and
+alarm contractors, general contractors, and building owners and facility managers.
+
+## Services
+
+- [NFPA 13 Fire Sprinkler System Design](https://eversafe-fire.com/#nfpa-13-sprinkler-design): Wet, dry, pre-action, and antifreeze systems. Hydraulic calculations, water supply analysis, and PE-stamped shop drawings for permit submittal.
+- [NFPA 72 Fire Alarm and Detection Design](https://eversafe-fire.com/#nfpa-72-fire-alarm-design): Device layout, riser diagrams, battery and voltage-drop calculations, sequence of operations, and sealed submittal packages.
+- [PE Review and Seal](https://eversafe-fire.com/#pe-seal-plan-review): Third-party plan review and PE sealing of sprinkler and fire alarm drawings. Delegated design sign-off, comment resolution, and resubmittal support.
+- [Code Consulting and Risk Analysis](https://eversafe-fire.com/#code-consulting-risk-analysis): Life safety and egress analysis, fire risk analysis, and code compliance studies. Florida Building Code and NFPA 101. Alternative means and methods support with your AHJ.
+- [Fire and Smoke Modeling](https://eversafe-fire.com/#fire-smoke-modeling): Performance-based design using Fire Dynamics Simulator (FDS). Smoke control analysis, tenability studies, atrium and warehouse modeling, and egress simulation.
+- [Mission-Critical and Special Hazards](https://eversafe-fire.com/#mission-critical-special-hazards): Data centers and mission-critical facilities. Energy storage per NFPA 855. Clean agent suppression per NFPA 2001. Commissioning support.
+
+## Pages
+
+The website is one page. Each section below has its own link.
+
+- [Home](https://eversafe-fire.com/)
+- [Services](https://eversafe-fire.com/#services)
+- [Why EverSafe](https://eversafe-fire.com/#why)
+- [How We Work](https://eversafe-fire.com/#process)
+- [Who We Serve](https://eversafe-fire.com/#clients)
+- [Contact](https://eversafe-fire.com/#contact)
+
+## Contact
+
+- Phone: 386-837-4057
+- Email: info@eversafe-fire.com
+- LinkedIn: https://www.linkedin.com/company/eversafefire/
+- Website: https://eversafe-fire.com/
