@@ -177,6 +177,7 @@ p { color: var(--slate); }
 
 .hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(30px, 5vw, 64px); align-items: center; }
 .hero-copy h1 { color: #fff; margin-bottom: 22px; }
+.hero h1 { color: #fff; }
 .hero-lead { font-size: clamp(1.05rem, 1.6vw, 1.22rem); color: rgba(255, 255, 255, .82); max-width: 560px; line-height: 1.7; }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin: 34px 0 30px; }
 .hero-badges { list-style: none; display: flex; flex-wrap: wrap; gap: 10px 22px; padding: 0; }
