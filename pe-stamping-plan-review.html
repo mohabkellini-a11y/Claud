@@ -123,30 +123,30 @@
     <form id="evs-form" novalidate>
       <div class="evs-section">1. Your project</div>
 
-      <label class="evs-label">Service</label>
-      <div class="evs-toggle" role="radiogroup">
+      <div class="evs-label" id="evs-service-label">Service</div>
+      <div class="evs-toggle" role="radiogroup" aria-labelledby="evs-service-label">
         <label><input type="radio" name="service" value="fa" checked><span>Fire Alarm</span></label>
         <label><input type="radio" name="service" value="sp"><span>Fire Sprinkler</span></label>
       </div>
 
       <label class="evs-label" for="evs-count"><span id="evs-count-label">Number of devices</span></label>
-      <input class="evs-input" id="evs-count" type="number" min="1" step="1" inputmode="numeric" placeholder="e.g. 120" required>
+      <input class="evs-input" id="evs-count" type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" placeholder="e.g. 120" aria-describedby="evs-count-hint" required>
       <div class="evs-hint" id="evs-count-hint">Count all initiating devices and notification appliances.</div>
 
       <label class="evs-label" for="evs-occ">Building type</label>
       <select class="evs-input" id="evs-occ">
-        <option value="std">Office, retail, school, restaurant, other</option>
-        <option value="hc">Healthcare (hospital, clinic, ASC)</option>
+        <option value="std">Office, retail, school, other</option>
+        <option value="hc">Healthcare (hospital, clinic)</option>
         <option value="hr">High-rise or ELSS upgrade</option>
         <option value="st" data-sp-only="1">Warehouse storage / ESFR / in-rack</option>
       </select>
 
-      <div class="evs-label">Also included in the drawings</div>
-      <div class="evs-checks" id="evs-addons-fa">
+      <div class="evs-label" id="evs-addons-label">Also included in the drawings <span style="font-weight:400;color:var(--evs-mute)">(optional)</span></div>
+      <div class="evs-checks" id="evs-addons-fa" role="group" aria-labelledby="evs-addons-label">
         <label><input type="checkbox" value="voice"> Voice evacuation / mass notification</label>
         <label><input type="checkbox" value="intf"> Smoke control, elevator recall or HVAC shutdown</label>
       </div>
-      <div class="evs-checks" id="evs-addons-sp" hidden>
+      <div class="evs-checks" id="evs-addons-sp" role="group" aria-labelledby="evs-addons-label" hidden>
         <label><input type="checkbox" value="dry"> Dry or preaction system</label>
         <label><input type="checkbox" value="pump"> Fire pump</label>
         <label><input type="checkbox" value="stand"> Standpipe system</label>
@@ -179,7 +179,7 @@
         </div>
       </div>
 
-      <div class="evs-error" id="evs-error" role="alert"></div>
+      <div class="evs-error" id="evs-error" role="alert" aria-live="assertive"></div>
       <button type="submit" class="evs-btn">Get my price</button>
       <div class="evs-small">Design, code consulting, life safety plans and special hazards? <a href="#" class="evs-contact-link">Contact us</a> for a custom proposal.</div>
     </form>
@@ -211,13 +211,13 @@
       <button type="button" class="evs-btn evs-ghost" id="evs-print">Save as PDF</button>
       <button type="button" class="evs-btn evs-ghost" id="evs-back">Edit quote</button>
     </div>
-    <div class="evs-done" id="evs-done" hidden></div>
+    <div class="evs-done" id="evs-done" role="status" aria-live="polite" hidden></div>
   </div>
 
   <!-- Contact needed (out of scope) -->
   <div class="evs-card" id="evs-custom" hidden>
     <div class="evs-badge">Custom quote</div>
-    <h2>Let's talk about this one</h2>
+    <h2>Let&apos;s talk about this one</h2>
     <p id="evs-custom-msg"></p>
     <div class="evs-actions">
       <a class="evs-btn evs-contact-link" href="#">Contact us</a>
@@ -227,61 +227,89 @@
 </div>
 
 <style>
-#evs-quote{--evs-blue:#024479;--evs-red:#c30a2b;--evs-orange:#d65119;--evs-ink:#1b2430;--evs-mute:#5b6675;--evs-line:#dde3ea;--evs-bg:#f5f7fa;
-  font-family:Montserrat,Arial,sans-serif;color:var(--evs-ink);max-width:640px;margin:0 auto;line-height:1.5;box-sizing:border-box}
+/* Instant quote widget — uses the site design tokens from styles.css (with fallbacks) */
+#evs-quote{--evs-blue:var(--blue,#024479);--evs-blue-500:var(--blue-500,#0a5a97);--evs-red:var(--red,#c30a2b);--evs-orange:var(--orange,#d65119);
+  --evs-ink:var(--ink,#0e1b26);--evs-mute:var(--slate,#45586a);--evs-line:var(--border,#e2e9f0);--evs-line-strong:var(--border-strong,#cfdae4);--evs-bg:var(--bg,#f5f8fb);
+  --evs-grad:var(--grad-flame,linear-gradient(135deg,#d65119 0%,#c30a2b 100%));--evs-ease:var(--ease,cubic-bezier(.22,.61,.36,1));
+  font-family:var(--font,Montserrat,Arial,sans-serif);color:var(--evs-ink);max-width:680px;margin:0 auto;line-height:1.5;box-sizing:border-box}
 #evs-quote *,#evs-quote *::before,#evs-quote *::after{box-sizing:border-box}
 #evs-quote [hidden]{display:none!important}
-#evs-quote .evs-card{background:#fff;border:1px solid var(--evs-line);border-top:4px solid var(--evs-blue);border-radius:10px;padding:28px;box-shadow:0 4px 18px rgba(2,68,121,.08)}
-#evs-quote h2{font-size:24px;margin:6px 0 8px;color:var(--evs-blue);font-weight:700}
-#evs-quote p{margin:0 0 4px;color:var(--evs-mute);font-size:15px}
-#evs-quote .evs-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--evs-red)}
-#evs-quote .evs-section{margin:26px 0 4px;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--evs-blue);border-bottom:1px solid var(--evs-line);padding-bottom:6px}
-#evs-quote .evs-label{display:block;font-size:14px;font-weight:600;margin:16px 0 6px}
-#evs-quote .evs-input{width:100%;font:inherit;font-size:16px;padding:11px 12px;border:1px solid #c5ced8;border-radius:6px;background:#fff;color:var(--evs-ink)}
-#evs-quote .evs-input:focus{outline:2px solid var(--evs-blue);outline-offset:1px;border-color:var(--evs-blue)}
-#evs-quote .evs-input.evs-bad{border-color:var(--evs-red)}
-#evs-quote .evs-hint{font-size:12.5px;color:var(--evs-mute);margin-top:5px}
-#evs-quote .evs-toggle{display:flex;gap:8px}
-#evs-quote .evs-toggle label{flex:1;cursor:pointer}
+#evs-quote .evs-card{background:#fff;border:1px solid var(--evs-line);border-radius:var(--radius-lg,22px);padding:clamp(24px,4vw,40px);box-shadow:var(--shadow-lg,0 24px 60px rgba(2,30,55,.16));scroll-margin-top:96px}
+#evs-quote h2{font-size:clamp(1.5rem,3vw,1.9rem);line-height:1.15;margin:0 0 10px;color:var(--evs-ink);font-weight:700;letter-spacing:-.01em}
+#evs-quote p{margin:0;color:var(--evs-mute);font-size:1rem}
+#evs-quote .evs-badge{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--evs-blue);margin-bottom:10px}
+#evs-quote .evs-section{margin:30px 0 2px;font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--evs-blue);border-bottom:1px solid var(--evs-line);padding-bottom:8px}
+#evs-quote .evs-label{display:block;font-size:.86rem;font-weight:600;color:var(--evs-ink);margin:18px 0 8px}
+#evs-quote .evs-input{width:100%;font:inherit;font-size:1rem;line-height:1.4;min-height:50px;padding:13px 15px;border:1.5px solid var(--evs-line);border-radius:10px;background:var(--evs-bg);color:var(--evs-ink);
+  transition:border-color .2s var(--evs-ease),box-shadow .2s var(--evs-ease),background .2s var(--evs-ease)}
+#evs-quote select.evs-input{appearance:none;-webkit-appearance:none;padding-right:44px;cursor:pointer;text-overflow:ellipsis;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23024479' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 15px center;background-size:18px}
+#evs-quote .evs-input:focus{outline:none;border-color:var(--evs-blue);background-color:#fff;box-shadow:0 0 0 4px rgba(2,68,121,.1)}
+#evs-quote .evs-input.evs-bad{border-color:var(--evs-red);background-color:#fff}
+#evs-quote .evs-input.evs-bad:focus{box-shadow:0 0 0 4px rgba(195,10,43,.12)}
+#evs-quote .evs-hint{font-size:.82rem;color:var(--evs-mute);margin-top:6px}
+#evs-quote .evs-toggle{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#evs-quote .evs-toggle label{cursor:pointer;position:relative}
 #evs-quote .evs-toggle input{position:absolute;opacity:0;pointer-events:none}
-#evs-quote .evs-toggle span{display:block;text-align:center;padding:11px;border:1px solid #c5ced8;border-radius:6px;font-weight:600;font-size:15px;transition:.15s}
-#evs-quote .evs-toggle input:checked+span{background:var(--evs-blue);border-color:var(--evs-blue);color:#fff}
-#evs-quote .evs-toggle input:focus-visible+span{outline:2px solid var(--evs-orange);outline-offset:2px}
-#evs-quote .evs-checks label{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;padding:7px 0;cursor:pointer}
-#evs-quote .evs-checks input{width:18px;height:18px;margin-top:2px;accent-color:var(--evs-blue);flex:none}
-#evs-quote .evs-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
-#evs-quote .evs-btn{display:inline-block;width:100%;margin-top:22px;padding:14px 18px;font:inherit;font-size:16px;font-weight:700;color:#fff;background:var(--evs-red);border:0;border-radius:6px;cursor:pointer;text-align:center;text-decoration:none}
-#evs-quote .evs-btn:hover{filter:brightness(.92)}
-#evs-quote .evs-btn:disabled{opacity:.6;cursor:wait}
-#evs-quote .evs-ghost{background:#fff;color:var(--evs-blue);border:1px solid var(--evs-blue)}
-#evs-quote .evs-small{font-size:13px;color:var(--evs-mute);margin-top:14px;text-align:center}
-#evs-quote a{color:var(--evs-blue);font-weight:600}
-#evs-quote a.evs-btn{color:#fff}
-#evs-quote .evs-error{color:var(--evs-red);font-size:14px;margin-top:14px;min-height:0}
-#evs-quote .evs-qhead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
-#evs-quote .evs-valid{text-align:right;font-size:13px;color:var(--evs-mute)}
-#evs-quote .evs-valid strong{color:var(--evs-ink);font-size:15px}
-#evs-quote .evs-price{font-size:44px;font-weight:700;color:var(--evs-blue);margin-top:14px;line-height:1.1}
-#evs-quote .evs-pricesub{font-size:14px;color:var(--evs-mute);margin-bottom:16px}
-#evs-quote .evs-table{width:100%;border-collapse:collapse;font-size:14.5px;margin:6px 0 18px}
-#evs-quote .evs-table td{padding:8px 0;border-bottom:1px solid var(--evs-line);vertical-align:top}
-#evs-quote .evs-table td:last-child{text-align:right;white-space:nowrap;padding-left:12px}
+#evs-quote .evs-toggle span{display:flex;align-items:center;justify-content:center;min-height:50px;padding:10px;border:1.5px solid var(--evs-line-strong);border-radius:999px;background:#fff;color:var(--evs-blue);font-weight:600;font-size:.98rem;
+  transition:background .2s var(--evs-ease),border-color .2s var(--evs-ease),color .2s var(--evs-ease)}
+#evs-quote .evs-toggle label:hover span{border-color:var(--evs-blue)}
+#evs-quote .evs-toggle input:checked+span{background:var(--evs-blue);border-color:var(--evs-blue);color:#fff;box-shadow:0 6px 18px rgba(2,68,121,.22)}
+#evs-quote .evs-toggle input:focus-visible+span{outline:3px solid var(--evs-orange);outline-offset:2px}
+#evs-quote .evs-checks{display:grid;gap:2px}
+#evs-quote .evs-checks label{display:flex;gap:12px;align-items:flex-start;font-size:.95rem;color:var(--evs-ink);padding:10px 0;min-height:44px;cursor:pointer}
+#evs-quote .evs-checks input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--evs-blue);flex:none;cursor:pointer}
+#evs-quote .evs-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+#evs-quote .evs-btn{display:inline-flex;align-items:center;justify-content:center;width:100%;min-height:52px;margin-top:24px;padding:14px 22px;font:inherit;font-size:.98rem;font-weight:600;letter-spacing:.01em;line-height:1.2;
+  color:#fff;background:var(--evs-grad);border:0;border-radius:999px;cursor:pointer;text-align:center;text-decoration:none;box-shadow:0 8px 22px rgba(195,10,43,.3);
+  transition:transform .2s var(--evs-ease),box-shadow .2s var(--evs-ease),background .2s var(--evs-ease),color .2s var(--evs-ease)}
+#evs-quote .evs-btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(195,10,43,.38)}
+#evs-quote .evs-btn:disabled{opacity:.7;cursor:progress;transform:none}
+#evs-quote .evs-btn.evs-sent:disabled{cursor:default;opacity:1;background:#1d6b3a;box-shadow:none}
+#evs-quote .evs-ghost{background:#fff;color:var(--evs-blue);border:1.5px solid var(--evs-line-strong);box-shadow:none}
+#evs-quote .evs-ghost:hover{border-color:var(--evs-blue);background:#fff;box-shadow:var(--shadow-sm,0 2px 8px rgba(2,30,55,.06))}
+#evs-quote .evs-small{font-size:.86rem;color:var(--evs-mute);margin-top:16px;text-align:center}
+#evs-quote a{color:var(--evs-blue);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+#evs-quote a.evs-btn{color:#fff;text-decoration:none}
+#evs-quote .evs-error{color:var(--evs-red);font-size:.9rem;font-weight:500;margin-top:16px}
+#evs-quote .evs-error:empty{display:none}
+#evs-quote .evs-qhead{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+#evs-quote .evs-qhead h2{font-size:1.25rem;color:var(--evs-blue);letter-spacing:.02em}
+#evs-quote .evs-valid{text-align:right;font-size:.82rem;color:var(--evs-mute)}
+#evs-quote .evs-valid strong{color:var(--evs-ink);font-size:.95rem}
+#evs-quote .evs-price{font-size:clamp(2.4rem,6vw,3.2rem);font-weight:800;letter-spacing:-.02em;color:var(--evs-blue);margin-top:18px;line-height:1.05;font-variant-numeric:tabular-nums}
+#evs-quote .evs-pricesub{font-size:.9rem;color:var(--evs-mute);margin:6px 0 18px}
+#evs-quote .evs-table{width:100%;border-collapse:collapse;font-size:.95rem;margin:4px 0 20px;font-variant-numeric:tabular-nums}
+#evs-quote .evs-table td{padding:10px 0;border-bottom:1px solid var(--evs-line);vertical-align:top}
+#evs-quote .evs-table td:last-child{text-align:right;white-space:nowrap;padding-left:16px}
 #evs-quote .evs-table tr.evs-total td{font-weight:700;border-bottom:0;border-top:2px solid var(--evs-ink)}
-#evs-quote .evs-terms{font-size:12.5px;color:var(--evs-mute);background:var(--evs-bg);border-radius:6px;padding:12px 14px}
-#evs-quote .evs-actions{display:grid;grid-template-columns:2fr 1fr 1fr;gap:8px}
-#evs-quote .evs-actions .evs-btn{margin-top:18px}
-#evs-quote .evs-done{margin-top:14px;padding:12px 14px;border-radius:6px;background:#e9f4ec;color:#1d5c2e;font-size:14px}
-@media (max-width:560px){
-  #evs-quote .evs-card{padding:20px 16px}
-  #evs-quote .evs-grid,#evs-quote .evs-actions{grid-template-columns:1fr}
-  #evs-quote .evs-actions .evs-btn{margin-top:8px}
-  #evs-quote .evs-price{font-size:36px}
+#evs-quote .evs-terms{font-size:.82rem;line-height:1.6;color:var(--evs-mute);background:var(--evs-bg);border:1px solid var(--evs-line);border-radius:var(--radius,14px);padding:14px 16px}
+#evs-quote .evs-terms strong{color:var(--evs-ink)}
+#evs-quote .evs-actions{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) minmax(0,1fr);gap:10px;margin-top:20px}
+#evs-quote .evs-actions .evs-btn{margin-top:0;padding-left:14px;padding-right:14px;white-space:nowrap}
+#evs-quote .evs-done{margin-top:16px;padding:14px 16px;border-radius:10px;background:#e9f4ec;border:1px solid #c6e3cf;color:#1d5c2e;font-size:.92rem}
+#evs-quote .evs-done.evs-fail{background:#fdecef;border-color:#f5c2cc;color:#8a0a22}
+#evs-quote .evs-done a{color:inherit}
+#evs-custom .evs-actions{grid-template-columns:2fr 1fr}
+#evs-custom p{margin-top:4px}
+@media (max-width:600px){
+  #evs-quote .evs-card{padding:24px 18px;border-radius:var(--radius,14px)}
+  #evs-quote .evs-grid,#evs-quote .evs-actions,#evs-custom .evs-actions{grid-template-columns:1fr}
+  #evs-quote .evs-qhead{flex-direction:column;gap:4px}
+  #evs-quote .evs-valid{text-align:left}
+}
+@media (prefers-reduced-motion:reduce){
+  #evs-quote *{transition:none!important}
+  #evs-quote .evs-btn:hover{transform:none}
 }
 @media print{
-  body *{visibility:hidden!important}
-  #evs-result,#evs-result *{visibility:visible!important}
-  #evs-result{position:absolute;left:0;top:0;width:100%;box-shadow:none;border:0}
-  #evs-quote .evs-actions,#evs-quote .evs-done{display:none!important}
+  .site-header,.site-footer,.menu-panel,main > section:not(#quote),#evs-form-card,#evs-custom,#evs-quote .evs-actions,#evs-quote .evs-done{display:none!important}
+  body{background:#fff!important}
+  main > section#quote{padding:0!important;background:#fff!important}
+  #evs-quote{max-width:none}
+  #evs-quote .evs-card{box-shadow:none;border:0;padding:0}
+  #evs-quote .evs-terms{break-inside:avoid}
 }
 </style>
 
@@ -313,7 +341,7 @@
   var root = document.getElementById("evs-quote");
   var $ = function(id){ return document.getElementById(id); };
   var form = $("evs-form"), lastQuote = null;
-  var money = function(n){ return "$" + Math.round(n).toLocaleString("en-US"); };
+  var money = function(n){ n = Math.round(n); return (n < 0 ? "−$" : "$") + Math.abs(n).toLocaleString("en-US"); };
   var esc = function(s){ return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];}); };
 
   // Contact links
@@ -343,16 +371,16 @@
   function calc(d){
     var sp = d.service === "sp";
     var base = sp ? tierPrice(CONFIG.SP_TIERS, CONFIG.SP_OVER, d.count) : tierPrice(CONFIG.FA_TIERS, CONFIG.FA_OVER, d.count);
-    var m = CONFIG.MULT[d.occ], lines = [];
-    lines.push([(sp ? "Sprinkler" : "Fire alarm") + " review, sign & seal — " + d.count.toLocaleString("en-US") + (sp ? " heads" : " devices"), base]);
-    if (m[0] !== 1) lines.push([m[1] + " (×" + m[0].toFixed(2) + ")", base * (m[0]-1)]);
-    var sub = base * m[0];
-    d.addons.forEach(function(k){ var a = CONFIG.ADDONS[k]; lines.push([a[1], a[0]]); sub += a[0]; });
+    var m = CONFIG.MULT[d.occ], lines = [], sub = 0;
+    var add = function(label, amt){ amt = Math.round(amt); lines.push([label, amt]); sub += amt; };
+    add((sp ? "Sprinkler" : "Fire alarm") + " review, sign & seal — " + d.count.toLocaleString("en-US") + (sp ? " heads" : " devices"), base);
+    if (m[0] !== 1) add(m[1] + " (×" + m[0].toFixed(2) + ")", base * (m[0]-1));
+    d.addons.forEach(function(k){ var a = CONFIG.ADDONS[k]; add(a[1], a[0]); });
     var r = CONFIG.RUSH[d.speed];
-    if (r[0] > 0) lines.push([r[1], sub * r[0]]);
-    var raw = sub * (1 + r[0]);
+    if (r[0] > 0) add(r[1], sub * r[0]);
+    var raw = sub;
     var total = Math.max(CONFIG.MIN_FEE, Math.round(raw / CONFIG.ROUND_TO) * CONFIG.ROUND_TO);
-    if (total !== Math.round(raw)) lines.push([raw < CONFIG.MIN_FEE ? "Minimum fee adjustment" : "Rounding", total - raw]);
+    if (total !== raw) lines.push([raw < CONFIG.MIN_FEE ? "Minimum fee adjustment" : "Rounding", total - raw]);
     return { total: total, lines: lines };
   }
 
@@ -369,15 +397,16 @@
   form.addEventListener("submit", function(e){
     e.preventDefault();
     var err = [], bad = [];
-    form.querySelectorAll(".evs-bad").forEach(function(el){ el.classList.remove("evs-bad"); });
-    var count = parseInt($("evs-count").value, 10);
-    if (!(count >= 1)) { err.push("Enter the number of " + (service()==="sp" ? "heads." : "devices.")); bad.push("evs-count"); }
-    ["evs-name","evs-company","evs-city"].forEach(function(id){ if (!$(id).value.trim()) bad.push(id); });
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($("evs-email").value.trim())) { err.push("Enter a valid email."); bad.push("evs-email"); }
-    if (bad.length && !err.length) err.push("Please fill in all fields.");
-    bad.forEach(function(id){ $(id).classList.add("evs-bad"); });
+    form.querySelectorAll(".evs-bad").forEach(function(el){ el.classList.remove("evs-bad"); el.removeAttribute("aria-invalid"); });
+    var rawCount = $("evs-count").value.replace(/[,\s]/g, "");
+    var count = /^\d+$/.test(rawCount) ? parseInt(rawCount, 10) : NaN;
+    if (!(count >= 1)) { err.push("Enter the number of " + (service()==="sp" ? "sprinkler heads" : "devices") + " as a whole number."); bad.push("evs-count"); }
+    var missing = ["evs-name","evs-company","evs-email","evs-city"].filter(function(id){ return !$(id).value.trim(); });
+    if (missing.length) { err.push("Please fill in your name, company, email and project city."); bad = bad.concat(missing); }
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($("evs-email").value.trim())) { err.push("Enter a valid email address."); bad.push("evs-email"); }
+    bad.forEach(function(id){ $(id).classList.add("evs-bad"); $(id).setAttribute("aria-invalid","true"); });
     $("evs-error").textContent = err.join(" ");
-    if (err.length) return;
+    if (err.length) { $(bad[0]).focus(); return; }
 
     var d = {
       service: service(), count: count, occ: $("evs-occ").value, speed: $("evs-speed").value,
@@ -400,7 +429,8 @@
     $("evs-qsub").textContent = "Prepared for " + d.name + ", " + d.company + " · " + d.city + ", FL · " + lastQuote.date;
     $("evs-qtable").innerHTML = q.lines.map(function(l){ return "<tr><td>" + esc(l[0]) + "</td><td>" + (l[1] < 0 ? "−" : "") + money(Math.abs(l[1])) + "</td></tr>"; }).join("")
       + '<tr class="evs-total"><td>Total</td><td>' + money(q.total) + "</td></tr>";
-    $("evs-done").hidden = true; $("evs-accept").disabled = false;
+    $("evs-done").hidden = true; $("evs-done").classList.remove("evs-fail");
+    var acc = $("evs-accept"); acc.disabled = false; acc.textContent = "Request this job"; acc.classList.remove("evs-sent");
     show("evs-result");
   });
 
@@ -424,13 +454,17 @@
     btn.disabled = true; btn.textContent = "Sending…";
     fetch(CONFIG.FORM_ENDPOINT, {
       method: "POST", headers: { "Content-Type":"application/json", "Accept":"application/json" },
-      body: JSON.stringify({ _subject: "Instant quote " + lastQuote.id + " — " + money(lastQuote.total), email: lastQuote.data.email, quote: summary(lastQuote) })
+      body: JSON.stringify({ _subject: "Instant quote " + lastQuote.id + " — " + money(lastQuote.total), _template: "box", name: lastQuote.data.name, company: lastQuote.data.company, email: lastQuote.data.email, quote: summary(lastQuote) })
     }).then(function(r){
-      if (!r.ok) throw new Error();
+      return r.json().catch(function(){ return {}; }).then(function(j){
+        if (!r.ok || j.success === false || j.success === "false") throw new Error(j.message || "send failed");
+      });
+    }).then(function(){
+      done.classList.remove("evs-fail");
       done.innerHTML = "Thank you. We received quote <strong>" + esc(lastQuote.id) + "</strong>. We will email you within 1 business day with a link to upload your drawings.";
-      done.hidden = false; btn.textContent = "Request sent";
+      done.hidden = false; btn.textContent = "Request sent ✓"; btn.classList.add("evs-sent");
     }).catch(function(){
-      btn.disabled = false; btn.textContent = "Request this job";
+      btn.disabled = false; btn.textContent = "Request this job"; done.classList.add("evs-fail");
       done.innerHTML = 'Something went wrong. Please email <a href="mailto:' + CONFIG.CONTACT_EMAIL + '">' + CONFIG.CONTACT_EMAIL + "</a> and include quote " + esc(lastQuote.id) + ".";
       done.hidden = false;
     });
