@@ -330,7 +330,8 @@
     // Where quote requests go. Free option: create a form at formspree.io
     // and paste its URL here, e.g. "https://formspree.io/f/abcdwxyz".
     // Leave empty to open the client's email app instead.
-    FORM_ENDPOINT: "https://formsubmit.co/ajax/info@eversafe-fire.com",
+    FORM_ENDPOINT: "https://formsubmit.co/info@eversafe-fire.com",  // same inbox as the contact form
+    THANK_YOU_URL: "https://eversafe-fire.com/thank-you",
     CONTACT_EMAIL: "info@eversafe-fire.com",
     CONTACT_URL: "#contact",              // e.g. "/contact" — leave empty to use email
     VALID_DAYS: 7,
@@ -461,33 +462,40 @@
       done.textContent = "Your email app should open with the quote filled in. Attach your drawings and send.";
       done.hidden = false; return;
     }
+    // Submit as a normal form post (like the contact form). FormSubmit only
+    // sends the client's confirmation email (_autoresponse) for normal posts,
+    // not for AJAX requests.
     btn.disabled = true; btn.textContent = "Sending…";
-    done.classList.remove("evs-fail"); done.textContent = "Sending your request. This can take up to 20 seconds, please keep this page open."; done.hidden = false;
-    fetch(CONFIG.FORM_ENDPOINT, {
-      method: "POST", headers: { "Content-Type":"application/json", "Accept":"application/json" },
-      body: JSON.stringify({
-        _subject: "Instant quote " + lastQuote.id + " — " + money(lastQuote.total),
-        _template: "table",
-        // Confirmation emailed to the client (same feature the contact form uses)
-        _autoresponse: "Thanks for requesting a PE review, sign & seal from EverSafe Fire Protection. "
-          + "Your quote " + lastQuote.id + " is " + money(lastQuote.total) + " and is valid until " + lastQuote.valid + ". "
-          + "We will email you within 1 business day with a link to upload your drawings and calcs. "
-          + "Need us sooner? Call 386-837-4057. — EverSafe Fire Protection",
-        name: lastQuote.data.name, company: lastQuote.data.company, email: lastQuote.data.email, quote: summary(lastQuote)
-      })
-    }).then(function(r){
-      return r.json().catch(function(){ return {}; }).then(function(j){
-        if (!r.ok || j.success === false || j.success === "false") throw new Error(j.message || "send failed");
-      });
-    }).then(function(){
-      done.classList.remove("evs-fail");
-      done.innerHTML = "Thank you. We received quote <strong>" + esc(lastQuote.id) + "</strong>. We will email you within 1 business day with a link to upload your drawings.";
-      done.hidden = false; btn.textContent = "Request sent ✓"; btn.classList.add("evs-sent");
-    }).catch(function(){
-      btn.disabled = false; btn.textContent = "Request this job"; done.classList.add("evs-fail");
-      done.innerHTML = 'Something went wrong. Please email <a href="mailto:' + CONFIG.CONTACT_EMAIL + '">' + CONFIG.CONTACT_EMAIL + "</a> and include quote " + esc(lastQuote.id) + ".";
-      done.hidden = false;
+    var q = lastQuote, d = q.data;
+    var fields = {
+      _subject: "Instant quote " + q.id + " — " + money(q.total),
+      _template: "table",
+      _captcha: "true",
+      _next: CONFIG.THANK_YOU_URL,
+      _autoresponse: "Thanks for requesting a PE review, sign & seal from EverSafe Fire Protection. "
+        + "Your quote " + q.id + " is " + money(q.total) + " and is valid until " + q.valid + ". "
+        + "We will email you within 1 business day with a link to upload your drawings and calcs. "
+        + "Need us sooner? Call 386-837-4057. — EverSafe Fire Protection",
+      quote_id: q.id, total: money(q.total), valid_until: q.valid,
+      name: d.name, company: d.company, email: d.email, project_city: d.city + ", FL",
+      quote: summary(q),
+      _honey: ""
+    };
+    var f = document.createElement("form");
+    f.method = "POST"; f.action = CONFIG.FORM_ENDPOINT; f.hidden = true;
+    Object.keys(fields).forEach(function(k){
+      var i = document.createElement(k === "quote" ? "textarea" : "input");
+      if (k !== "quote") i.type = "hidden";
+      i.name = k; i.value = fields[k]; f.appendChild(i);
     });
+    document.body.appendChild(f);
+    f.submit();
+  });
+
+  // If the visitor comes back with the browser's Back button, re-enable the request button
+  window.addEventListener("pageshow", function(e){
+    if (!e.persisted) return;
+    var b = $("evs-accept"); b.disabled = false; b.textContent = "Request this job";
   });
 
   $("evs-print").addEventListener("click", function(){ window.print(); });
