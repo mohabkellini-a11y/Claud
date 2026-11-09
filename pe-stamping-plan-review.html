@@ -190,7 +190,8 @@
       </div>
 
       <div class="evs-error" id="evs-error" role="alert" aria-live="assertive"></div>
-      <button type="submit" class="evs-btn">Get my price</button>
+      <button type="submit" class="evs-btn" id="evs-get">Get my price</button>
+      <div class="evs-small evs-notice">We receive a copy of your quote and contact details so we can follow up.</div>
       <div class="evs-small">Design, code consulting, life safety plans and special hazards? <a href="#" class="evs-contact-link">Contact us</a> for a custom proposal.</div>
     </form>
   </div>
@@ -280,6 +281,7 @@
 #evs-quote .evs-ghost{background:#fff;color:var(--evs-blue);border:1.5px solid var(--evs-line-strong);box-shadow:none}
 #evs-quote .evs-ghost:hover{border-color:var(--evs-blue);background:#fff;box-shadow:var(--shadow-sm,0 2px 8px rgba(2,30,55,.06))}
 #evs-quote .evs-small{font-size:.86rem;color:var(--evs-mute);margin-top:16px;text-align:center}
+#evs-quote .evs-notice{margin-top:10px;font-size:.8rem}
 #evs-quote a{color:var(--evs-blue);font-weight:600;text-decoration:underline;text-underline-offset:3px}
 #evs-quote a.evs-btn{color:#fff;text-decoration:none}
 #evs-quote .evs-error{color:var(--evs-red);font-size:.9rem;font-weight:500;margin-top:16px}
@@ -332,6 +334,8 @@
     // Leave empty to open the client's email app instead.
     FORM_ENDPOINT: "https://formsubmit.co/info@eversafe-fire.com",  // same inbox as the contact form
     THANK_YOU_URL: "https://eversafe-fire.com/thank-you",
+    LEAD_ENDPOINT: "https://formsubmit.co/ajax/info@eversafe-fire.com",  // copy of every quote, sent before the price shows
+    LEAD_WAIT_MS: 4000,           // longest the visitor waits for that copy before the price shows anyway
     CONTACT_EMAIL: "info@eversafe-fire.com",
     CONTACT_URL: "#contact",              // e.g. "/contact" — leave empty to use email
     VALID_DAYS: 7,
@@ -428,6 +432,8 @@
 
     if (count > CONFIG.MAX_AUTO) {
       $("evs-custom-msg").textContent = "Projects over " + CONFIG.MAX_AUTO.toLocaleString("en-US") + (d.service==="sp" ? " heads" : " devices") + " need a quick look at the drawings first. Send them to us and we will reply with a fixed price within 24 hours.";
+      sendLead("Custom quote needed — " + count.toLocaleString("en-US") + (d.service==="sp" ? " heads" : " devices") + " — " + d.company,
+        { name: d.name, company: d.company, email: d.email, project_city: d.city + ", FL", service: d.service==="sp" ? "Fire sprinkler" : "Fire alarm", count: count, note: "Over the instant-quote limit. Client was asked to send drawings for a fixed price." });
       show("evs-custom"); return;
     }
 
@@ -442,8 +448,35 @@
       + '<tr class="evs-total"><td>Total</td><td>' + money(q.total) + "</td></tr>";
     $("evs-done").hidden = true; $("evs-done").classList.remove("evs-fail");
     var acc = $("evs-accept"); acc.disabled = false; acc.textContent = "Request this job"; acc.classList.remove("evs-sent");
-    show("evs-result");
+
+    // Send us a copy of the quote first, then show the price.
+    var get = $("evs-get"), lq = lastQuote;
+    get.disabled = true; get.textContent = "Preparing your quote…";
+    var sent = sendLead("Quote viewed " + lq.id + " — " + money(lq.total) + " — " + d.company + " (not yet requested)",
+      { quote_id: lq.id, total: money(lq.total), valid_until: lq.valid, name: d.name, company: d.company, email: d.email, project_city: d.city + ", FL", quote: summary(lq) });
+    var wait = new Promise(function(res){ setTimeout(res, CONFIG.LEAD_WAIT_MS); });
+    Promise.race([sent, wait]).then(function(){
+      get.disabled = false; get.textContent = "Get my price";
+      if (lastQuote === lq) show("evs-result");
+    });
   });
+
+  // Emails us a copy (AJAX, no page change). Resolves when done or failed, never rejects,
+  // so the visitor always gets their price. keepalive lets it finish if they leave the page.
+  var lastLeadKey = null;
+  function sendLead(subject, fields){
+    var key = JSON.stringify(fields, function(k, v){ return (k === "quote_id" || k === "valid_until") ? undefined : v; })
+      .replace(/EVS-Q[0-9A-Z-]+/g, "");
+    if (key === lastLeadKey) return Promise.resolve();   // same details as the last copy: don't email twice
+    lastLeadKey = key;
+    var body = new URLSearchParams();
+    body.append("_subject", subject); body.append("_template", "table"); body.append("_captcha", "false");
+    Object.keys(fields).forEach(function(k){ body.append(k, fields[k]); });
+    try {
+      return fetch(CONFIG.LEAD_ENDPOINT, { method: "POST", headers: { "Accept": "application/json" }, body: body, keepalive: true })
+        .then(function(){}, function(){});
+    } catch (e) { return Promise.resolve(); }
+  }
 
   function summary(q){
     var d = q.data;
