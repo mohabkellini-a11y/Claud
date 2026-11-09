@@ -452,9 +452,19 @@
       done.hidden = false; return;
     }
     btn.disabled = true; btn.textContent = "Sending…";
+    done.classList.remove("evs-fail"); done.textContent = "Sending your request. This can take up to 20 seconds, please keep this page open."; done.hidden = false;
     fetch(CONFIG.FORM_ENDPOINT, {
       method: "POST", headers: { "Content-Type":"application/json", "Accept":"application/json" },
-      body: JSON.stringify({ _subject: "Instant quote " + lastQuote.id + " — " + money(lastQuote.total), _template: "box", name: lastQuote.data.name, company: lastQuote.data.company, email: lastQuote.data.email, quote: summary(lastQuote) })
+      body: JSON.stringify({
+        _subject: "Instant quote " + lastQuote.id + " — " + money(lastQuote.total),
+        _template: "table",
+        // Confirmation emailed to the client (same feature the contact form uses)
+        _autoresponse: "Thanks for requesting a PE review, sign & seal from EverSafe Fire Protection. "
+          + "Your quote " + lastQuote.id + " is " + money(lastQuote.total) + " and is valid until " + lastQuote.valid + ". "
+          + "We will email you within 1 business day with a link to upload your drawings and calcs. "
+          + "Need us sooner? Call 386-837-4057. — EverSafe Fire Protection",
+        name: lastQuote.data.name, company: lastQuote.data.company, email: lastQuote.data.email, quote: summary(lastQuote)
+      })
     }).then(function(r){
       return r.json().catch(function(){ return {}; }).then(function(j){
         if (!r.ok || j.success === false || j.success === "false") throw new Error(j.message || "send failed");
