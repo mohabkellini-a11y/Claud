@@ -21,6 +21,14 @@ RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
 RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L]
 
 # ----------------------------------------------------------
+# 1c. Files that are not part of the public site
+# The build folders, notes and scripts return "not found".
+# ----------------------------------------------------------
+RewriteRule ^(tools|partials|\.github)(/|$) - [R=404,L]
+RewriteRule \.(md|py|sample\.php)$ - [R=404,L]
+RewriteRule ^\.gitignore$ - [R=404,L]
+
+# ----------------------------------------------------------
 # 2. Caching
 # Images and fonts cache for a long time.
 # HTML and the crawler files never cache, so new deploys
@@ -47,6 +55,14 @@ RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L]
   <FilesMatch "\.(txt|xml)$">
     Header set Cache-Control "no-cache, must-revalidate"
   </FilesMatch>
+</IfModule>
+
+# ----------------------------------------------------------
+# 2b. Compression
+# Text files are sent compressed, so pages load faster.
+# ----------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/xml application/javascript application/x-javascript application/json image/svg+xml
 </IfModule>
 
 # ----------------------------------------------------------
