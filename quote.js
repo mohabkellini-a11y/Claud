@@ -22,7 +22,7 @@
     MULT: { std:[1.00,"Standard occupancy"], hc:[1.20,"Healthcare"], hr:[1.25,"High-rise / ELSS"], st:[1.30,"Storage / ESFR / in-rack"] },
     ADDONS: { voice:[250,"Voice evacuation / mass notification"], intf:[200,"Smoke control / elevator / HVAC interfaces"],
               dry:[250,"Dry or preaction system"], pump:[450,"Fire pump"], stand:[350,"Standpipe system"] },
-    RUSH: { std:[0,"Standard — 5 business days"], r48:[0.50,"Rush — 48 hours (+50%)"], r24:[1.00,"Rush — 24 hours (+100%)"] }
+    RUSH: { std:[0,"Standard: 5 business days"], r48:[0.50,"Rush: 48 hours (+50%)"], r24:[1.00,"Rush: 24 hours (+100%)"] }
   };
   /* ================================================================= */
 
@@ -67,7 +67,7 @@
     var base = sp ? tierPrice(CONFIG.SP_TIERS, CONFIG.SP_OVER, d.count) : tierPrice(CONFIG.FA_TIERS, CONFIG.FA_OVER, d.count);
     var m = CONFIG.MULT[d.occ], lines = [], sub = 0;
     var add = function(label, amt){ amt = Math.round(amt); lines.push([label, amt]); sub += amt; };
-    add((sp ? "Sprinkler" : "Fire alarm") + " review, sign & seal — " + d.count.toLocaleString("en-US") + (sp ? " heads" : " devices"), base);
+    add((sp ? "Sprinkler" : "Fire alarm") + " review, sign & seal: " + d.count.toLocaleString("en-US") + (sp ? " heads" : " devices"), base);
     if (m[0] !== 1) add(m[1] + " (×" + m[0].toFixed(2) + ")", base * (m[0]-1));
     d.addons.forEach(function(k){ var a = CONFIG.ADDONS[k]; add(a[1], a[0]); });
     var r = CONFIG.RUSH[d.speed];
@@ -208,7 +208,7 @@
       _autoresponse: "Thanks for requesting a PE review, sign & seal from EverSafe Fire Protection. "
         + "Your quote " + q.id + " is " + money(q.total) + " and is valid until " + q.valid + ". "
         + "Next step: reply to this email with your drawings and calcs. We confirm the price when we receive them. "
-        + "Need us sooner? Call 386-837-4057. — EverSafe Fire Protection",
+        + "Need us sooner? Call 386-837-4057. EverSafe Fire Protection",
       quote_id: q.id, total: money(q.total), valid_until: q.valid,
       name: d.name, company: d.company, email: d.email, project_city: d.city + ", FL",
       quote: summary(q) + fileNote("quote"),

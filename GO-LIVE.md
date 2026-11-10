@@ -11,7 +11,7 @@ This file is not shown on the website.
 | 2 | New menu. Services in three groups. One shared header and footer. New pages: About, Guides, Privacy, For MEP Firms, For General Contractors. |
 | 3 | Drawing upload in the quote tool. New contact form. PHP handlers in `api/`. |
 | 4 | Schema on every page, shorter titles and descriptions, five new FAQs, `llms-full.txt`, crawler rules, compression. |
-| 5 | Copy pass. Prepared in `tools/phase5-copy.py`. **Not applied yet.** It waits for the owner's approval. |
+| 5 | Copy pass, approved by the owner. Plain sentences, no long dashes, no promises about the AHJ. |
 
 ## A. Safe to merge at any time
 
@@ -59,10 +59,8 @@ Rollback does not delete `eversafe-private`. Uploaded files stay.
 
 ## Only the owner can do these
 
-- Approve the Phase 5 copy table.
 - Google Search Console: the address is now `https://eversafe-fire.com` (no `www`). Submit `https://eversafe-fire.com/sitemap.xml`. Do the same in Bing Webmaster Tools.
 - Check that the Google Business Profile links to `https://eversafe-fire.com`.
 - Test the home page and `faq.html` in Google's Rich Results Test.
 - Confirm the wording on `privacy.html` about how long messages are kept.
-- Decide if the quote tool labels "Standard — 5 business days" and "Rush — 48 hours (+50%)" may lose the long dash. They are inside `CONFIG`, which is locked.
 - Consider making the GitHub repo private and turning off GitHub Pages.

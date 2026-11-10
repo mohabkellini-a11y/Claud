@@ -285,13 +285,13 @@ What's Included
 
 - Support responding to AHJ plan review comments
 
-- Fast turnaround for permit-driven schedules
+- 5 business days standard. 48 hour and 24 hour rush available.
 
 Why It Matters
 
 ### Why PE-stamped matters
 
-Many contractors prepare quality drawings in-house but cannot legally seal them — only a Florida-licensed professional engineer can. Third-party PE stamping gives your submittal the engineering certification the AHJ requires, without the cost of a full engineering department. Our review looks for code issues before the drawings go to the AHJ.
+Many contractors prepare quality drawings in-house but cannot legally seal them. Only a Florida-licensed professional engineer can. Third-party PE stamping gives your submittal the engineering certification the AHJ requires, without the cost of a full engineering department. Our review looks for code issues before the drawings go to the AHJ.
 
 ---
 Source: https://eversafe-fire.com/fire-sprinkler-system-design.html
@@ -331,7 +331,7 @@ NFPA 13 · IFC Ch. 32 · Florida
 
 ## High-Piled Storage Fire Protection Design in Florida
 
-Warehouses and distribution centers live or die on their storage configuration. EverSafe evaluates your commodity classification, storage heights, and rack arrangements, then sets the sprinkler design criteria — density, ESFR, or in-rack — per NFPA 13 and IFC Chapter 32, so the design protects the actual hazard instead of the assumed one.
+Fire protection for warehouses and distribution centers depends on the storage configuration. EverSafe evaluates your commodity classification, storage heights, and rack arrangements. We then set the sprinkler design criteria (density, ESFR, or in-rack) per NFPA 13 and IFC Chapter 32, so the design matches the actual hazard.
 
 Last updated: November 10, 2026
 
@@ -355,7 +355,7 @@ Why It Matters
 
 ### Why storage design is a specialty
 
-High-piled storage is where generic sprinkler designs fail — the wrong commodity class or a missed in-rack requirement shows up as an AHJ rejection or, worse, an unprotected rack. Engineer-set criteria before the shop drawings start keeps the project, and the building, protected.
+A wrong commodity class or a missed in-rack requirement can lead to AHJ comments or an unprotected rack. We set the criteria before the shop drawings start.
 
 ---
 Source: https://eversafe-fire.com/fire-alarm-system-design.html
@@ -386,7 +386,7 @@ Why It Matters
 
 ### Why PE-stamped matters
 
-Florida AHJs routinely require fire alarm drawings to be signed and sealed by a licensed professional engineer. PE-stamped fire alarm design drawings demonstrate that calculations, device spacing, and system performance meet NFPA 72 requirements — which shortens plan review and avoids costly resubmittals.
+Florida AHJs routinely require fire alarm drawings to be signed and sealed by a licensed professional engineer. PE-stamped fire alarm design drawings demonstrate that calculations, device spacing, and system performance meet NFPA 72 requirements.
 
 ---
 Source: https://eversafe-fire.com/life-safety-plans-florida.html
@@ -421,7 +421,7 @@ Why It Matters
 
 ### Why life safety plans hold up permits
 
-Most AHJ plan-review comments trace back to incomplete life safety documentation — missing occupant loads, unproven travel distances, or barrier ratings that don’t match the occupancy. A sealed life safety analysis answers those questions before the reviewer asks them, cutting a review cycle out of your permit timeline.
+Many AHJ plan-review comments trace back to incomplete life safety documentation: missing occupant loads, unproven travel distances, or barrier ratings that don’t match the occupancy. A sealed life safety analysis documents those items before submittal.
 
 ---
 Source: https://eversafe-fire.com/special-hazards-design-florida.html
@@ -430,7 +430,7 @@ NFPA 855 · 2001 · Florida
 
 ## Special Hazards & Fire Modeling in Florida
 
-EverSafe Fire Protection provides fire protection design for mission-critical and special hazard facilities across Florida, including data centers and energy storage systems. These occupancies carry fire risks that standard sprinkler design doesn't address — we engineer the right protection for the hazard.
+EverSafe Fire Protection provides fire protection design for mission-critical and special hazard facilities across Florida, including data centers and energy storage systems. These occupancies carry fire risks that standard sprinkler design doesn't address. We design the protection for the specific hazard.
 
 Last updated: November 10, 2026
 
@@ -448,15 +448,15 @@ What's Included
 
 - PE-stamped, permit-ready drawing packages
 
-- Fire and smoke modeling (FDS/CFD) — fire & smoke modeling
+- Fire and smoke modeling (FDS/CFD): fire & smoke modeling
 
-- Smoke control studies — smoke control studies
+- Smoke control studies: smoke control studies
 
 Why It Matters
 
 ### Why PE-stamped matters
 
-Special hazard systems — clean agents, energy storage protection, mission-critical suppression — involve complex chemistry, physics, and code requirements. AHJs scrutinize these submittals closely. PE-stamped drawings from a Florida-licensed fire protection engineer give the reviewer confidence that the system is engineered for the specific hazard, not just copied from a template.
+Special hazard systems (clean agents, energy storage protection, mission-critical suppression) involve complex chemistry, physics, and code requirements. AHJs review these submittals closely. PE-stamped drawings from a Florida-licensed fire protection engineer show the reviewer that the system is engineered for the specific hazard.
 
 ---
 Source: https://eversafe-fire.com/fire-code-consulting-florida.html
@@ -477,9 +477,9 @@ What's Included
 
 - Alternative means, methods, and equivalency reports
 
-- Hazardous Materials Inventory Statements (HMIS) — HMIS inventory statements
+- Hazardous Materials Inventory Statements (HMIS): HMIS inventory statements
 
-- Maximum Allowable Quantity (MAQ) analysis per IFC Table 5003.1.1 — MAQ analysis
+- Maximum Allowable Quantity (MAQ) analysis per IFC Table 5003.1.1: MAQ analysis
 
 - Support during AHJ meetings and appeals
 
@@ -496,7 +496,7 @@ IFC Ch. 50 · FBC · Florida
 
 ## Hazardous Materials Inventory Statements (HMIS) in Florida
 
-When your project stores or uses hazardous materials, the AHJ wants an inventory statement before the permit moves. EverSafe prepares HMIS documentation listing material classifications, quantities, and storage/use locations per the Florida Building Code and IFC Chapter 50 — the deliverable hazmat permits are built on.
+When your project stores or uses hazardous materials, the AHJ asks for an inventory statement. EverSafe prepares HMIS documentation listing material classifications, quantities, and storage and use locations per the Florida Building Code and IFC Chapter 50.
 
 Last updated: November 10, 2026
 
@@ -527,7 +527,7 @@ IFC 5003 · FBC · Florida
 
 ## Maximum Allowable Quantity (MAQ) Analysis in Florida
 
-Exceed the maximum allowable quantity in a control area and the occupancy classification changes — with it, the construction type, fire protection, and permit path. EverSafe runs the MAQ analysis per IFC Table 5003.1.1, accounting for sprinkler and storage-cabinet increases, so you know exactly where your project stands before the AHJ decides for you.
+If you exceed the maximum allowable quantity in a control area, the occupancy classification changes. The construction type, fire protection, and permit path change with it. EverSafe runs the MAQ analysis per IFC Table 5003.1.1, accounting for sprinkler and storage-cabinet increases, so you know where your project stands before you submit.
 
 Last updated: November 10, 2026
 
@@ -551,7 +551,7 @@ Why It Matters
 
 ### Why MAQ analysis decides the project
 
-MAQ is the hinge between a standard occupancy and a high-hazard one. Getting it right early tells you whether the design needs another control area, a different occupancy, or nothing at all — a decision worth making on paper, not in plan review.
+MAQ decides whether a space is a standard occupancy or a high-hazard one. An early analysis tells you whether the design needs another control area, a different occupancy, or no change.
 
 ---
 Source: https://eversafe-fire.com/fire-smoke-modeling-florida.html
@@ -591,7 +591,7 @@ NFPA 92 · FBC · Florida
 
 ## Smoke Control Studies & Smoke Management in Florida
 
-Atriums, malls, high-rises, and underground spaces need engineered proof that smoke stays manageable. EverSafe performs smoke control studies — rational analysis, pressurization design, and exhaust sizing per NFPA 92 — and backs them with CFD modeling when the AHJ wants to see the smoke move.
+Atriums, malls, high-rises, and underground spaces need an engineered smoke control analysis. EverSafe performs smoke control studies: rational analysis, pressurization design, and exhaust sizing per NFPA 92. We add CFD modeling when the AHJ asks for it.
 
 Last updated: November 10, 2026
 
@@ -615,7 +615,7 @@ Why It Matters
 
 ### Why smoke studies need an engineer
 
-Smoke control is performance-based by nature — the AHJ approves the analysis, not just the equipment. A sealed rational analysis with modeled tenability gives reviewers the engineering basis they are looking for.
+Smoke control is performance-based. The AHJ reviews the analysis as well as the equipment. A sealed rational analysis with modeled tenability gives reviewers the engineering basis for the design.
 
 ---
 Source: https://eversafe-fire.com/for-mep-firms.html
@@ -761,7 +761,7 @@ FAQs · Florida
 
 ## Fire Protection Engineering FAQs
 
-Straight answers to the questions Florida contractors, MEP firms, architects, and building owners ask us about fire protection engineering, permitting, and PE-stamped deliverables.
+Answers to the questions Florida contractors, MEP firms, architects, and building owners ask us about fire protection engineering, permitting, and PE-stamped deliverables.
 
 #### Who can stamp fire sprinkler drawings in Florida?
 
@@ -769,11 +769,11 @@ Only a professional engineer licensed in the State of Florida can sign and seal 
 
 #### What does a fire protection engineer do?
 
-A fire protection engineer designs the systems that detect, suppress, and control fire in buildings — primarily fire sprinkler and fire alarm systems. The work includes system layout, hydraulic and electrical calculations, code compliance analysis, and sealing drawings for permit. Fire protection engineers also perform code consulting, risk analysis, and performance-based design such as fire and smoke modeling.
+A fire protection engineer designs the systems that detect, suppress, and control fire in buildings. Most of the work is fire sprinkler and fire alarm systems. The work includes system layout, hydraulic and electrical calculations, code compliance analysis, and sealing drawings for permit. Fire protection engineers also perform code consulting, risk analysis, and performance-based design such as fire and smoke modeling.
 
 #### How much does fire sprinkler system design cost?
 
-Design fees depend on building size, system complexity, and how complete the architectural and MEP backgrounds are. EverSafe works on a fixed-fee basis, so you know the price before we start. Send us your project details through our proposal form and we will respond with a fixed-fee quote — typical turnaround is 1 day.
+Design fees depend on building size, system complexity, and how complete the architectural and MEP backgrounds are. EverSafe works on a fixed-fee basis, so you know the price before we start. Send us your project details through our proposal form. We usually respond with a fixed-fee quote within one business day.
 
 #### How long does fire alarm design take?
 
@@ -781,15 +781,15 @@ It depends on the size and complexity of the building and the quality of the bac
 
 #### What do you need from me to prepare a proposal?
 
-A brief description of the project is enough to start: building type and size, location in Florida, which services you need (sprinkler design, alarm design, stamping, consulting), and your permit timeline. If you have architectural backgrounds or plans, attach them — but they are not required for an initial quote.
+A brief description of the project is enough to start: building type and size, location in Florida, which services you need (sprinkler design, alarm design, stamping, consulting), and your permit timeline. If you have architectural backgrounds or plans, tell us. They are not required for an initial quote.
 
 #### Do you serve clients outside Central Florida?
 
-Yes. We are based in Central Florida and serve clients statewide, including the Orlando, Tampa, Miami, and Jacksonville markets. All coordination can be handled remotely, and our PE-stamped deliverables are accepted by AHJs throughout Florida.
+Yes. We are based in Central Florida and serve clients statewide, including the Orlando, Tampa, Miami, and Jacksonville markets. All coordination can be handled remotely.
 
 #### What is a third-party plan review?
 
-A third-party plan review is an independent engineering review of fire protection drawings prepared by someone else — typically a contractor or MEP firm. We check the drawings against NFPA 13, NFPA 72, and the Florida Building Code, mark up any issues, and then PE-seal the compliant package so it can be submitted for permit.
+A third-party plan review is an independent engineering review of fire protection drawings prepared by someone else, typically a contractor or MEP firm. We check the drawings against NFPA 13, NFPA 72, and the Florida Building Code, mark up any issues, and then PE-seal the compliant package so it can be submitted for permit.
 
 #### What codes do you design to?
 
@@ -797,7 +797,7 @@ We design to the Florida Building Code and the NFPA standards it references, inc
 
 #### What is fire and smoke modeling used for?
 
-Fire and smoke modeling uses computational fluid dynamics (FDS/CFD) software to simulate how fire and smoke behave in a building. It is used for performance-based designs where prescriptive code doesn't fit — such as atria, large open spaces, and complex smoke control systems — and to demonstrate to the AHJ that occupants can safely egress.
+Fire and smoke modeling uses computational fluid dynamics (FDS/CFD) software to simulate how fire and smoke behave in a building. It is used for performance-based designs where prescriptive code doesn't fit, such as atria, large open spaces, and complex smoke control systems. The model is used to demonstrate to the AHJ that occupants can safely egress.
 
 #### Do you design for energy storage systems and data centers?
 
@@ -809,7 +809,7 @@ Our process includes permit support. If the AHJ sends comments, we answer them a
 
 #### How fast can I get a proposal?
 
-Our typical fixed-fee proposal turnaround is 1 day. Submit the Request a Proposal form with your project details, or call 386-837-4057 / email info@eversafe-fire.com, and we will respond with a fixed-fee quote and schedule.
+Usually within one business day. Submit the Request a Proposal form with your project details, call 386-837-4057, or email info@eversafe-fire.com. We respond with a fixed-fee quote and schedule.
 
 #### How do I upload my drawings?
 

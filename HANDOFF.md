@@ -72,7 +72,7 @@ Use the copy on `services.html` as the sample.
 | 2. Navigation and service structure | Done, in pull request #7. Check that #7 is merged before you start. |
 | 3. Upload and contact form | Done, in pull request #7. Tested locally (23 backend tests and a browser run). The upload stays off until the owner creates `config.php` on Hostinger. See `GO-LIVE.md`. |
 | 4. AI and search visibility | Done, in pull request #7. |
-| 5. Copy pass | **Prepared, not applied.** The pairs are in `tools/phase5-copy.py`. Waiting for the owner to approve the table. |
+| 5. Copy pass | Done, in pull request #7. The owner approved the table. Visible copy has no long dashes. The owner also allowed the dash in the `CONFIG` rush labels to become a colon (labels only, prices unchanged). |
 
 Facts you may use: phone 386-837-4057, email info@eversafe-fire.com, LinkedIn https://www.linkedin.com/company/eversafefire/, based in Central Florida, serves all of Florida, proposals usually in one business day, PE review and seal in 5 business days standard with 48 hour and 24 hour rush, quotes valid 7 days.
 
@@ -87,8 +87,8 @@ Service groups (same names and order everywhere):
 
 **Read this first. It replaces most of the lists below.**
 
-1. **Phase 5.** When the owner approves the table, run `python3 tools/phase5-copy.py --apply`, then `python3 tools/build-llms-full.py`, raise `quote.js?v=` in `pe-stamping-plan-review.html`, run the checks in section 7, and open a pull request. If the owner changes a row, edit the pair in the script first.
-2. **After Phase 5:** search for long dashes again with `python3 tools/check-links.py .`. Fix any that are left, with the owner's approval.
+1. Phase 5 is applied. Do not run `tools/phase5-copy.py --apply` again.
+2. Check `git log` on `origin/hostinger-deploy` to see if pull request #7 is merged.
 3. **Service page intros.** Each service page should say the typical turnaround and how to start. Propose the sentences to the owner first. Use only the facts in section 5.
 4. **Go-live support.** Help the owner with `GO-LIVE.md` if a step fails. Do not ask for the app password in chat.
 5. Phases 3 and 4 below are done. Their lists are kept for reference only.
