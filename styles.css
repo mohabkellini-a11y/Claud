@@ -601,6 +601,19 @@ a.contact-method:hover span { text-decoration: underline; text-underline-offset:
   .lbl-full { display: none; }
   .lbl-compact { display: inline; }
 }
+/* Phones: both hero buttons show without scrolling. The buttons sit above the intro text. */
+@media (max-width: 640px) {
+  .hero { padding-top: 22px; }
+  .hero-copy { display: flex; flex-direction: column; }
+  .hero-copy .eyebrow { margin-bottom: 10px; font-size: .75rem; letter-spacing: .14em; }
+  .hero-copy h1 { font-size: 1.85rem; margin-bottom: 12px; }
+  .hero-tagline { font-size: 1rem; margin: 0 0 16px; }
+  .hero-copy .hero-cta { order: 1; margin: 0 0 22px; gap: 10px; }
+  .hero-copy .hero-cta .btn { flex: 1 1 100%; min-height: 50px; padding: 12px 18px; }
+  .hero-copy .hero-lead { order: 2; }
+  .hero-copy .hero-badges { order: 3; margin-top: 22px; }
+  .btn-quote { background: #fff; color: var(--blue); border-color: #fff; font-weight: 700; }
+}
 @media (max-width: 560px) {
   .section { padding: 58px 0; }
   .section-head { margin-bottom: 34px; }
