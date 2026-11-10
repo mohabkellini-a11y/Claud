@@ -227,7 +227,8 @@ p { color: var(--slate); }
 .hero h1 { color: #fff; }
 .hero-lead { font-size: clamp(1.05rem, 1.6vw, 1.22rem); color: rgba(255, 255, 255, .82); max-width: 560px; line-height: 1.7; }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin: 34px 0 30px; }
-.hero-badges { list-style: none; display: flex; flex-wrap: wrap; gap: 10px 22px; padding: 0; }
+.hero-badges { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 34px; padding: 0; grid-column: 1 / -1; margin-top: 6px; }
+@media (min-width: 861px) { .hero-badges { flex-wrap: nowrap; white-space: nowrap; } }
 .hero-badges li { position: relative; padding-left: 22px; font-size: .9rem; font-weight: 500; color: rgba(255, 255, 255, .8); }
 .hero-badges li::before {
   content: ""; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
@@ -260,7 +261,7 @@ p { color: var(--slate); }
   animation: floatY 5s ease-in-out infinite;
 }
 .floaty-1 { top: 2%; left: -3%; }
-.floaty-2 { bottom: -4%; right: -3%; animation-delay: 1.4s; }
+.floaty-2 { bottom: -15%; right: -3%; animation-delay: 1.4s; }
 @keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-11px); } }
 .code-chip { background: var(--surface-2); color: var(--blue); font-weight: 700; font-size: .75rem; letter-spacing: .04em; padding: 4px 8px; border-radius: 6px; }
 
@@ -508,6 +509,7 @@ a.contact-method:hover span { text-decoration: underline; text-underline-offset:
 .link-list a::after { content: "\2192"; color: var(--red); }
 .link-list a:hover { color: var(--red); }
 .hero-tagline { font-size: clamp(1.15rem, 2.2vw, 1.5rem); font-weight: 700; color: #fff; margin: -8px 0 18px; }
+@media (min-width: 641px) { .hero-tagline { white-space: nowrap; font-size: clamp(1rem, 1.7vw, 1.3rem); } }
 .serve-head { max-width: 720px; margin-bottom: 36px; }
 .serve-head .section-sub { margin: 14px 0 0; }
 .serve-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
@@ -611,7 +613,6 @@ a.contact-method:hover span { text-decoration: underline; text-underline-offset:
   .hero-copy .hero-cta { order: 1; margin: 0 0 22px; gap: 10px; }
   .hero-copy .hero-cta .btn { flex: 1 1 100%; min-height: 50px; padding: 12px 18px; }
   .hero-copy .hero-lead { order: 2; }
-  .hero-copy .hero-badges { order: 3; margin-top: 22px; }
   .btn-quote { background: #fff; color: var(--blue); border-color: #fff; font-weight: 700; }
 }
 @media (max-width: 560px) {
