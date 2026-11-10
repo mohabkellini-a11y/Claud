@@ -118,12 +118,53 @@
   }
 
   /* ---- Contact form ----
-     Submits as a native HTML POST to FormSubmit.co (see index.html form
-     action). A native submission is required for FormSubmit's autoresponse
-     and _next redirect to work, so there is no JS submit handler here.
-     Client-side "required" validation is enforced by the browser via the
-     required attributes on the Name, Email, and Phone fields.
-  */
+     With JavaScript: checks each field when you leave it, sends to /api/contact.php and shows the result on the page.
+     Without JavaScript, or if the API fails: the form posts to FormSubmit.co as before, so no request is lost. */
+  var cf = document.getElementById("contactForm");
+  if (cf && window.fetch && window.FormData) {
+    cf.setAttribute("novalidate", "");
+    var cfNote = document.getElementById("cfNote"), cfBtn = document.getElementById("cfSubmit");
+    var cfFields = ["name", "company", "email", "need", "message"];
+    var cfMsg = { name: "Enter your name.", company: "Enter your company.", email: "Enter a valid email address.", need: "Choose what you need.", message: "Tell us about the project." };
+    var cfCheck = function (n, serverMsg) {
+      var el = cf.elements[n], err = document.getElementById("cf-" + n + "-err");
+      var v = el.value.trim(), bad = serverMsg || (!v || (n === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) ? cfMsg[n] : "");
+      err.textContent = bad; err.hidden = !bad;
+      if (bad) el.setAttribute("aria-invalid", "true"); else el.removeAttribute("aria-invalid");
+      return !bad;
+    };
+    cfFields.forEach(function (n) {
+      cf.elements[n].addEventListener("blur", function () { cfCheck(n); });
+      cf.elements[n].addEventListener("input", function () { if (cf.elements[n].getAttribute("aria-invalid")) cfCheck(n); });
+    });
+    var cfFallback = false;
+    cf.addEventListener("submit", function (e) {
+      if (cfFallback) return;                       // second pass: normal post to FormSubmit
+      e.preventDefault();
+      if (cfBtn.disabled) return;
+      var bad = cfFields.filter(function (n) { return !cfCheck(n); });
+      if (bad.length) { cf.elements[bad[0]].focus(); return; }
+      cfBtn.disabled = true; cfBtn.textContent = "Sending…"; cfNote.className = "form-note"; cfNote.textContent = "";
+      var data = new FormData(cf);
+      fetch("/api/contact.php", { method: "POST", headers: { "Accept": "application/json" }, body: data })
+        .then(function (r) { return r.json().then(function (j) { return { status: r.status, body: j }; }); })
+        .then(function (res) {
+          if (res.body && res.body.ok) {
+            cf.classList.add("sent"); cfNote.className = "form-note success";
+            cfNote.textContent = "Request received. We will follow up with a fixed-fee proposal, usually within one business day.";
+            cfNote.setAttribute("tabindex", "-1"); cfNote.focus(); return;
+          }
+          if (res.status === 400 && res.body && res.body.fields) {
+            var first = null;
+            Object.keys(res.body.fields).forEach(function (n) { if (cf.elements[n]) { cfCheck(n, res.body.fields[n]); first = first || n; } });
+            cfBtn.disabled = false; cfBtn.textContent = "Request a Proposal"; if (first) cf.elements[first].focus(); return;
+          }
+          if (res.status === 429) { cfBtn.disabled = false; cfBtn.textContent = "Request a Proposal"; cfNote.className = "form-note error"; cfNote.textContent = "Too many requests. Please wait a few minutes, or call 386-837-4057."; return; }
+          throw new Error("api");
+        })
+        .catch(function () { cfFallback = true; cf.submit(); });
+    });
+  }
 
   /* ---- Smooth-scroll offset correction for sticky header ---- */
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {

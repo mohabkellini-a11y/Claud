@@ -32,7 +32,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <script>document.documentElement.classList.add("js");</script>
-  <link rel="stylesheet" href="styles.css?v=9" />
+  <link rel="stylesheet" href="styles.css?v=10" />
+  <link rel="stylesheet" href="quote.css?v=1" />
 
   <link rel="canonical" href="https://eversafe-fire.com/pe-stamping-plan-review.html" />
   <script type="application/ld+json">
@@ -227,6 +228,7 @@
         </div>
       </div>
 
+      <div class="evs-hp" aria-hidden="true"><label for="evs-website">Leave this field empty</label><input type="text" id="evs-website" name="website" tabindex="-1" autocomplete="off"></div>
       <div class="evs-error" id="evs-error" role="alert" aria-live="assertive"></div>
       <button type="submit" class="evs-btn" id="evs-get">Get my price</button>
       <div class="evs-small evs-notice">We receive a copy of your quote and contact details so we can follow up.</div>
@@ -252,7 +254,19 @@
     <div class="evs-terms">
       <strong>Included:</strong> PE review of your drawings and calcs against NFPA 13 / NFPA 72, the Florida Building Code and the Florida Fire Prevention Code. One round of review comments. Digital Florida PE seal. One round of AHJ comment responses.<br>
       <strong>Not included:</strong> design or drafting, site visits, field inspections, AHJ fees.<br>
-      <strong>Terms:</strong> Price is based on the information you entered. We confirm it when we receive your drawings. If the scope is different, we send a revised quote before work starts. Turnaround starts when we receive a complete package. Florida projects only.
+      <strong>Terms:</strong> Price is based on the information you entered. You can upload your drawings and calcs below. We confirm the price when we receive them. If the scope is different, we send a revised quote before work starts. Turnaround starts when we receive a complete package. Florida projects only.
+    </div>
+
+    <div class="evs-upload" data-evs-upload="quote" hidden>
+      <div class="evs-section">Upload your drawings and calcs</div>
+      <p class="evs-uprules">Optional. We confirm the price faster with drawings. Allowed: PDF, DWG, DXF, RVT, ZIP, JPG, PNG. Up to 100 MB per file, 20 files and 500 MB per quote. Files are stored privately and deleted after 90 days. <a href="/privacy.html">Privacy</a></p>
+      <div class="evs-drop">
+        <p class="evs-droptext">Drag files here, or</p>
+        <button type="button" class="evs-btn evs-ghost evs-pick">Choose files</button>
+        <input type="file" class="evs-file" multiple accept=".pdf,.dwg,.dxf,.rvt,.zip,.jpg,.jpeg,.png" tabindex="-1" aria-hidden="true">
+      </div>
+      <ul class="evs-files" aria-label="Files to send"></ul>
+      <div class="evs-upstatus" role="status" aria-live="polite"></div>
     </div>
 
     <div class="evs-actions">
@@ -260,7 +274,7 @@
       <button type="button" class="evs-btn evs-ghost" id="evs-print">Save as PDF</button>
       <button type="button" class="evs-btn evs-ghost" id="evs-back">Edit quote</button>
     </div>
-    <div class="evs-done" id="evs-done" role="status" aria-live="polite" hidden></div>
+    <div class="evs-done" id="evs-done" role="status" aria-live="polite" tabindex="-1" hidden></div>
   </div>
 
   <!-- Contact needed (out of scope) -->
@@ -268,312 +282,28 @@
     <div class="evs-badge">Custom quote</div>
     <h2>Let&apos;s talk about this one</h2>
     <p id="evs-custom-msg"></p>
+    <div class="evs-upload" data-evs-upload="custom" hidden>
+      <div class="evs-section">Upload your drawings and calcs</div>
+      <p class="evs-uprules">Optional. We confirm the price faster with drawings. Allowed: PDF, DWG, DXF, RVT, ZIP, JPG, PNG. Up to 100 MB per file, 20 files and 500 MB per quote. Files are stored privately and deleted after 90 days. <a href="/privacy.html">Privacy</a></p>
+      <div class="evs-drop">
+        <p class="evs-droptext">Drag files here, or</p>
+        <button type="button" class="evs-btn evs-ghost evs-pick">Choose files</button>
+        <input type="file" class="evs-file" multiple accept=".pdf,.dwg,.dxf,.rvt,.zip,.jpg,.jpeg,.png" tabindex="-1" aria-hidden="true">
+      </div>
+      <ul class="evs-files" aria-label="Files to send"></ul>
+      <div class="evs-upstatus" role="status" aria-live="polite"></div>
+    </div>
+
     <div class="evs-actions">
-      <a class="evs-btn evs-contact-link" href="#">Contact us</a>
+      <button type="button" class="evs-btn" id="evs-custom-send" hidden>Send my drawings</button>
+      <a class="evs-btn evs-ghost evs-contact-link" href="#">Contact us</a>
       <button type="button" class="evs-btn evs-ghost" id="evs-back2">Edit details</button>
     </div>
+    <div class="evs-done" id="evs-done2" role="status" aria-live="polite" tabindex="-1" hidden></div>
   </div>
 </div>
 
-<style>
-/* Instant quote widget — uses the site design tokens from styles.css (with fallbacks) */
-#evs-quote{--evs-blue:var(--blue,#024479);--evs-blue-500:var(--blue-500,#0a5a97);--evs-red:var(--red,#c30a2b);--evs-orange:var(--orange,#d65119);
-  --evs-ink:var(--ink,#0e1b26);--evs-mute:var(--slate,#45586a);--evs-line:var(--border,#e2e9f0);--evs-line-strong:var(--border-strong,#cfdae4);--evs-bg:var(--bg,#f5f8fb);
-  --evs-grad:var(--grad-flame,linear-gradient(135deg,#d65119 0%,#c30a2b 100%));--evs-red-600:var(--red-600,#9c0822);--evs-ease:var(--ease,cubic-bezier(.22,.61,.36,1));
-  font-family:var(--font,Montserrat,Arial,sans-serif);color:var(--evs-ink);max-width:680px;margin:0 auto;line-height:1.5;box-sizing:border-box}
-#evs-quote *,#evs-quote *::before,#evs-quote *::after{box-sizing:border-box}
-#evs-quote [hidden]{display:none!important}
-#evs-quote .evs-card{background:#fff;border:1px solid var(--evs-line);border-radius:var(--radius-lg,22px);padding:clamp(24px,4vw,40px);box-shadow:var(--shadow-lg,0 24px 60px rgba(2,30,55,.16));scroll-margin-top:96px}
-#evs-quote h2{font-size:clamp(1.5rem,3vw,1.9rem);line-height:1.15;margin:0 0 10px;color:var(--evs-ink);font-weight:700;letter-spacing:-.01em}
-#evs-quote p{margin:0;color:var(--evs-mute);font-size:1rem}
-#evs-quote .evs-badge{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--evs-blue);margin-bottom:10px}
-#evs-quote .evs-section{margin:30px 0 2px;font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--evs-blue);border-bottom:1px solid var(--evs-line);padding-bottom:8px}
-#evs-quote .evs-label{display:block;font-size:.86rem;font-weight:600;color:var(--evs-ink);margin:18px 0 8px}
-#evs-quote .evs-input{width:100%;font:inherit;font-size:1rem;line-height:1.4;min-height:50px;padding:13px 15px;border:1.5px solid var(--evs-line);border-radius:10px;background:var(--evs-bg);color:var(--evs-ink);
-  transition:border-color .2s var(--evs-ease),box-shadow .2s var(--evs-ease),background .2s var(--evs-ease)}
-#evs-quote select.evs-input{appearance:none;-webkit-appearance:none;padding-right:44px;cursor:pointer;text-overflow:ellipsis;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23024479' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 15px center;background-size:18px}
-#evs-quote .evs-input:focus{outline:none;border-color:var(--evs-blue);background-color:#fff;box-shadow:0 0 0 4px rgba(2,68,121,.1)}
-#evs-quote .evs-input.evs-bad{border-color:var(--evs-red);background-color:#fff}
-#evs-quote .evs-input.evs-bad:focus{box-shadow:0 0 0 4px rgba(195,10,43,.12)}
-#evs-quote .evs-hint{font-size:.82rem;color:var(--evs-mute);margin-top:6px}
-#evs-quote .evs-toggle{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-#evs-quote .evs-toggle label{cursor:pointer;position:relative}
-#evs-quote .evs-toggle input{position:absolute;opacity:0;pointer-events:none}
-#evs-quote .evs-toggle span{display:flex;align-items:center;justify-content:center;min-height:50px;padding:10px;border:1.5px solid var(--evs-line-strong);border-radius:999px;background:#fff;color:var(--evs-blue);font-weight:600;font-size:.98rem;
-  transition:background .2s var(--evs-ease),border-color .2s var(--evs-ease),color .2s var(--evs-ease)}
-#evs-quote .evs-toggle label:hover span{border-color:var(--evs-blue)}
-#evs-quote .evs-toggle input:checked+span{background:var(--evs-blue);border-color:var(--evs-blue);color:#fff;box-shadow:0 6px 18px rgba(2,68,121,.22)}
-#evs-quote .evs-toggle input:focus-visible+span{outline:3px solid var(--evs-orange);outline-offset:2px}
-#evs-quote .evs-checks{display:grid;gap:2px}
-#evs-quote .evs-checks label{display:flex;gap:12px;align-items:flex-start;font-size:.95rem;color:var(--evs-ink);padding:10px 0;min-height:44px;cursor:pointer}
-#evs-quote .evs-checks input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--evs-blue);flex:none;cursor:pointer}
-#evs-quote .evs-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
-#evs-quote .evs-btn{display:inline-flex;align-items:center;justify-content:center;width:100%;min-height:52px;margin-top:24px;padding:14px 22px;font:inherit;font-size:.98rem;font-weight:600;letter-spacing:.01em;line-height:1.2;
-  color:#fff;background:var(--evs-grad);border:0;border-radius:999px;cursor:pointer;text-align:center;text-decoration:none;box-shadow:0 8px 22px rgba(195,10,43,.3);
-  transition:transform .2s var(--evs-ease),box-shadow .2s var(--evs-ease),background .2s var(--evs-ease),color .2s var(--evs-ease)}
-#evs-quote .evs-btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(195,10,43,.38)}
-#evs-quote .evs-btn:disabled{opacity:.7;cursor:progress;transform:none}
-#evs-quote .evs-btn.evs-sent:disabled{cursor:default;opacity:1;background:#1d6b3a;box-shadow:none}
-#evs-quote .evs-ghost{background:#fff;color:var(--evs-blue);border:1.5px solid var(--evs-line-strong);box-shadow:none}
-#evs-quote .evs-ghost:hover{border-color:var(--evs-blue);background:#fff;box-shadow:var(--shadow-sm,0 2px 8px rgba(2,30,55,.06))}
-#evs-quote .evs-small{font-size:.86rem;color:var(--evs-mute);margin-top:16px;text-align:center}
-#evs-quote .evs-notice{margin-top:10px;font-size:.8rem}
-#evs-quote a{color:var(--evs-blue);font-weight:600;text-decoration:underline;text-underline-offset:3px;padding-block:14px}
-#evs-quote a.evs-btn{color:#fff;text-decoration:none}
-#evs-quote .evs-error{color:var(--evs-red);font-size:.9rem;font-weight:500;margin-top:16px}
-#evs-quote .evs-error:empty{display:none}
-#evs-quote .evs-qhead{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
-#evs-quote .evs-qhead h2{font-size:1.25rem;color:var(--evs-blue);letter-spacing:.02em}
-#evs-quote .evs-valid{text-align:right;font-size:.82rem;color:var(--evs-mute)}
-#evs-quote .evs-valid strong{color:var(--evs-ink);font-size:.95rem}
-#evs-quote .evs-price{font-size:clamp(2.4rem,6vw,3.2rem);font-weight:700;letter-spacing:-.02em;color:var(--evs-blue);margin-top:18px;line-height:1.05;font-variant-numeric:tabular-nums}
-#evs-quote .evs-pricesub{font-size:.9rem;color:var(--evs-mute);margin:6px 0 18px}
-#evs-quote .evs-table{width:100%;border-collapse:collapse;font-size:.95rem;margin:4px 0 20px;font-variant-numeric:tabular-nums}
-#evs-quote .evs-table td{padding:10px 0;border-bottom:1px solid var(--evs-line);vertical-align:top}
-#evs-quote .evs-table td:last-child{text-align:right;white-space:nowrap;padding-left:16px}
-#evs-quote .evs-table tr.evs-total td{font-weight:700;border-bottom:0;border-top:2px solid var(--evs-ink)}
-#evs-quote .evs-terms{font-size:.82rem;line-height:1.6;color:var(--evs-mute);background:var(--evs-bg);border:1px solid var(--evs-line);border-radius:var(--radius,14px);padding:14px 16px}
-#evs-quote .evs-terms strong{color:var(--evs-ink)}
-#evs-quote .evs-actions{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) minmax(0,1fr);gap:10px;margin-top:20px}
-#evs-quote .evs-actions .evs-btn{margin-top:0;padding-left:14px;padding-right:14px;white-space:nowrap}
-#evs-quote .evs-done{margin-top:16px;padding:14px 16px;border-radius:10px;background:#e9f4ec;border:1px solid #c6e3cf;color:#1d5c2e;font-size:.92rem}
-#evs-quote .evs-done.evs-fail{background:#fdecef;border-color:#f5c2cc;color:#8a0a22}
-#evs-quote .evs-done a{color:inherit}
-#evs-custom .evs-actions{grid-template-columns:2fr 1fr}
-#evs-custom p{margin-top:4px}
-@media (max-width:600px){
-  #evs-quote .evs-card{padding:24px 18px;border-radius:var(--radius,14px)}
-  #evs-quote .evs-grid,#evs-quote .evs-actions,#evs-custom .evs-actions{grid-template-columns:1fr}
-  #evs-quote .evs-qhead{flex-direction:column;gap:4px}
-  #evs-quote .evs-valid{text-align:left}
-}
-@media (prefers-reduced-motion:reduce){
-  #evs-quote *{transition:none!important}
-  #evs-quote .evs-btn:hover{transform:none}
-}
-@media print{
-  .site-header,.site-footer,.menu-panel,main > section:not(#quote),#evs-form-card,#evs-custom,#evs-quote .evs-actions,#evs-quote .evs-done{display:none!important}
-  body{background:#fff!important}
-  main > section#quote{padding:0!important;background:#fff!important}
-  #evs-quote{max-width:none}
-  #evs-quote .evs-card{box-shadow:none;border:0;padding:0}
-  #evs-quote .evs-terms{break-inside:avoid}
-}
-</style>
 
-<script>
-(function(){
-  /* ===================== SETTINGS — EDIT HERE ===================== */
-  var CONFIG = {
-    // Where quote requests go. Free option: create a form at formspree.io
-    // and paste its URL here, e.g. "https://formspree.io/f/abcdwxyz".
-    // Leave empty to open the client's email app instead.
-    FORM_ENDPOINT: "https://formsubmit.co/info@eversafe-fire.com",  // same inbox as the contact form
-    THANK_YOU_URL: "https://eversafe-fire.com/thank-you",
-    LEAD_ENDPOINT: "https://formsubmit.co/ajax/info@eversafe-fire.com",  // copy of every quote, sent before the price shows
-    LEAD_WAIT_MS: 4000,           // longest the visitor waits for that copy before the price shows anyway
-    CONTACT_EMAIL: "info@eversafe-fire.com",
-    CONTACT_URL: "#contact",              // e.g. "/contact" — leave empty to use email
-    VALID_DAYS: 7,
-    MIN_FEE: 850,
-    MAX_AUTO: 2000,               // above this count, ask client to contact us
-    ROUND_TO: 50,
-    FA_TIERS: [ [50,850], [150,1150], [300,1550], [500,2050], [1000,2700] ],
-    FA_OVER: 2.12,                // $ per device above 1,000
-    SP_TIERS: [ [100,850], [300,1300], [600,1800], [1000,2400] ],
-    SP_OVER: 1.49,                // $ per head above 1,000
-    MULT: { std:[1.00,"Standard occupancy"], hc:[1.20,"Healthcare"], hr:[1.25,"High-rise / ELSS"], st:[1.30,"Storage / ESFR / in-rack"] },
-    ADDONS: { voice:[250,"Voice evacuation / mass notification"], intf:[200,"Smoke control / elevator / HVAC interfaces"],
-              dry:[250,"Dry or preaction system"], pump:[450,"Fire pump"], stand:[350,"Standpipe system"] },
-    RUSH: { std:[0,"Standard — 5 business days"], r48:[0.50,"Rush — 48 hours (+50%)"], r24:[1.00,"Rush — 24 hours (+100%)"] }
-  };
-  /* ================================================================= */
-
-  var root = document.getElementById("evs-quote");
-  var $ = function(id){ return document.getElementById(id); };
-  var form = $("evs-form"), lastQuote = null;
-  var money = function(n){ n = Math.round(n); return (n < 0 ? "−$" : "$") + Math.abs(n).toLocaleString("en-US"); };
-  var esc = function(s){ return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];}); };
-
-  // Contact links
-  var contactHref = CONFIG.CONTACT_URL || ("mailto:" + CONFIG.CONTACT_EMAIL + "?subject=" + encodeURIComponent("Custom proposal request"));
-  root.querySelectorAll(".evs-contact-link").forEach(function(a){ a.href = contactHref; });
-
-  function service(){ return form.querySelector('input[name="service"]:checked').value; }
-
-  function syncService(){
-    var sp = service() === "sp";
-    $("evs-count-label").textContent = sp ? "Number of sprinkler heads" : "Number of devices";
-    $("evs-count-hint").textContent = sp ? "Count all heads in the scope of work." : "Count all initiating devices and notification appliances.";
-    $("evs-addons-fa").hidden = sp; $("evs-addons-sp").hidden = !sp;
-    var st = $("evs-occ").querySelector('[data-sp-only]');
-    st.hidden = !sp; st.disabled = !sp;
-    if (!sp && $("evs-occ").value === "st") $("evs-occ").value = "std";
-  }
-  form.querySelectorAll('input[name="service"]').forEach(function(r){ r.addEventListener("change", syncService); });
-  syncService();
-
-  function tierPrice(tiers, over, n){
-    for (var i=0;i<tiers.length;i++){ if (n <= tiers[i][0]) return tiers[i][1]; }
-    var top = tiers[tiers.length-1];
-    return top[1] + (n - top[0]) * over;
-  }
-
-  function calc(d){
-    var sp = d.service === "sp";
-    var base = sp ? tierPrice(CONFIG.SP_TIERS, CONFIG.SP_OVER, d.count) : tierPrice(CONFIG.FA_TIERS, CONFIG.FA_OVER, d.count);
-    var m = CONFIG.MULT[d.occ], lines = [], sub = 0;
-    var add = function(label, amt){ amt = Math.round(amt); lines.push([label, amt]); sub += amt; };
-    add((sp ? "Sprinkler" : "Fire alarm") + " review, sign & seal — " + d.count.toLocaleString("en-US") + (sp ? " heads" : " devices"), base);
-    if (m[0] !== 1) add(m[1] + " (×" + m[0].toFixed(2) + ")", base * (m[0]-1));
-    d.addons.forEach(function(k){ var a = CONFIG.ADDONS[k]; add(a[1], a[0]); });
-    var r = CONFIG.RUSH[d.speed];
-    if (r[0] > 0) add(r[1], sub * r[0]);
-    var raw = sub;
-    var total = Math.max(CONFIG.MIN_FEE, Math.round(raw / CONFIG.ROUND_TO) * CONFIG.ROUND_TO);
-    if (total !== raw) lines.push([raw < CONFIG.MIN_FEE ? "Minimum fee adjustment" : "Rounding", total - raw]);
-    return { total: total, lines: lines };
-  }
-
-  function quoteId(){
-    var t = new Date(), p = function(n){ return ("0"+n).slice(-2); };
-    return "EVS-Q" + String(t.getFullYear()).slice(-2) + p(t.getMonth()+1) + p(t.getDate()) + "-" + Math.random().toString(36).slice(2,6).toUpperCase();
-  }
-
-  function show(card){
-    ["evs-form-card","evs-result","evs-custom"].forEach(function(id){ $(id).hidden = (id !== card); });
-    $(card).scrollIntoView({ behavior:"smooth", block:"start" });
-  }
-
-  form.addEventListener("submit", function(e){
-    e.preventDefault();
-    var err = [], bad = [];
-    form.querySelectorAll(".evs-bad").forEach(function(el){ el.classList.remove("evs-bad"); el.removeAttribute("aria-invalid"); });
-    var rawCount = $("evs-count").value.replace(/[,\s]/g, "");
-    var count = /^\d+$/.test(rawCount) ? parseInt(rawCount, 10) : NaN;
-    if (!(count >= 1)) { err.push("Enter the number of " + (service()==="sp" ? "sprinkler heads" : "devices") + " as a whole number."); bad.push("evs-count"); }
-    var missing = ["evs-name","evs-company","evs-email","evs-city"].filter(function(id){ return !$(id).value.trim(); });
-    if (missing.length) { err.push("Please fill in your name, company, email and project city."); bad = bad.concat(missing); }
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($("evs-email").value.trim())) { err.push("Enter a valid email address."); bad.push("evs-email"); }
-    bad.forEach(function(id){ $(id).classList.add("evs-bad"); $(id).setAttribute("aria-invalid","true"); });
-    $("evs-error").textContent = err.join(" ");
-    if (err.length) { $(bad[0]).focus(); return; }
-
-    var d = {
-      service: service(), count: count, occ: $("evs-occ").value, speed: $("evs-speed").value,
-      addons: Array.prototype.map.call(root.querySelectorAll("#evs-addons-" + service() + " input:checked"), function(c){ return c.value; }),
-      name: $("evs-name").value.trim(), company: $("evs-company").value.trim(),
-      email: $("evs-email").value.trim(), city: $("evs-city").value.trim()
-    };
-
-    if (count > CONFIG.MAX_AUTO) {
-      $("evs-custom-msg").textContent = "Projects over " + CONFIG.MAX_AUTO.toLocaleString("en-US") + (d.service==="sp" ? " heads" : " devices") + " need a quick look at the drawings first. Send them to us and we will reply with a fixed price within 24 hours.";
-      sendLead("Custom quote needed — " + count.toLocaleString("en-US") + (d.service==="sp" ? " heads" : " devices") + " — " + d.company,
-        { name: d.name, company: d.company, email: d.email, project_city: d.city + ", FL", service: d.service==="sp" ? "Fire sprinkler" : "Fire alarm", count: count, note: "Over the instant-quote limit. Client was asked to send drawings for a fixed price." });
-      show("evs-custom"); return;
-    }
-
-    var q = calc(d), valid = new Date(); valid.setDate(valid.getDate() + CONFIG.VALID_DAYS);
-    lastQuote = { id: quoteId(), date: new Date().toLocaleDateString("en-US"), valid: valid.toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"}), total: q.total, lines: q.lines, data: d };
-
-    $("evs-qid").textContent = lastQuote.id;
-    $("evs-qvalid").textContent = lastQuote.valid;
-    $("evs-qprice").textContent = money(q.total);
-    $("evs-qsub").textContent = "Prepared for " + d.name + ", " + d.company + " · " + d.city + ", FL · " + lastQuote.date;
-    $("evs-qtable").innerHTML = q.lines.map(function(l){ return "<tr><td>" + esc(l[0]) + "</td><td>" + (l[1] < 0 ? "−" : "") + money(Math.abs(l[1])) + "</td></tr>"; }).join("")
-      + '<tr class="evs-total"><td>Total</td><td>' + money(q.total) + "</td></tr>";
-    $("evs-done").hidden = true; $("evs-done").classList.remove("evs-fail");
-    var acc = $("evs-accept"); acc.disabled = false; acc.textContent = "Request this job"; acc.classList.remove("evs-sent");
-
-    // Send us a copy of the quote first, then show the price.
-    var get = $("evs-get"), lq = lastQuote;
-    get.disabled = true; get.textContent = "Preparing your quote…";
-    var sent = sendLead("Quote viewed " + lq.id + " — " + money(lq.total) + " — " + d.company + " (not yet requested)",
-      { quote_id: lq.id, total: money(lq.total), valid_until: lq.valid, name: d.name, company: d.company, email: d.email, project_city: d.city + ", FL", quote: summary(lq) });
-    var wait = new Promise(function(res){ setTimeout(res, CONFIG.LEAD_WAIT_MS); });
-    Promise.race([sent, wait]).then(function(){
-      get.disabled = false; get.textContent = "Get my price";
-      if (lastQuote === lq) show("evs-result");
-    });
-  });
-
-  // Emails us a copy (AJAX, no page change). Resolves when done or failed, never rejects,
-  // so the visitor always gets their price. keepalive lets it finish if they leave the page.
-  var lastLeadKey = null;
-  function sendLead(subject, fields){
-    var key = JSON.stringify(fields, function(k, v){ return (k === "quote_id" || k === "valid_until") ? undefined : v; })
-      .replace(/EVS-Q[0-9A-Z-]+/g, "");
-    if (key === lastLeadKey) return Promise.resolve();   // same details as the last copy: don't email twice
-    lastLeadKey = key;
-    var body = new URLSearchParams();
-    body.append("_subject", subject); body.append("_template", "table"); body.append("_captcha", "false");
-    Object.keys(fields).forEach(function(k){ body.append(k, fields[k]); });
-    try {
-      return fetch(CONFIG.LEAD_ENDPOINT, { method: "POST", headers: { "Accept": "application/json" }, body: body, keepalive: true })
-        .then(function(){}, function(){});
-    } catch (e) { return Promise.resolve(); }
-  }
-
-  function summary(q){
-    var d = q.data;
-    return "Quote " + q.id + " (valid until " + q.valid + ")\n"
-      + "Total: " + money(q.total) + "\n\n"
-      + q.lines.map(function(l){ return "- " + l[0] + ": " + money(l[1]); }).join("\n") + "\n\n"
-      + "Name: " + d.name + "\nCompany: " + d.company + "\nEmail: " + d.email + "\nProject city: " + d.city + ", FL";
-  }
-
-  $("evs-accept").addEventListener("click", function(){
-    if (!lastQuote) return;
-    var btn = this, done = $("evs-done");
-    if (!CONFIG.FORM_ENDPOINT) {
-      window.location.href = "mailto:" + CONFIG.CONTACT_EMAIL + "?subject=" + encodeURIComponent("Sign & seal request — " + lastQuote.id)
-        + "&body=" + encodeURIComponent(summary(lastQuote) + "\n\nI will attach the drawings and calcs to this email.");
-      done.textContent = "Your email app should open with the quote filled in. Attach your drawings and send.";
-      done.hidden = false; return;
-    }
-    // Submit as a normal form post (like the contact form). FormSubmit only
-    // sends the client's confirmation email (_autoresponse) for normal posts,
-    // not for AJAX requests.
-    btn.disabled = true; btn.textContent = "Sending…";
-    var q = lastQuote, d = q.data;
-    var fields = {
-      _subject: "Instant quote " + q.id + " — " + money(q.total),
-      _template: "table",
-      _captcha: "true",
-      _next: CONFIG.THANK_YOU_URL,
-      _autoresponse: "Thanks for requesting a PE review, sign & seal from EverSafe Fire Protection. "
-        + "Your quote " + q.id + " is " + money(q.total) + " and is valid until " + q.valid + ". "
-        + "We will email you within 1 business day with a link to upload your drawings and calcs. "
-        + "Need us sooner? Call 386-837-4057. — EverSafe Fire Protection",
-      quote_id: q.id, total: money(q.total), valid_until: q.valid,
-      name: d.name, company: d.company, email: d.email, project_city: d.city + ", FL",
-      quote: summary(q),
-      _honey: ""
-    };
-    var f = document.createElement("form");
-    f.method = "POST"; f.action = CONFIG.FORM_ENDPOINT; f.hidden = true;
-    Object.keys(fields).forEach(function(k){
-      var i = document.createElement(k === "quote" ? "textarea" : "input");
-      if (k !== "quote") i.type = "hidden";
-      i.name = k; i.value = fields[k]; f.appendChild(i);
-    });
-    document.body.appendChild(f);
-    f.submit();
-  });
-
-  // If the visitor comes back with the browser's Back button, re-enable the request button
-  window.addEventListener("pageshow", function(e){
-    if (!e.persisted) return;
-    var b = $("evs-accept"); b.disabled = false; b.textContent = "Request this job";
-  });
-
-  $("evs-print").addEventListener("click", function(){ window.print(); });
-  $("evs-back").addEventListener("click", function(){ show("evs-form-card"); });
-  $("evs-back2").addEventListener("click", function(){ show("evs-form-card"); });
-})();
-</script>
       </div>
     </section>
     <section class="section" id="included">
@@ -625,7 +355,7 @@
       <div class="container cta-band-inner reveal">
         <div class="cta-band-copy">
           <h2>Stay Compliant. Stay EverSafe.</h2>
-          <p>Send plans or a project summary and you'll have a clear fixed-fee proposal, usually within one business day.</p>
+          <p>Send a project summary and you'll have a clear fixed-fee proposal, usually within one business day.</p>
         </div>
         <a class="btn btn-flame" href="#contact">Request a Proposal</a>
       </div>
@@ -636,7 +366,8 @@
       <div class="container contact-grid">
         <div class="contact-copy reveal">
           <h2>Let's talk about your next project</h2>
-          <p>Send plans or a short project summary and we'll get you a clear, fixed-fee proposal, usually within one business day.</p>
+          <p>Send a short project summary and we'll get you a clear, fixed-fee proposal, usually within one business day.</p>
+          <p>Need a PE seal on drawings you already have? <a class="contact-inline" href="/pe-stamping-plan-review.html#quote">Get an instant quote and upload them there</a>.</p>
           <div class="contact-methods">
             <a class="contact-method" href="tel:+13868374057">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
@@ -665,23 +396,44 @@
           <input type="hidden" name="_autoresponse" value="Thanks for reaching out to EverSafe Fire Protection. We've got your request and will follow up with a fixed-fee proposal, usually within one business day. Need us sooner? Call 386-837-4057. — EverSafe Fire Protection" />
           <div class="field">
             <label for="cf-name">Name</label>
-            <input type="text" id="cf-name" name="name" autocomplete="name" required />
+            <input type="text" id="cf-name" name="name" autocomplete="name" required aria-describedby="cf-name-err" />
+            <p class="field-error" id="cf-name-err" hidden></p>
+          </div>
+          <div class="field">
+            <label for="cf-company">Company</label>
+            <input type="text" id="cf-company" name="company" autocomplete="organization" required aria-describedby="cf-company-err" />
+            <p class="field-error" id="cf-company-err" hidden></p>
           </div>
           <div class="field">
             <label for="cf-email">Email</label>
-            <input type="email" id="cf-email" name="email" autocomplete="email" required />
+            <input type="email" id="cf-email" name="email" autocomplete="email" required aria-describedby="cf-email-err" />
+            <p class="field-error" id="cf-email-err" hidden></p>
           </div>
           <div class="field">
-            <label for="cf-phone">Phone</label>
-            <input type="tel" id="cf-phone" name="phone" autocomplete="tel" inputmode="tel" required />
+            <label for="cf-phone">Phone <span class="optional">(optional)</span></label>
+            <input type="tel" id="cf-phone" name="phone" autocomplete="tel" inputmode="tel" />
           </div>
           <div class="field">
-            <label for="cf-message">Project details <span class="optional">(optional)</span></label>
-            <textarea id="cf-message" name="message" rows="4" placeholder="Occupancy type, scope, location, timeline…"></textarea>
+            <label for="cf-need">What do you need?</label>
+            <select id="cf-need" name="need" required aria-describedby="cf-need-err">
+              <option value="">Choose one</option>
+              <option>Review and seal</option>
+              <option>Design</option>
+              <option>Code and analysis</option>
+              <option>Not sure</option>
+            </select>
+            <p class="field-error" id="cf-need-err" hidden></p>
+          </div>
+          <div class="field">
+            <label for="cf-message">Project details</label>
+            <textarea id="cf-message" name="message" rows="4" required aria-describedby="cf-message-err" placeholder="Occupancy type, scope, location, timeline"></textarea>
+            <p class="field-error" id="cf-message-err" hidden></p>
           </div>
           <!-- Spam honeypot: real users leave this empty -->
-          <input type="text" name="_honey" style="display:none" />
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <button type="submit" class="btn btn-flame btn-block" id="cfSubmit">Request a Proposal</button>
+          <p class="form-note" id="cfNote" role="status" aria-live="polite"></p>
+          <p class="form-privacy">We use your details only to answer your request. <a href="/privacy.html">Privacy</a></p>
         </form>
       </div>
     </section>
@@ -759,6 +511,7 @@
 
   
 
-  <script src="script.js?v=7"></script>
+  <script src="script.js?v=8"></script>
+  <script src="quote.js?v=1"></script>
 </body>
 </html>

@@ -1,0 +1,5 @@
+config.php
+eversafe-private/
+uploads/
+*.log
+.DS_Store

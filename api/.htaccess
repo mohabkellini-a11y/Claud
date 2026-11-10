@@ -1,0 +1,11 @@
+# The /api folder: only the endpoint scripts answer. Library code is not reachable.
+Options -Indexes
+<FilesMatch "^(lib\.php|cleanup\.php)$">
+  Require all denied
+</FilesMatch>
+RewriteEngine On
+RewriteRule ^vendor(/|$) - [R=404,L]
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow"
+  Header set Cache-Control "no-store"
+</IfModule>

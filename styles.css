@@ -439,13 +439,23 @@ a.contact-method:hover span { text-decoration: underline; text-underline-offset:
 .field { margin-bottom: 18px; }
 .field label { display: block; font-size: .86rem; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
 .field .optional { color: var(--slate-light); font-weight: 400; }
-.field input, .field textarea {
+.field input, .field textarea, .field select {
   width: 100%; font-family: inherit; font-size: 1rem; color: var(--ink);
   background: var(--bg); border: 1.5px solid var(--border); border-radius: 10px;
   padding: 13px 15px; transition: border-color .2s var(--ease), box-shadow .2s var(--ease), background .2s var(--ease);
 }
-.field input:focus, .field textarea:focus { outline: none; border-color: var(--blue); background: #fff; box-shadow: 0 0 0 4px rgba(2, 68, 121, .1); }
+.field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--blue); background: #fff; box-shadow: 0 0 0 4px rgba(2, 68, 121, .1); }
 .field textarea { resize: vertical; min-height: 96px; }
+.field select { min-height: 50px; cursor: pointer; }
+.field [aria-invalid="true"] { border-color: var(--red); }
+.field-error { margin-top: 6px; font-size: .86rem; font-weight: 600; color: var(--red); }
+.form-privacy { margin-top: 10px; font-size: .84rem; text-align: center; }
+.form-privacy a, .contact-inline { text-decoration: underline; text-underline-offset: 4px; padding-block: 13px; font-weight: 600; }
+.form-privacy a { color: var(--blue); }
+.contact-copy > p + p { margin-top: 12px; }
+.contact-inline { color: #fff; }
+.contact-form.sent > :not(.form-note) { display: none; }
+.contact-form.sent .form-note { font-size: 1.05rem; margin: 0; text-align: left; }
 .field input:user-invalid { border-color: var(--red); }
 .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
 .btn:disabled { opacity: .7; cursor: progress; }
