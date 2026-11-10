@@ -37,9 +37,9 @@
     }
     .card {
       position: relative; z-index: 1; width: 100%; max-width: 620px; text-align: center;
-      background: var(--blue-600); border: 1px solid rgba(255, 255, 255, .12);
+      background: rgba(255, 255, 255, .05); border: 1px solid rgba(255, 255, 255, .12);
       border-radius: 22px; padding: clamp(34px, 6vw, 60px) clamp(24px, 5vw, 56px);
-      box-shadow: 0 30px 70px rgba(0, 0, 0, .35);
+      backdrop-filter: blur(10px); box-shadow: 0 30px 70px rgba(0, 0, 0, .35);
     }
     .logo { height: 46px; width: auto; margin: 0 auto 30px; display: block; }
     .check {
@@ -62,10 +62,10 @@
     }
     .btn {
       display: inline-flex; align-items: center; gap: 9px; font-weight: 600; font-size: 1rem;
-      padding: 15px 30px; border-radius: 999px; color: #fff; background: var(--red);
+      padding: 15px 30px; border-radius: 999px; color: #fff; background: var(--grad-flame);
       box-shadow: 0 8px 22px rgba(195, 10, 43, .3); transition: transform .2s var(--ease), box-shadow .2s var(--ease);
     }
-    .btn:hover { background: var(--red-600); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(195, 10, 43, .38); }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(195, 10, 43, .38); }
     .btn svg { width: 18px; height: 18px; }
     .call { display: block; margin-top: 20px; font-size: .95rem; color: rgba(255, 255, 255, .85); }
     :focus-visible { outline: 3px solid #fff; outline-offset: 3px; border-radius: 6px; }
