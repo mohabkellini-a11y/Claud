@@ -280,6 +280,11 @@ p { color: var(--slate); }
 .trust-item { padding: clamp(28px, 4vw, 44px) 26px; text-align: center; border-right: 1px solid var(--border); }
 .trust-item:last-child { border-right: none; }
 .trust-num { display: block; font-size: clamp(1.3rem, 2.3vw, 1.7rem); font-weight: 700; line-height: 1.2; letter-spacing: -.01em; color: var(--blue); }
+/* Tablets and desktops: each trust bar headline stays on one line. Phones are unchanged. */
+@media (min-width: 768px) {
+  .trust-num { white-space: nowrap; font-size: clamp(.95rem, 1.85vw, 1.7rem); }
+  .trust-item { padding-inline: 14px; }
+}
 .trust-label { display: block; margin-top: 10px; font-size: .9rem; color: var(--slate); max-width: 280px; margin-inline: auto; }
 
 /* ---------- Services ---------- */
