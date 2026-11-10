@@ -71,6 +71,38 @@
     revealEls.forEach(function (el) { io.observe(el); });
   }
 
+  /* ---- Candlelight halo trailing the cursor in the Services section ---- */
+  var glow = document.getElementById("servicesGlow");
+  var glowSection = document.getElementById("services");
+  if (glow && glowSection && !reduceMotion &&
+      window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    var gx = 0, gy = 0, tx = 0, ty = 0, active = false, rafId = null;
+    function glowLoop() {
+      gx += (tx - gx) * 0.11;           // lag: ease toward the cursor
+      gy += (ty - gy) * 0.11;
+      var t = performance.now() / 320;  // gentle flame flicker
+      var flick = 1 + Math.sin(t) * 0.02 + Math.sin(t * 2.7) * 0.015;
+      var sway = Math.sin(t * 1.9) * 2 + Math.sin(t * 3.3) * 1;
+      glow.style.transform = "translate(" + gx.toFixed(1) + "px," + (gy - Math.abs(sway)).toFixed(1) + "px) scale(" + flick.toFixed(3) + ")";
+      rafId = requestAnimationFrame(glowLoop);
+    }
+    glowSection.addEventListener("mousemove", function (e) {
+      var r = glowSection.getBoundingClientRect();
+      tx = e.clientX - r.left;
+      ty = e.clientY - r.top;
+      if (!active) {
+        active = true; gx = tx; gy = ty;
+        glow.classList.add("on");
+        if (!rafId) glowLoop();
+      }
+    });
+    glowSection.addEventListener("mouseleave", function () {
+      active = false;
+      glow.classList.remove("on");
+      setTimeout(function () { if (!active && rafId) { cancelAnimationFrame(rafId); rafId = null; } }, 700);
+    });
+  }
+
   /* ---- Contact form ----
      Submits as a native HTML POST to FormSubmit.co (see index.html form
      action). A native submission is required for FormSubmit's autoresponse
