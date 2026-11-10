@@ -13,6 +13,14 @@ RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteRule ^ https://eversafe-fire.com%{REQUEST_URI} [R=301,L]
 
 # ----------------------------------------------------------
+# 1b. One address per page
+# /index.html goes to /   and   /thank-you/index.html goes to /thank-you/
+# THE_REQUEST is the address the visitor typed, so this cannot loop.
+# ----------------------------------------------------------
+RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
+RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L]
+
+# ----------------------------------------------------------
 # 2. Caching
 # Images and fonts cache for a long time.
 # HTML and the crawler files never cache, so new deploys

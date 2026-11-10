@@ -71,63 +71,6 @@
     revealEls.forEach(function (el) { io.observe(el); });
   }
 
-  /* ---- Count-up for numeric trust stats ---- */
-  var counters = document.querySelectorAll(".trust-num[data-count]");
-  function animateCount(el) {
-    var target = parseInt(el.getAttribute("data-count"), 10);
-    var suffix = el.getAttribute("data-suffix") || "";
-    if (reduceMotion || isNaN(target)) { return; }
-    var start = 0, dur = 1100, t0 = null;
-    function tick(ts) {
-      if (!t0) t0 = ts;
-      var p = Math.min((ts - t0) / dur, 1);
-      var val = Math.round(start + (target - start) * (1 - Math.pow(1 - p, 3)));
-      el.textContent = val + suffix;
-      if (p < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-  }
-  if ("IntersectionObserver" in window) {
-    var co = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) { animateCount(entry.target); co.unobserve(entry.target); }
-      });
-    }, { threshold: 0.6 });
-    counters.forEach(function (el) { co.observe(el); });
-  }
-
-  /* ---- Candlelight halo trailing the cursor in the Services section ---- */
-  var glow = document.getElementById("servicesGlow");
-  var glowSection = document.getElementById("services");
-  if (glow && glowSection && !reduceMotion &&
-      window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-    var gx = 0, gy = 0, tx = 0, ty = 0, active = false, rafId = null;
-    function glowLoop() {
-      gx += (tx - gx) * 0.11;           // lag: ease toward the cursor
-      gy += (ty - gy) * 0.11;
-      var t = performance.now() / 320;  // gentle flame flicker
-      var flick = 1 + Math.sin(t) * 0.02 + Math.sin(t * 2.7) * 0.015;
-      var sway = Math.sin(t * 1.9) * 2 + Math.sin(t * 3.3) * 1;
-      glow.style.transform = "translate(" + gx.toFixed(1) + "px," + (gy - Math.abs(sway)).toFixed(1) + "px) scale(" + flick.toFixed(3) + ")";
-      rafId = requestAnimationFrame(glowLoop);
-    }
-    glowSection.addEventListener("mousemove", function (e) {
-      var r = glowSection.getBoundingClientRect();
-      tx = e.clientX - r.left;
-      ty = e.clientY - r.top;
-      if (!active) {
-        active = true; gx = tx; gy = ty;
-        glow.classList.add("on");
-        if (!rafId) glowLoop();
-      }
-    });
-    glowSection.addEventListener("mouseleave", function () {
-      active = false;
-      glow.classList.remove("on");
-      setTimeout(function () { if (!active && rafId) { cancelAnimationFrame(rafId); rafId = null; } }, 700);
-    });
-  }
-
   /* ---- Contact form ----
      Submits as a native HTML POST to FormSubmit.co (see index.html form
      action). A native submission is required for FormSubmit's autoresponse
