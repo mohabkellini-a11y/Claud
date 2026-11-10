@@ -264,6 +264,9 @@ p { color: var(--slate); }
 @keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-11px); } }
 .code-chip { background: var(--surface-2); color: var(--blue); font-weight: 700; font-size: .75rem; letter-spacing: .04em; padding: 4px 8px; border-radius: 6px; }
 
+/* Last updated line (service pages and guides) */
+.updated { margin-top: 14px; font-size: .86rem; color: rgba(255, 255, 255, .85); }
+
 /* Breadcrumbs (inner page heroes) */
 .crumbs { font-size: .85rem; color: rgba(255, 255, 255, .88); margin-bottom: 8px; }
 .crumbs a { display: inline-block; padding: 12px 2px; color: rgba(255, 255, 255, .88); text-decoration: underline; text-decoration-color: rgba(255, 255, 255, .4); text-underline-offset: 3px; }
@@ -450,7 +453,7 @@ a.contact-method:hover span { text-decoration: underline; text-underline-offset:
 .field [aria-invalid="true"] { border-color: var(--red); }
 .field-error { margin-top: 6px; font-size: .86rem; font-weight: 600; color: var(--red); }
 .form-privacy { margin-top: 10px; font-size: .84rem; text-align: center; }
-.form-privacy a, .contact-inline { text-decoration: underline; text-underline-offset: 4px; padding-block: 13px; font-weight: 600; }
+.form-privacy a, .contact-inline { text-decoration: underline; text-underline-offset: 4px; padding-block: 15px; font-weight: 600; }
 .form-privacy a { color: var(--blue); }
 .contact-copy > p + p { margin-top: 12px; }
 .contact-inline { color: #fff; }

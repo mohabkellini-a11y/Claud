@@ -26,6 +26,7 @@ RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L]
 # ----------------------------------------------------------
 RewriteRule ^(tools|partials|\.github)(/|$) - [R=404,L]
 RewriteRule \.(md|py|sample\.php)$ - [R=404,L]
+RewriteRule ^\.gitignore$ - [R=404,L]
 
 # ----------------------------------------------------------
 # 2. Caching
@@ -54,6 +55,14 @@ RewriteRule \.(md|py|sample\.php)$ - [R=404,L]
   <FilesMatch "\.(txt|xml)$">
     Header set Cache-Control "no-cache, must-revalidate"
   </FilesMatch>
+</IfModule>
+
+# ----------------------------------------------------------
+# 2b. Compression
+# Text files are sent compressed, so pages load faster.
+# ----------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/xml application/javascript application/x-javascript application/json image/svg+xml
 </IfModule>
 
 # ----------------------------------------------------------

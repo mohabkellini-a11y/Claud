@@ -1,0 +1,852 @@
+# EverSafe Fire Protection: full site text
+
+> Florida fire protection engineering firm. FBPE Registry No. 40449. Based in Central Florida. Florida projects only. Phone 386-837-4057. Email info@eversafe-fire.com. Short index: https://eversafe-fire.com/llms.txt
+
+
+---
+Source: https://eversafe-fire.com/services.html
+
+Florida Licensed Fire Protection Engineering
+
+## Fire Protection Engineering Services in Florida
+
+A Florida-licensed Professional Engineer prepares or reviews every deliverable. You get sealed, permit-ready documents for projects across Central Florida and statewide.
+
+### Review and seal
+
+You have drawings. You need a Florida PE seal.
+
+### Plan Review & PE Stamping
+
+PE Seal · NFPA 13 / 72
+
+You made the drawings. We review them, fix code issues, and seal them. Your submittal gets the PE certification the AHJ requires.
+
+Best for: Design-build sprinkler and alarm contractors, and MEP firms without a fire protection engineer on staff.
+
+#### Third-Party Plan Review
+
+Independent review of sprinkler and fire alarm drawings against NFPA 13, NFPA 72, and the FBC.
+
+#### PE Sealing of Contractor Drawings
+
+Once the package is compliant, we sign and seal it for permit.
+
+#### AHJ Comment Response
+
+We answer plan review comments and revise the drawings until the comments are closed.
+
+You receive:
+- Marked-up review comments
+- Sealed drawing package
+- Written comment responses
+
+Plan review and PE stamping details
+Get an instant quote for PE review and seal
+
+### Design
+
+You need drawings and calculations.
+
+### Fire Sprinkler System Design
+
+NFPA 13 · FBC
+
+We design fire sprinkler systems for commercial, industrial, and mission-critical buildings. Drawings and calculations are PE-stamped and ready for permit.
+
+Best for: MEP firms, architects, and sprinkler contractors who need a sealed sprinkler design or delegated design.
+
+#### Sprinkler System Design
+
+Wet, dry, pre-action, and antifreeze systems. Full layout, riser, and equipment details.
+
+#### Hydraulic Calculations & Water Supply Analysis
+
+We size the system and check it against the available water supply and flow test data.
+
+#### High-Piled & Rack Storage Design
+
+Sprinkler design for warehouses and storage areas based on commodity, height, and arrangement.
+High-piled storage
+
+#### Delegated Design & Shop Drawings
+
+Sealed shop drawings for delegated-design submittals, coordinated with your architectural and MEP plans.
+
+You receive:
+- PE-stamped sprinkler drawings
+- Hydraulic calculation report
+- Permit submittal package
+
+Fire sprinkler system design details
+
+### Fire Alarm & Detection Design
+
+NFPA 72 · FBC
+
+We design complete fire alarm and detection systems. Every package includes the calculations and sequence the AHJ asks for.
+
+Best for: MEP firms, alarm contractors, and owners doing new construction or renovations.
+
+#### Device Layout & Riser Diagrams
+
+Detection, notification, and control device layout, plus a clear system riser.
+
+#### Battery & Voltage-Drop Calculations
+
+Standby and alarm battery sizing, and voltage-drop checks for each notification circuit.
+
+#### Sequence of Operations
+
+An input/output matrix that shows what each device does in an alarm.
+
+#### Sealed Submittal Packages
+
+Drawings, calculations, and data sheets, sealed and ready for permit.
+
+You receive:
+- PE-stamped fire alarm drawings
+- Battery and voltage-drop calculations
+- Sequence of operations matrix
+
+Fire alarm design details
+
+### Life Safety & Egress
+
+NFPA 101 · FBC
+
+We prepare life safety plans and egress analysis for permit. We show how people get out safely and how the building limits fire and smoke.
+
+Best for: Architects, owners, and healthcare or education facilities that need life safety sheets or a code evaluation.
+
+#### Life Safety Plans
+
+AHJ-ready life safety sheets for building permits and renovations.
+
+#### Egress & Occupancy Analysis
+
+Occupancy classification, occupant load, exit capacity, and travel distance.
+
+#### Fire & Smoke Barrier Plans
+
+Rated walls, smoke compartments, and opening protection shown clearly on plan.
+
+You receive:
+- Sealed life safety plan sheets
+- Egress and occupancy calculations
+
+Life safety and egress details
+
+### Special Hazards Design
+
+NFPA 855 · NFPA 2001
+
+We design fire protection for high-value and high-risk spaces.
+
+Best for: Data centers, battery energy storage, and facilities with unusual hazards.
+
+#### Data Centers & Mission-Critical Facilities
+
+Fire protection strategy for spaces where downtime is not an option.
+
+#### Energy Storage Systems (NFPA 855)
+
+Fire protection and code compliance for battery energy storage systems.
+
+#### Clean Agent Suppression (NFPA 2001)
+
+Clean agent system design for rooms that cannot use water.
+
+You receive:
+- Sealed design drawings or narrative
+- AHJ-ready documentation
+
+Special hazards design details
+
+### Code and analysis
+
+You need an answer or a report.
+
+### Code Consulting & Hazmat Compliance
+
+FFPC · FBC · IFC Ch. 50 · NFPA 101A · FBC 909
+
+We answer hard code questions and prepare hazmat documents for permit. We help you find a compliant path before design gets expensive. When prescriptive code is not enough, we use performance-based fire and smoke modeling.
+
+Best for: Owners, labs, manufacturers, and design teams with code conflicts, hazardous materials, or large open spaces.
+
+#### Fire Code Consulting
+
+Code analysis and clear answers on fire protection requirements for your building.
+
+#### Alternative Means & Methods
+
+Engineering support for AHJ requests when the code path does not fit your project.
+
+#### Hazardous Materials Inventory Statement (HMIS)
+
+Material classification and quantity tables by control area for hazmat permits.
+HMIS
+
+#### Maximum Allowable Quantity (MAQ) Analysis
+
+We compare your stored and used quantities to the limits in IFC Table 5003.1.1.
+MAQ analysis
+
+#### Fire Safety Evaluation System (FSES)
+
+NFPA 101A equivalency worksheets for existing buildings that cannot meet every prescriptive rule.
+
+#### Fire & Smoke Modeling
+
+Performance-based fire and smoke models to prove tenable conditions.
+Fire and smoke modeling
+
+#### Smoke Control Studies
+
+Smoke control rational analysis for atriums and other large spaces.
+Smoke control studies
+
+You receive:
+- Code analysis memo
+- HMIS tables and MAQ summary
+- AHJ-ready narrative
+- FSES worksheet, when needed
+- Modeling report with results
+
+Code and hazmat details
+
+### Which service do I need?
+
+If you need | Go to
+
+A PE seal on drawings your team already made | Review and seal: Plan Review & PE Stamping
+
+A new sprinkler design or hydraulic calcs | Design: Fire Sprinkler System Design
+
+A new fire alarm design | Design: Fire Alarm & Detection Design
+
+Life safety sheets or egress analysis | Design: Life Safety & Egress
+
+Data center, battery storage, or clean agent | Design: Special Hazards Design
+
+A code answer, an HMIS, or an MAQ check | Code and analysis: Code Consulting & Hazmat Compliance
+
+An FSES, fire and smoke modeling, or a smoke control study | Code and analysis: Code Consulting & Hazmat Compliance
+
+### Common questions
+
+#### What services does EverSafe Fire Protection offer?
+
+Review and seal: plan review and PE stamping. Design: fire sprinkler, fire alarm, life safety, and special hazards. Code and analysis: code consulting, hazmat compliance, and fire and smoke modeling.
+
+#### Where does EverSafe work?
+
+Central Florida and projects statewide across Florida.
+
+#### Are your drawings PE-stamped?
+
+Yes. A Florida-licensed Professional Engineer prepares or reviews every deliverable. Drawings are sealed and permit-ready.
+
+#### Can you seal drawings my company already made?
+
+Yes. We review your sprinkler or fire alarm drawings, send marked-up comments, and seal the package once it is compliant.
+
+#### How fast do I get a proposal?
+
+Send plans or a short project summary. You usually get a fixed-fee proposal within one business day.
+
+#### How do you charge?
+
+Per project, per sheet, or on an ongoing retainer.
+
+See all FAQs
+
+---
+Source: https://eversafe-fire.com/pe-stamping-plan-review.html
+
+PE Seal · Florida
+
+## Plan Review & PE Stamping in Florida
+
+EverSafe Fire Protection provides independent third-party plan review and PE sealing of fire sprinkler and fire alarm drawings for contractors and MEP firms. When your drawings need a Florida-licensed engineer's stamp to clear permitting, we review, correct, and seal them.
+
+Last updated: November 10, 2026
+
+What's Included
+
+### What's included
+
+- Independent review of sprinkler and fire alarm drawings for NFPA 13 / NFPA 72 and Florida Building Code compliance
+
+- Marked-up comments and coordination with your design team
+
+- PE sealing of compliant drawing packages
+
+- Support responding to AHJ plan review comments
+
+- Fast turnaround for permit-driven schedules
+
+Why It Matters
+
+### Why PE-stamped matters
+
+Many contractors prepare quality drawings in-house but cannot legally seal them — only a Florida-licensed professional engineer can. Third-party PE stamping gives your submittal the engineering certification the AHJ requires, without the cost of a full engineering department. Our review looks for code issues before the drawings go to the AHJ.
+
+---
+Source: https://eversafe-fire.com/fire-sprinkler-system-design.html
+
+NFPA 13 · Florida
+
+## Fire Sprinkler System Design in Florida
+
+EverSafe Fire Protection provides fire sprinkler system design for commercial, industrial, and mission-critical buildings across Florida. Our designs are prepared by a Florida-licensed fire protection engineer and delivered PE-stamped and permit-ready.
+
+Last updated: November 10, 2026
+
+What's Included
+
+### What's included
+
+- Wet, dry, pre-action, and antifreeze system layout and design
+
+- Hydraulic calculations and water supply analysis
+
+- Riser and equipment details coordinated with architectural and MEP plans
+
+- Design in accordance with NFPA 13 and the Florida Building Code
+
+- PE-stamped, permit-ready drawing packages
+
+Why It Matters
+
+### Why PE-stamped matters
+
+Most Florida jurisdictions require fire sprinkler drawings to bear the seal of a licensed professional engineer before a permit is issued. PE-stamped fire protection drawings clear plan review faster because the authority having jurisdiction (AHJ) can rely on the engineer's certification of code compliance. Our permit-ready packages reduce review cycles and keep your project schedule on track.
+
+---
+Source: https://eversafe-fire.com/high-piled-storage-florida.html
+
+NFPA 13 · IFC Ch. 32 · Florida
+
+## High-Piled Storage Fire Protection Design in Florida
+
+Warehouses and distribution centers live or die on their storage configuration. EverSafe evaluates your commodity classification, storage heights, and rack arrangements, then sets the sprinkler design criteria — density, ESFR, or in-rack — per NFPA 13 and IFC Chapter 32, so the design protects the actual hazard instead of the assumed one.
+
+Last updated: November 10, 2026
+
+What's Included
+
+### What's included
+
+- Commodity classification and storage arrangement review
+
+- Sprinkler design criteria: ESFR, density/area, or in-rack protection
+
+- Flue space, clearance, and aisle-width compliance checks
+
+- Smoke and heat vent / draft curtain coordination
+
+- High-piled storage permit plan support
+
+- Design criteria for racking changes and expansions
+
+Why It Matters
+
+### Why storage design is a specialty
+
+High-piled storage is where generic sprinkler designs fail — the wrong commodity class or a missed in-rack requirement shows up as an AHJ rejection or, worse, an unprotected rack. Engineer-set criteria before the shop drawings start keeps the project, and the building, protected.
+
+---
+Source: https://eversafe-fire.com/fire-alarm-system-design.html
+
+NFPA 72 · Florida
+
+## Fire Alarm & Detection Design in Florida
+
+EverSafe Fire Protection provides complete fire alarm and detection system design for commercial and institutional buildings throughout Florida. Our designs are prepared by a Florida-licensed fire protection engineer and delivered PE-stamped and permit-ready.
+
+Last updated: November 10, 2026
+
+What's Included
+
+### What's included
+
+- Fire alarm device layout for initiation, notification, and control devices
+
+- Riser diagrams and system sequence of operations
+
+- Battery and voltage-drop calculations
+
+- Design in accordance with NFPA 72 and the Florida Building Code
+
+- PE-stamped, permit-ready drawing packages
+
+Why It Matters
+
+### Why PE-stamped matters
+
+Florida AHJs routinely require fire alarm drawings to be signed and sealed by a licensed professional engineer. PE-stamped fire alarm design drawings demonstrate that calculations, device spacing, and system performance meet NFPA 72 requirements — which shortens plan review and avoids costly resubmittals.
+
+---
+Source: https://eversafe-fire.com/life-safety-plans-florida.html
+
+NFPA 101 · 101A · FBC · Florida
+
+## Life Safety & Egress in Florida
+
+EverSafe Fire Protection prepares life safety plan sheets and egress analysis for AHJ review. Our Florida-licensed fire protection engineer documents occupancy, egress, and compartmentation per the Florida Building Code and NFPA 101.
+
+Last updated: November 10, 2026
+
+What's Included
+
+### What's included
+
+- Occupancy classification and occupant load calculations
+
+- Egress paths, exits, and exit-discharge documentation
+
+- Fire and smoke barrier / compartmentation plans
+
+- Travel distance, common-path, and dead-end analysis
+
+- Areas of refuge and accessible egress coordination
+
+- Coordination with the architect’s permit plan set
+
+- Fire Safety Evaluation System (FSES) worksheets per NFPA 101A for existing buildings
+
+Why It Matters
+
+### Why life safety plans hold up permits
+
+Most AHJ plan-review comments trace back to incomplete life safety documentation — missing occupant loads, unproven travel distances, or barrier ratings that don’t match the occupancy. A sealed life safety analysis answers those questions before the reviewer asks them, cutting a review cycle out of your permit timeline.
+
+---
+Source: https://eversafe-fire.com/special-hazards-design-florida.html
+
+NFPA 855 · 2001 · Florida
+
+## Special Hazards & Fire Modeling in Florida
+
+EverSafe Fire Protection provides fire protection design for mission-critical and special hazard facilities across Florida, including data centers and energy storage systems. These occupancies carry fire risks that standard sprinkler design doesn't address — we engineer the right protection for the hazard.
+
+Last updated: November 10, 2026
+
+What's Included
+
+### What's included
+
+- Fire protection design for data centers and mission-critical facilities
+
+- Energy storage system protection in accordance with NFPA 855
+
+- Clean agent suppression system design
+
+- Hazard analysis and suppression system selection
+
+- PE-stamped, permit-ready drawing packages
+
+- Fire and smoke modeling (FDS/CFD) — fire & smoke modeling
+
+- Smoke control studies — smoke control studies
+
+Why It Matters
+
+### Why PE-stamped matters
+
+Special hazard systems — clean agents, energy storage protection, mission-critical suppression — involve complex chemistry, physics, and code requirements. AHJs scrutinize these submittals closely. PE-stamped drawings from a Florida-licensed fire protection engineer give the reviewer confidence that the system is engineered for the specific hazard, not just copied from a template.
+
+---
+Source: https://eversafe-fire.com/fire-code-consulting-florida.html
+
+FFPC · FBC · IFC Ch. 50
+
+## Code Consulting & Hazmat Compliance in Florida
+
+EverSafe Fire Protection provides fire code consulting and hazmat compliance across Florida. We answer hard code questions and prepare hazmat documents for permit. A Florida-licensed fire protection engineer leads every project.
+
+Last updated: November 10, 2026
+
+What's Included
+
+### What's included
+
+- Fire code analysis for new and existing buildings
+
+- Alternative means, methods, and equivalency reports
+
+- Hazardous Materials Inventory Statements (HMIS) — HMIS inventory statements
+
+- Maximum Allowable Quantity (MAQ) analysis per IFC Table 5003.1.1 — MAQ analysis
+
+- Support during AHJ meetings and appeals
+
+Why It Matters
+
+### Why PE-stamped matters
+
+Code consulting carries weight when it is backed by a licensed professional engineer. Our equivalency reports and compliance studies bear a Florida PE seal, which gives AHJs confidence in the engineering basis of the analysis and strengthens your position in code discussions.
+
+---
+Source: https://eversafe-fire.com/hmis-inventory-statement-florida.html
+
+IFC Ch. 50 · FBC · Florida
+
+## Hazardous Materials Inventory Statements (HMIS) in Florida
+
+When your project stores or uses hazardous materials, the AHJ wants an inventory statement before the permit moves. EverSafe prepares HMIS documentation listing material classifications, quantities, and storage/use locations per the Florida Building Code and IFC Chapter 50 — the deliverable hazmat permits are built on.
+
+Last updated: November 10, 2026
+
+What's Included
+
+### What's included
+
+- Hazardous material classification per IFC
+
+- Quantity tabulation by storage and use, per control area
+
+- Storage vs. in-use quantities and conditions of use
+
+- Location plans tied to your floor layouts
+
+- Coordination with MAQ analysis and hazmat permit applications
+
+Why It Matters
+
+### Why the inventory statement matters
+
+The HMIS is the AHJ’s first read on your hazmat risk. A complete, engineer-prepared statement shortens hazmat permit review and gives your MAQ analysis and permit application a defensible technical basis.
+
+---
+Source: https://eversafe-fire.com/maq-analysis-florida.html
+
+IFC 5003 · FBC · Florida
+
+## Maximum Allowable Quantity (MAQ) Analysis in Florida
+
+Exceed the maximum allowable quantity in a control area and the occupancy classification changes — with it, the construction type, fire protection, and permit path. EverSafe runs the MAQ analysis per IFC Table 5003.1.1, accounting for sprinkler and storage-cabinet increases, so you know exactly where your project stands before the AHJ decides for you.
+
+Last updated: November 10, 2026
+
+What's Included
+
+### What's included
+
+- Control-area quantity analysis against MAQ tables
+
+- Sprinkler and approved storage-cabinet quantity increases
+
+- Storage vs. use and open vs. closed system breakdowns
+
+- H-occupancy determination support
+
+- Recommendations: subdivide control areas or reduce quantities
+
+- Sealed report for AHJ and permit submittal
+
+Why It Matters
+
+### Why MAQ analysis decides the project
+
+MAQ is the hinge between a standard occupancy and a high-hazard one. Getting it right early tells you whether the design needs another control area, a different occupancy, or nothing at all — a decision worth making on paper, not in plan review.
+
+---
+Source: https://eversafe-fire.com/fire-smoke-modeling-florida.html
+
+FDS / CFD · Florida
+
+## Fire & Smoke Modeling (FDS/CFD) in Florida
+
+EverSafe Fire Protection provides performance-based fire and smoke modeling using Fire Dynamics Simulator (FDS), a computational fluid dynamics (CFD) tool. We serve architects, engineers, and building owners across Florida on projects where prescriptive code solutions don't fit.
+
+Last updated: November 10, 2026
+
+What's Included
+
+### What's included
+
+- FDS/CFD modeling of fire growth, smoke movement, and tenability
+
+- Smoke control system analysis and verification
+
+- Tenability studies for egress and occupant safety
+
+- Performance-based design documentation for AHJ submittal
+
+- Coordination with the design team and the AHJ on acceptance criteria
+
+Why It Matters
+
+### Why PE-stamped matters
+
+Performance-based designs ask the AHJ to accept an engineered solution in place of a prescriptive one. A Florida-licensed fire protection engineer's seal on the modeling report signals that the analysis follows accepted engineering practice.
+
+---
+Source: https://eversafe-fire.com/smoke-studies-florida.html
+
+NFPA 92 · FBC · Florida
+
+## Smoke Control Studies & Smoke Management in Florida
+
+Atriums, malls, high-rises, and underground spaces need engineered proof that smoke stays manageable. EverSafe performs smoke control studies — rational analysis, pressurization design, and exhaust sizing per NFPA 92 — and backs them with CFD modeling when the AHJ wants to see the smoke move.
+
+Last updated: November 10, 2026
+
+What's Included
+
+### What's included
+
+- Smoke control rational analysis per NFPA 92
+
+- Stairwell and elevator hoistway pressurization design
+
+- Atrium and large-volume smoke exhaust studies
+
+- Tenability and smoke-layer analysis
+
+- Coordination with mechanical design and commissioning
+
+- CFD-backed studies via our fire & smoke modeling service
+
+Why It Matters
+
+### Why smoke studies need an engineer
+
+Smoke control is performance-based by nature — the AHJ approves the analysis, not just the equipment. A sealed rational analysis with modeled tenability gives reviewers the engineering basis they are looking for.
+
+---
+Source: https://eversafe-fire.com/for-mep-firms.html
+
+For MEP Firms
+
+## Fire protection engineering for MEP firms
+
+For MEP firms with no fire protection engineer on staff. We prepare or review the fire protection scope and seal it. You get sealed, permit-ready documents for Florida projects.
+
+### What you can hand to us
+
+- Fire sprinkler design with hydraulic calculations and water supply analysis, per NFPA 13.
+
+- Fire alarm and detection design with battery and voltage-drop calculations, per NFPA 72.
+
+- Life safety plans and egress analysis, per the FBC and NFPA 101.
+
+- Plan review and PE seal for sprinkler or fire alarm drawings your team already made.
+
+- Fire code consulting, HMIS, and MAQ analysis.
+
+- Special hazards design and fire and smoke modeling.
+
+### How we fit in your permit set
+
+We produce the drawings, calculations, model, or report, and coordinate with your team as we go. Delegated-design drawings are coordinated with your architectural and MEP plans.
+
+Every document passes an internal quality review before it is signed and sealed for submittal. If the AHJ sends comments, we answer them and revise the drawings.
+
+### How we charge
+
+Per project, per sheet, or on an ongoing retainer. Send a project summary and you usually get a fixed-fee proposal within one business day.
+
+PE review and seal has an instant quote. Standard turnaround is 5 business days. 48 hour and 24 hour rush are available.
+
+### One point of contact
+
+You work directly with the engineer of record from proposal to permit.
+
+---
+Source: https://eversafe-fire.com/for-general-contractors.html
+
+For General Contractors
+
+## Fire protection engineering for general contractors
+
+We help Florida general contractors get fire protection submittals sealed and ready for the AHJ. Send what you have and you usually get a fixed-fee proposal within one business day.
+
+### Sealed delegated-design submittals
+
+We prepare sealed shop drawings for delegated-design submittals. The drawings are coordinated with your architectural and MEP plans. See fire sprinkler design and fire alarm design.
+
+### PE seal on a subcontractor's shop drawings
+
+Your sprinkler or alarm subcontractor made the drawings. We review them against NFPA 13, NFPA 72, and the FBC, mark up code issues, and seal the compliant package. Use the instant quote to see the price. Standard turnaround is 5 business days. 48 hour and 24 hour rush are available.
+
+### Life safety plans
+
+We prepare life safety plan sheets and egress analysis for building permits and renovations.
+
+### AHJ comment response
+
+We answer plan review comments and revise the drawings until the comments are closed.
+
+### Code questions during construction
+
+When a code question comes up on site, we give you a code analysis and a clear answer. See fire code consulting.
+
+---
+Source: https://eversafe-fire.com/about.html
+
+About
+
+## About EverSafe Fire Protection
+
+EverSafe Fire Protection is a Florida fire protection engineering firm. We design, review, and seal fire protection and life safety documents for projects across Florida.
+
+### Our mission
+
+We protect people, property, and operations through engineered fire safety.
+
+### The firm
+
+- RegistrationFBPE Registry No. 40449. Registered Florida engineering firm.
+
+- Based inCentral Florida
+
+- Service areaAll of Florida. Florida projects only.
+
+- Who we serveMEP engineering firms, general contractors, sprinkler and alarm contractors, architects, and building owners.
+
+- Phone386-837-4057
+
+- Emailinfo@eversafe-fire.com
+
+### What we do
+
+Our work falls in three groups. See all services for details.
+
+- Review and seal. You have drawings. You need a Florida PE seal.
+
+- Design. You need drawings and calculations.
+
+- Code and analysis. You need an answer or a report.
+
+### How we work
+
+#### 1. Scope and proposal
+
+Send plans or a project summary. You get a clear fixed-fee proposal, usually within one business day.
+
+#### 2. Design and analysis
+
+We produce the drawings, calculations, model, or report, coordinated with your team as we go.
+
+#### 3. QC and PE seal
+
+Every document passes an internal quality review before it is signed and sealed for submittal.
+
+#### 4. Permit support
+
+We answer AHJ comments and revise the drawings until the comments are closed.
+
+### Our values
+
+#### Precision
+
+There is no room for guesswork in fire protection.
+
+#### Ownership
+
+We take full ownership of the work.
+
+#### Assurance
+
+We stand behind our seal.
+
+---
+Source: https://eversafe-fire.com/faq.html
+
+FAQs · Florida
+
+## Fire Protection Engineering FAQs
+
+Straight answers to the questions Florida contractors, MEP firms, architects, and building owners ask us about fire protection engineering, permitting, and PE-stamped deliverables.
+
+#### Who can stamp fire sprinkler drawings in Florida?
+
+Only a professional engineer licensed in the State of Florida can sign and seal fire sprinkler drawings submitted for permit. Most Florida jurisdictions require the PE seal on sprinkler and fire alarm plans before they will issue a permit. EverSafe Fire Protection is a Florida-licensed fire protection engineering practice, and all of our drawing packages are PE-stamped and permit-ready.
+
+#### What does a fire protection engineer do?
+
+A fire protection engineer designs the systems that detect, suppress, and control fire in buildings — primarily fire sprinkler and fire alarm systems. The work includes system layout, hydraulic and electrical calculations, code compliance analysis, and sealing drawings for permit. Fire protection engineers also perform code consulting, risk analysis, and performance-based design such as fire and smoke modeling.
+
+#### How much does fire sprinkler system design cost?
+
+Design fees depend on building size, system complexity, and how complete the architectural and MEP backgrounds are. EverSafe works on a fixed-fee basis, so you know the price before we start. Send us your project details through our proposal form and we will respond with a fixed-fee quote — typical turnaround is 1 day.
+
+#### How long does fire alarm design take?
+
+It depends on the size and complexity of the building and the quality of the background drawings provided. Straightforward commercial projects move quickly; large or phased projects take longer. We give you a schedule with every fixed-fee proposal, and we prioritize permit-driven deadlines.
+
+#### What do you need from me to prepare a proposal?
+
+A brief description of the project is enough to start: building type and size, location in Florida, which services you need (sprinkler design, alarm design, stamping, consulting), and your permit timeline. If you have architectural backgrounds or plans, attach them — but they are not required for an initial quote.
+
+#### Do you serve clients outside Central Florida?
+
+Yes. We are based in Central Florida and serve clients statewide, including the Orlando, Tampa, Miami, and Jacksonville markets. All coordination can be handled remotely, and our PE-stamped deliverables are accepted by AHJs throughout Florida.
+
+#### What is a third-party plan review?
+
+A third-party plan review is an independent engineering review of fire protection drawings prepared by someone else — typically a contractor or MEP firm. We check the drawings against NFPA 13, NFPA 72, and the Florida Building Code, mark up any issues, and then PE-seal the compliant package so it can be submitted for permit.
+
+#### What codes do you design to?
+
+We design to the Florida Building Code and the NFPA standards it references, including NFPA 13 (sprinkler systems), NFPA 72 (fire alarm systems), NFPA 101 (life safety), NFPA 80 (fire doors), NFPA 92 (smoke control), and NFPA 855 (energy storage systems), as applicable to each project.
+
+#### What is fire and smoke modeling used for?
+
+Fire and smoke modeling uses computational fluid dynamics (FDS/CFD) software to simulate how fire and smoke behave in a building. It is used for performance-based designs where prescriptive code doesn't fit — such as atria, large open spaces, and complex smoke control systems — and to demonstrate to the AHJ that occupants can safely egress.
+
+#### Do you design for energy storage systems and data centers?
+
+Yes. We provide fire protection design for mission-critical facilities including data centers and energy storage systems, designed in accordance with NFPA 855 where applicable. This includes hazard analysis, suppression system selection, and clean agent system design, all PE-stamped and permit-ready.
+
+#### What happens if the AHJ rejects the drawings?
+
+Our process includes permit support. If the AHJ sends comments, we answer them and revise the drawings.
+
+#### How fast can I get a proposal?
+
+Our typical fixed-fee proposal turnaround is 1 day. Submit the Request a Proposal form with your project details, or call 386-837-4057 / email info@eversafe-fire.com, and we will respond with a fixed-fee quote and schedule.
+
+#### How do I upload my drawings?
+
+Use the instant quote for PE review and seal. After the price shows, an upload area appears on the same page. Add your drawings and calcs, then press Request this job. Upload is optional.
+
+#### What files do you need for a PE review?
+
+Your drawings and calculations. We accept PDF, DWG, DXF, RVT, ZIP, JPG, and PNG files. Each file can be up to 100 MB, with up to 20 files and 500 MB per quote.
+
+#### Is my drawing set kept private?
+
+Yes. Uploaded files are stored privately and are not public. Only EverSafe can open them. Files are deleted from the website server after 90 days.
+
+#### Do you work outside Florida?
+
+No. We work on Florida projects only. We are based in Central Florida and serve all of Florida.
+
+#### What is your Florida registry number?
+
+FBPE Registry No. 40449. EverSafe Fire Protection is a registered Florida engineering firm.
+
+Our Services
+
+### Our services
+
+- Review and seal: Plan Review & PE Stamping
+
+- Design: Fire Sprinkler System Design
+
+- Design: Fire Alarm & Detection Design
+
+- Design: Life Safety & Egress
+
+- Design: Special Hazards Design
+
+- Code and analysis: Code Consulting & Hazmat Compliance
+
+- Code and analysis: Fire & Smoke Modeling
+
+See all services

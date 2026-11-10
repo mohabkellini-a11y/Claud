@@ -9,7 +9,7 @@ Services are organized in three groups.
 ### 1. Review and seal
 You have drawings. You need a Florida PE seal.
 - [Plan Review & PE Stamping](https://eversafe-fire.com/pe-stamping-plan-review.html): Third-party review and PE sealing of contractor sprinkler and fire alarm drawings. AHJ comment response.
-- [Instant quote](https://eversafe-fire.com/pe-stamping-plan-review.html#quote): Price for PE review, sign and seal in under a minute. Quotes are valid for 7 days. Standard turnaround is 5 business days. 48 hour and 24 hour rush are available.
+- [Instant quote and drawing upload](https://eversafe-fire.com/pe-stamping-plan-review.html#quote): Price for PE review, sign and seal in under a minute. After the price shows, you can upload drawings and calcs on the same page (PDF, DWG, DXF, RVT, ZIP, JPG, PNG; up to 100 MB per file, 20 files and 500 MB per quote). Files are stored privately and deleted after 90 days. Quotes are valid for 7 days. Standard turnaround is 5 business days. 48 hour and 24 hour rush are available.
 
 ### 2. Design
 You need drawings and calculations.
@@ -44,6 +44,7 @@ You need an answer or a report.
 - [Life Safety Plan Requirements in Florida](https://eversafe-fire.com/life-safety-plan-requirements-florida.html): What a life safety plan covers and when one is required.
 
 ## More
+- [Full site text for AI assistants](https://eversafe-fire.com/llms-full.txt)
 - [All Services](https://eversafe-fire.com/services.html)
 - [About](https://eversafe-fire.com/about.html)
 - [FAQ](https://eversafe-fire.com/faq.html)
