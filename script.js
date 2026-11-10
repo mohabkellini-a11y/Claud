@@ -19,39 +19,53 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* ---- Dropdown menu ---- */
+  /* ---- Primary navigation ----
+     Sub-menus open on click, Enter or Space (they are buttons). Escape closes.
+     Below 1024px the hamburger shows the whole menu as one panel. */
   var toggle = document.getElementById("navToggle");
-  var menuPanel = document.getElementById("menuPanel");
-  function openMenu() {
-    menuPanel.classList.add("open");
-    toggle.setAttribute("aria-expanded", "true");
-    toggle.setAttribute("aria-label", "Close menu");
+  var nav = document.getElementById("siteNav");
+  var subBtns = nav ? Array.prototype.slice.call(nav.querySelectorAll(".nav-btn")) : [];
+  function closeSubs(except) {
+    subBtns.forEach(function (b) { if (b !== except) b.setAttribute("aria-expanded", "false"); });
   }
   function closeMenu() {
-    menuPanel.classList.remove("open");
+    if (!nav || !toggle) return;
+    nav.classList.remove("open");
     toggle.setAttribute("aria-expanded", "false");
     toggle.setAttribute("aria-label", "Open menu");
   }
-  if (toggle && menuPanel) {
+  subBtns.forEach(function (b) {
+    b.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var open = b.getAttribute("aria-expanded") === "true";
+      closeSubs(b);
+      b.setAttribute("aria-expanded", open ? "false" : "true");
+    });
+  });
+  if (toggle && nav) {
     toggle.addEventListener("click", function (e) {
       e.stopPropagation();
-      if (toggle.getAttribute("aria-expanded") === "true") closeMenu();
-      else openMenu();
+      if (toggle.getAttribute("aria-expanded") === "true") { closeMenu(); closeSubs(); }
+      else {
+        nav.classList.add("open");
+        toggle.setAttribute("aria-expanded", "true");
+        toggle.setAttribute("aria-label", "Close menu");
+      }
     });
-    menuPanel.querySelectorAll("a").forEach(function (a) {
-      a.addEventListener("click", closeMenu);
+    nav.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () { closeSubs(); closeMenu(); });
     });
     document.addEventListener("click", function (e) {
-      if (menuPanel.classList.contains("open") &&
-          !menuPanel.contains(e.target) && !toggle.contains(e.target)) {
-        closeMenu();
-      }
+      if (!nav.contains(e.target) && !toggle.contains(e.target)) { closeSubs(); closeMenu(); }
     });
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && menuPanel.classList.contains("open")) {
-        closeMenu();
-        toggle.focus();
-      }
+      if (e.key !== "Escape") return;
+      var openBtn = subBtns.filter(function (b) { return b.getAttribute("aria-expanded") === "true"; })[0];
+      if (openBtn) { closeSubs(); openBtn.focus(); }
+      else if (nav.classList.contains("open")) { closeMenu(); toggle.focus(); }
+    });
+    nav.addEventListener("focusout", function (e) {
+      if (e.relatedTarget && !nav.contains(e.relatedTarget) && window.matchMedia("(min-width: 1024px)").matches) closeSubs();
     });
   }
 

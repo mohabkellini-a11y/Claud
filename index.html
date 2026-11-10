@@ -32,7 +32,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <script>document.documentElement.classList.add("js");</script>
-  <link rel="stylesheet" href="styles.css?v=8" />
+  <link rel="stylesheet" href="styles.css?v=9" />
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -50,12 +50,112 @@
     "@type": "OfferCatalog",
     "name": "Fire Protection Engineering Services",
     "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Fire Sprinkler System Design (NFPA 13)", "url": "https://eversafe-fire.com/fire-sprinkler-system-design.html" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Fire Alarm and Detection Design (NFPA 72)", "url": "https://eversafe-fire.com/fire-alarm-system-design.html" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Life Safety and Egress (NFPA 101, NFPA 101A)", "url": "https://eversafe-fire.com/life-safety-plans-florida.html" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Plan Review and PE Stamping", "url": "https://eversafe-fire.com/pe-stamping-plan-review.html" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Code Consulting and Hazmat Compliance (FFPC, IFC Chapter 50)", "url": "https://eversafe-fire.com/fire-code-consulting-florida.html" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Special Hazards and Fire Modeling (NFPA 855, NFPA 2001)", "url": "https://eversafe-fire.com/special-hazards-design-florida.html" } }
+      {
+        "@type": "OfferCatalog",
+        "name": "Review and seal",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Plan Review and PE Stamping",
+              "url": "https://eversafe-fire.com/pe-stamping-plan-review.html"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "Design",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Fire Sprinkler System Design (NFPA 13)",
+              "url": "https://eversafe-fire.com/fire-sprinkler-system-design.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "High-Piled and Rack Storage Design",
+              "url": "https://eversafe-fire.com/high-piled-storage-florida.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Fire Alarm and Detection Design (NFPA 72)",
+              "url": "https://eversafe-fire.com/fire-alarm-system-design.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Life Safety Plans and Egress (NFPA 101)",
+              "url": "https://eversafe-fire.com/life-safety-plans-florida.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Special Hazards Design (NFPA 855, NFPA 2001)",
+              "url": "https://eversafe-fire.com/special-hazards-design-florida.html"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "Code and analysis",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Fire Code Consulting (FBC, FFPC)",
+              "url": "https://eversafe-fire.com/fire-code-consulting-florida.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Hazardous Materials Inventory Statement (IFC Chapter 50)",
+              "url": "https://eversafe-fire.com/hmis-inventory-statement-florida.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Maximum Allowable Quantity Analysis",
+              "url": "https://eversafe-fire.com/maq-analysis-florida.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Fire and Smoke Modeling",
+              "url": "https://eversafe-fire.com/fire-smoke-modeling-florida.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Smoke Control Studies",
+              "url": "https://eversafe-fire.com/smoke-studies-florida.html"
+            }
+          }
+        ]
+      }
     ]
   }
 }
@@ -64,12 +164,63 @@
 <body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ============ HEADER ============ -->
+  <!-- HEADER:START -->
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
-      <a href="#top" class="brand" aria-label="EverSafe Fire Protection home">
-        <img class="brand-logo" src="assets/eversafe-logo.png" alt="EverSafe Fire Protection" width="815" height="278" />
+      <a href="/" class="brand" aria-label="EverSafe Fire Protection home">
+        <img class="brand-logo" src="/assets/eversafe-logo.png" alt="EverSafe Fire Protection" width="815" height="278" />
       </a>
+
+      <nav class="site-nav" id="siteNav" aria-label="Primary">
+        <ul class="nav-list">
+          <li class="has-sub">
+            <button type="button" class="nav-btn" aria-expanded="false" aria-controls="sub-services">Services</button>
+            <div class="sub-panel sub-wide" id="sub-services">
+              <div class="sub-col">
+                <p class="sub-title">Review and seal</p>
+                <p class="sub-lead">You have drawings. You need a Florida PE seal.</p>
+                <a href="/pe-stamping-plan-review.html">Plan review and PE seal</a>
+                <a href="/pe-stamping-plan-review.html#quote">Instant quote</a>
+              </div>
+              <div class="sub-col">
+                <p class="sub-title">Design</p>
+                <p class="sub-lead">You need drawings and calculations.</p>
+                <a href="/fire-sprinkler-system-design.html">Fire sprinkler design</a>
+                <a href="/high-piled-storage-florida.html">High-piled storage</a>
+                <a href="/fire-alarm-system-design.html">Fire alarm design</a>
+                <a href="/life-safety-plans-florida.html">Life safety plans</a>
+                <a href="/special-hazards-design-florida.html">Special hazards design</a>
+              </div>
+              <div class="sub-col">
+                <p class="sub-title">Code and analysis</p>
+                <p class="sub-lead">You need an answer or a report.</p>
+                <a href="/fire-code-consulting-florida.html">Fire code consulting</a>
+                <a href="/hmis-inventory-statement-florida.html">HMIS</a>
+                <a href="/maq-analysis-florida.html">MAQ analysis</a>
+                <a href="/fire-smoke-modeling-florida.html">Fire and smoke modeling</a>
+                <a href="/smoke-studies-florida.html">Smoke control studies</a>
+              </div>
+              <a class="sub-all" href="/services.html">All services</a>
+            </div>
+          </li>
+          <li><a class="nav-link" href="/pe-stamping-plan-review.html#quote">Instant Quote</a></li>
+          <li class="has-sub">
+            <button type="button" class="nav-btn" aria-expanded="false" aria-controls="sub-serve">Who We Serve</button>
+            <div class="sub-panel" id="sub-serve">
+              <a href="/for-mep-firms.html">For MEP Firms</a>
+              <a href="/for-general-contractors.html">For General Contractors</a>
+            </div>
+          </li>
+          <li class="has-sub">
+            <button type="button" class="nav-btn" aria-expanded="false" aria-controls="sub-resources">Resources</button>
+            <div class="sub-panel" id="sub-resources">
+              <a href="/guides.html">Guides</a>
+              <a href="/faq.html">FAQ</a>
+            </div>
+          </li>
+          <li><a class="nav-link" href="/about.html">About</a></li>
+        </ul>
+      </nav>
 
       <div class="header-actions">
         <a class="phone-link" href="tel:+13868374057" aria-label="Call EverSafe at 386-837-4057">
@@ -77,21 +228,13 @@
           <span class="phone-num">386-837-4057</span>
         </a>
         <a class="btn btn-primary" href="#contact"><span class="lbl-full">Request a Proposal</span><span class="lbl-compact">Get Proposal</span></a>
-        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="menuPanel">
+        <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
           <span></span><span></span><span></span>
         </button>
       </div>
-
-      <nav class="menu-panel" id="menuPanel" aria-label="Primary">
-        <a href="/services.html">Services</a>
-        <a href="#why">Why EverSafe</a>
-        <a href="#process">Process</a>
-        <a href="#clients">Who We Serve</a>
-        <a href="/faq.html">FAQ</a>
-        <a href="#contact">Contact</a>
-      </nav>
     </div>
   </header>
+  <!-- HEADER:END -->
 
   <main id="main">
     <!-- ============ HERO ============ -->
@@ -116,7 +259,8 @@
       <div class="container hero-inner">
         <div class="hero-copy reveal">
           <span class="eyebrow eyebrow-light">Florida Licensed Professional Engineering</span>
-          <h1>Protection you can trust.<br /><span class="accent-text">Compliance you can prove.</span></h1>
+          <h1>Fire protection engineering for Florida projects</h1>
+          <p class="hero-tagline">Protection you can trust. <span class="accent-text">Compliance you can prove.</span></p>
           <p class="hero-lead">
             EverSafe Fire Protection is a Florida-licensed professional engineering practice delivering
             PE-stamped fire protection design, third-party plan review, and life safety consulting.
@@ -124,7 +268,7 @@
           </p>
           <div class="hero-cta">
             <a class="btn btn-flame" href="#contact">Request a Proposal</a>
-            <a class="btn btn-ghost" href="#services">Explore Our Services</a>
+            <a class="btn btn-ghost" href="/pe-stamping-plan-review.html#quote">Get an instant quote for PE review and seal</a>
           </div>
           <ul class="hero-badges">
             <li>NFPA 13 &amp; 72 Design</li>
@@ -172,82 +316,58 @@
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">What We Do</span>
-          <h2>Fire protection engineering, end to end</h2>
-          <p class="section-sub">Six core services: fire sprinkler design, fire alarm design, life safety and egress, plan review and PE stamping, code and hazmat compliance, and special hazards and fire modeling. Every deliverable is sealed and permit-ready for MEP firms, architects, contractors, and building owners.</p>
+          <h2>Fire protection engineering services</h2>
+          <p class="section-sub">Every deliverable is sealed and permit-ready for MEP firms, architects, contractors, and building owners.</p>
         </div>
 
-        <div class="service-grid">
-          <!-- 1 : Sprinkler -->
-          <article class="service-card reveal">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3.5 4.5 6 7 6 10.5A6 6 0 0 1 6 13.5C6 10 8.5 7.5 12 3Z"/><path d="M12 21v-3M8.6 20.2l1-1.4M15.4 20.2l-1-1.4"/></svg>
-            </div>
-            <span class="service-code">NFPA 13</span>
-            <h3>Fire Sprinkler System Design</h3>
-            <p>Wet, dry, pre-action, and antifreeze system design and layout. Hydraulic calculations, water supply analysis, and PE-stamped shop drawings for delegated design and permit submittal.</p>
-            <p class="sub-links">Also: <a href="/high-piled-storage-florida.html">High-Piled Storage Design</a></p>
-            <a class="card-link" href="/fire-sprinkler-system-design.html">Learn more &rarr;</a>
-          </article>
-
-          <!-- 2 : Alarm -->
-          <article class="service-card reveal">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4a5 5 0 0 0-5 5c0 3-1.2 4.5-2 5.5h14c-.8-1-2-2.5-2-5.5a5 5 0 0 0-5-5Z"/><path d="M10.2 18a1.8 1.8 0 0 0 3.6 0"/><path d="M3.5 7.5C4.3 6 5.2 4.9 6.2 4M20.5 7.5C19.7 6 18.8 4.9 17.8 4"/></svg>
-            </div>
-            <span class="service-code">NFPA 72</span>
-            <h3>Fire Alarm &amp; Detection Design</h3>
-            <p>Complete fire alarm system design including device layout, riser diagrams, battery and voltage-drop calculations, sequence of operations, and sealed submittal packages.</p>
-            <a class="card-link" href="/fire-alarm-system-design.html">Learn more &rarr;</a>
-          </article>
-
-          <!-- 3 : Life safety -->
-          <article class="service-card reveal">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h6"/><path d="M13 12h8M18 8.5 21.5 12 18 15.5"/><path d="M21 4v16"/></svg>
-            </div>
-            <span class="service-code">NFPA 101 · 101A</span>
-            <h3>Life Safety &amp; Egress</h3>
-            <p>AHJ-ready life safety plan sheets and egress analysis: occupancy classification, exit and travel-distance documentation, and fire and smoke barrier plans for permit submittals, plus NFPA 101A FSES worksheets.</p>
-            <a class="card-link" href="/life-safety-plans-florida.html">Learn more &rarr;</a>
-          </article>
-
-          <!-- 4 : Code consulting -->
-          <article class="service-card reveal">
+        <div class="group-grid">
+          <article class="service-card group-card reveal">
             <div class="service-icon">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.2 1.4 2.6-.3 1 2.4 2.2 1.4-.6 2.6.9 2.5-1.9 1.8-.3 2.6-2.6.6-1.8 1.9-2.4-1-2.4 1-1.8-1.9-2.6-.6-.3-2.6L2 13.4l.9-2.5-.6-2.6L4.5 6.9l1-2.4 2.6.3L10.3 3"/><path d="M9 12l2 2 4-4"/></svg>
             </div>
-            <span class="service-code">PE Seal · NFPA 13/72</span>
-            <h3>Plan Review &amp; PE Stamping</h3>
-            <p>You made the drawings. We review them, fix code issues, and seal them. Independent third-party plan review with PE stamping for sprinkler and fire alarm contractors and MEP firms &mdash; fast-turnaround comment resolution.</p>
-            <a class="card-link" href="/pe-stamping-plan-review.html">Learn more &rarr;</a>
+            <h3>Review and seal</h3>
+            <p class="group-lead">You have drawings. You need a Florida PE seal.</p>
+            <p>We review your sprinkler or fire alarm drawings, mark up code issues, and seal the compliant package. We also answer AHJ comments.</p>
+            <ul class="link-list">
+              <li><a href="/pe-stamping-plan-review.html">Plan review and PE seal details</a></li>
+              <li><a href="/pe-stamping-plan-review.html#quote">Instant quote for PE review and seal</a></li>
+            </ul>
           </article>
 
-          <!-- 5 : Hazmat -->
-          <article class="service-card reveal">
+          <article class="service-card group-card reveal">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3.5 4.5 6 7 6 10.5A6 6 0 0 1 6 13.5C6 10 8.5 7.5 12 3Z"/><path d="M12 21v-3M8.6 20.2l1-1.4M15.4 20.2l-1-1.4"/></svg>
+            </div>
+            <h3>Design</h3>
+            <p class="group-lead">You need drawings and calculations.</p>
+            <p>Sprinkler and fire alarm design with calculations, life safety plans, and special hazards design. PE-stamped for permit submittal.</p>
+            <ul class="link-list">
+              <li><a href="/fire-sprinkler-system-design.html">Fire sprinkler design details</a></li>
+              <li><a href="/high-piled-storage-florida.html">High-piled storage design details</a></li>
+              <li><a href="/fire-alarm-system-design.html">Fire alarm design details</a></li>
+              <li><a href="/life-safety-plans-florida.html">Life safety plan details</a></li>
+              <li><a href="/special-hazards-design-florida.html">Special hazards design details</a></li>
+            </ul>
+          </article>
+
+          <article class="service-card group-card reveal">
             <div class="service-icon">
               <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4a3 3 0 0 1 6 0"/><path d="M9 11h6M9 14.5h6M9 18h3"/></svg>
             </div>
-            <span class="service-code">FFPC · IFC Ch. 50</span>
-            <h3>Code Consulting &amp; Hazmat Compliance</h3>
-            <p>Fire code consulting and hazmat documents for permit: code analysis, alternative means &amp; methods support, Hazardous Materials Inventory Statements, and MAQ analysis per IFC Table 5003.1.1.</p>
-            <p class="sub-links">Also: <a href="/hmis-inventory-statement-florida.html">HMIS Statements</a> &middot; <a href="/maq-analysis-florida.html">MAQ Analysis</a></p>
-            <a class="card-link" href="/fire-code-consulting-florida.html">Learn more &rarr;</a>
-          </article>
-
-          <!-- 6 : Special hazards -->
-          <article class="service-card reveal">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="6" rx="1.5"/><rect x="4" y="14" width="16" height="6" rx="1.5"/><path d="M7.5 7h.01M7.5 17h.01M11 7h4M11 17h4"/></svg>
-            </div>
-            <span class="service-code">NFPA 855 &middot; 2001</span>
-            <h3>Special Hazards &amp; Fire Modeling</h3>
-            <p>Data centers and mission-critical facilities, energy storage systems per NFPA 855, and clean agent suppression per NFPA 2001 &mdash; backed by performance-based fire and smoke modeling.</p>
-            <p class="sub-links">Also: <a href="/fire-smoke-modeling-florida.html">Fire &amp; Smoke Modeling</a> &middot; <a href="/smoke-studies-florida.html">Smoke Control Studies</a></p>
-            <a class="card-link" href="/special-hazards-design-florida.html">Learn more &rarr;</a>
+            <h3>Code and analysis</h3>
+            <p class="group-lead">You need an answer or a report.</p>
+            <p>Fire code consulting, alternative means and methods, FSES per NFPA 101A, hazmat documents, and fire and smoke modeling.</p>
+            <ul class="link-list">
+              <li><a href="/fire-code-consulting-florida.html">Fire code consulting details</a></li>
+              <li><a href="/hmis-inventory-statement-florida.html">HMIS details</a></li>
+              <li><a href="/maq-analysis-florida.html">MAQ analysis details</a></li>
+              <li><a href="/fire-smoke-modeling-florida.html">Fire and smoke modeling details</a></li>
+              <li><a href="/smoke-studies-florida.html">Smoke control study details</a></li>
+            </ul>
           </article>
         </div>
 
-        <p class="services-cta reveal">Have a project in mind? <a href="/services.html">Explore all six services in detail &rarr;</a> or <a href="#contact">request a fixed-fee proposal &rarr;</a></p>
+        <p class="services-cta reveal">Have a project in mind? <a href="/services.html">See all services in detail &rarr;</a> or <a href="#contact">request a fixed-fee proposal &rarr;</a></p>
       </div>
     </section>
 
@@ -339,27 +459,68 @@
     <!-- ============ WHO WE SERVE ============ -->
     <section class="section clients" id="clients">
       <div class="container clients-inner">
-        <div class="clients-copy reveal">
+        <div class="serve-head reveal">
           <span class="eyebrow">Who We Serve</span>
           <h2>An extension of your engineering team</h2>
           <p class="section-sub">We integrate with the firms and owners who need trusted fire protection engineering, as a partner, not a hand-off.</p>
-          <a class="btn btn-primary" href="#contact">Start a Conversation</a>
         </div>
-        <ul class="clients-list reveal">
-          <li><span class="tick" aria-hidden="true"></span>MEP Engineering Firms</li>
-          <li><span class="tick" aria-hidden="true"></span>Architecture Firms</li>
-          <li><span class="tick" aria-hidden="true"></span>Design-Build Sprinkler &amp; Alarm Contractors</li>
-          <li><span class="tick" aria-hidden="true"></span>General Contractors</li>
-          <li><span class="tick" aria-hidden="true"></span>Building Owners &amp; Facility Managers</li>
-        </ul>
+        <div class="serve-grid">
+          <article class="serve-card reveal">
+            <h3>MEP engineering firms</h3>
+            <p>For firms with no fire protection engineer on staff. We prepare or review the fire protection scope and seal it.</p>
+            <a class="card-link" href="/for-mep-firms.html">How we work with MEP firms &rarr;</a>
+          </article>
+          <article class="serve-card reveal">
+            <h3>General contractors</h3>
+            <p>Sealed delegated-design submittals, PE seals on subcontractor shop drawings, and AHJ comment response.</p>
+            <a class="card-link" href="/for-general-contractors.html">How we work with general contractors &rarr;</a>
+          </article>
+          <article class="serve-card reveal">
+            <h3>Sprinkler and alarm contractors</h3>
+            <p>You made the drawings. We review them, fix code issues, and seal them.</p>
+            <a class="card-link" href="/pe-stamping-plan-review.html">Plan review and PE seal &rarr;</a>
+          </article>
+          <article class="serve-card reveal">
+            <h3>Architects</h3>
+            <p>Life safety plan sheets, egress analysis, and fire code consulting for your permit set.</p>
+            <a class="card-link" href="/life-safety-plans-florida.html">Life safety plans &rarr;</a>
+          </article>
+          <article class="serve-card reveal">
+            <h3>Building owners and facility managers</h3>
+            <p>Code consulting, hazmat documents, and FSES worksheets for existing buildings.</p>
+            <a class="card-link" href="/fire-code-consulting-florida.html">Fire code consulting &rarr;</a>
+          </article>
+        </div>
       </div>
     </section>
 
-    <!-- ============ CONTACT ============ -->
+    <!-- ============ FAQ ============ -->
+    <section class="section home-faq" id="faq">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">FAQ</span>
+          <h2>Common questions</h2>
+        </div>
+        <div class="faq-short">
+          <h3>Who can stamp fire sprinkler drawings in Florida?</h3>
+          <p>Only a professional engineer licensed in the State of Florida can sign and seal fire sprinkler drawings submitted for permit. Most Florida jurisdictions require the PE seal on sprinkler and fire alarm plans before they will issue a permit. EverSafe Fire Protection is a Florida-licensed fire protection engineering practice, and all of our drawing packages are PE-stamped and permit-ready.</p>
+          <h3>What is a third-party plan review?</h3>
+          <p>A third-party plan review is an independent engineering review of fire protection drawings prepared by someone else — typically a contractor or MEP firm. We check the drawings against NFPA 13, NFPA 72, and the Florida Building Code, mark up any issues, and then PE-seal the compliant package so it can be submitted for permit.</p>
+          <h3>What do you need from me to prepare a proposal?</h3>
+          <p>A brief description of the project is enough to start: building type and size, location in Florida, which services you need (sprinkler design, alarm design, stamping, consulting), and your permit timeline. If you have architectural backgrounds or plans, attach them — but they are not required for an initial quote.</p>
+          <h3>How fast can I get a proposal?</h3>
+          <p>Our typical fixed-fee proposal turnaround is 1 day. Submit the Request a Proposal form with your project details, or call 386-837-4057 / email info@eversafe-fire.com, and we will respond with a fixed-fee quote and schedule.</p>
+          <h3>What happens if the AHJ rejects the drawings?</h3>
+          <p>Our process includes permit support. If the AHJ sends comments, we answer them and revise the drawings.</p>
+          <p><a class="card-link" href="/faq.html">See all FAQs &rarr;</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT:START -->
     <section class="section contact" id="contact">
       <div class="container contact-grid">
         <div class="contact-copy reveal">
-          <span class="eyebrow eyebrow-light">Let's Talk</span>
           <h2>Let's talk about your next project</h2>
           <p>Send plans or a short project summary and we'll get you a clear, fixed-fee proposal, usually within one business day.</p>
           <div class="contact-methods">
@@ -410,17 +571,18 @@
         </form>
       </div>
     </section>
+  <!-- CONTACT:END -->
   </main>
 
-  <!-- ============ FOOTER ============ -->
+  <!-- FOOTER:START -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <a href="#top" class="brand brand-footer" aria-label="EverSafe Fire Protection home">
-          <img class="brand-logo" src="assets/eversafe-mono.png" alt="EverSafe Fire Protection" width="560" height="224" />
+        <a href="/" class="brand brand-footer" aria-label="EverSafe Fire Protection home">
+          <img class="brand-logo" src="/assets/eversafe-mono.png" alt="EverSafe Fire Protection" width="560" height="224" loading="lazy" />
         </a>
         <p class="footer-tag">Protection you can trust. Compliance you can prove.</p>
-        <p class="footer-mission">A Florida-licensed professional engineering practice protecting people, property, and operations through engineered fire safety.</p>
+        <p class="footer-mission">We protect people, property, and operations through engineered fire safety.</p>
         <div class="footer-social">
           <a class="social-link" href="https://www.linkedin.com/company/eversafefire/" target="_blank" rel="noopener noreferrer" aria-label="EverSafe Fire Protection on LinkedIn">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -428,46 +590,59 @@
         </div>
       </div>
 
-      <nav class="footer-nav" aria-label="Footer">
-        <h4>Services</h4>
-        <p class="footer-group">Fire Sprinkler Design</p>
-        <a href="/fire-sprinkler-system-design.html">Fire Sprinkler Design</a>
-        <a href="/high-piled-storage-florida.html">High-Piled Storage</a>
-        <p class="footer-group">Fire Alarm Design</p>
-        <a href="/fire-alarm-system-design.html">Fire Alarm Design</a>
-        <p class="footer-group">Life Safety &amp; Egress</p>
-        <a href="/life-safety-plans-florida.html">Life Safety Plans</a>
-        <p class="footer-group">Plan Review &amp; PE Stamping</p>
-        <a href="/pe-stamping-plan-review.html">Plan Review &amp; PE Stamping</a>
-        <p class="footer-group">Code Consulting &amp; Hazmat</p>
-        <a href="/fire-code-consulting-florida.html">Fire Code Consulting</a>
-        <a href="/hmis-inventory-statement-florida.html">HMIS Inventory Statements</a>
-        <a href="/maq-analysis-florida.html">MAQ Analysis</a>
-        <p class="footer-group">Special Hazards &amp; Modeling</p>
-        <a href="/special-hazards-design-florida.html">Special Hazards Design</a>
-        <a href="/fire-smoke-modeling-florida.html">Fire &amp; Smoke Modeling</a>
-        <a href="/smoke-studies-florida.html">Smoke Control Studies</a>
-        <p class="footer-group">More</p>
-        <a href="/services.html">All Services</a>
-        <a href="/faq.html">FAQs</a>
+      <nav class="footer-nav footer-services" aria-label="Services">
+        <p class="footer-head">Services</p>
+        <div class="footer-cols">
+          <div>
+            <p class="footer-group">Review and seal</p>
+            <a href="/pe-stamping-plan-review.html">Plan review and PE seal</a>
+            <a href="/pe-stamping-plan-review.html#quote">Instant quote</a>
+            <p class="footer-group">Design</p>
+            <a href="/fire-sprinkler-system-design.html">Fire sprinkler design</a>
+            <a href="/high-piled-storage-florida.html">High-piled storage</a>
+            <a href="/fire-alarm-system-design.html">Fire alarm design</a>
+            <a href="/life-safety-plans-florida.html">Life safety plans</a>
+            <a href="/special-hazards-design-florida.html">Special hazards design</a>
+          </div>
+          <div>
+            <p class="footer-group">Code and analysis</p>
+            <a href="/fire-code-consulting-florida.html">Fire code consulting</a>
+            <a href="/hmis-inventory-statement-florida.html">HMIS</a>
+            <a href="/maq-analysis-florida.html">MAQ analysis</a>
+            <a href="/fire-smoke-modeling-florida.html">Fire and smoke modeling</a>
+            <a href="/smoke-studies-florida.html">Smoke control studies</a>
+            <a href="/services.html">All services</a>
+          </div>
+        </div>
+      </nav>
+
+      <nav class="footer-nav" aria-label="Company">
+        <p class="footer-head">Company</p>
+        <a href="/about.html">About</a>
+        <a href="/for-mep-firms.html">For MEP Firms</a>
+        <a href="/for-general-contractors.html">For General Contractors</a>
+        <a href="/guides.html">Guides</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/privacy.html">Privacy</a>
       </nav>
 
       <div class="footer-contact">
-        <h4>Contact</h4>
+        <p class="footer-head">Contact</p>
         <a href="tel:+13868374057">386-837-4057</a>
         <a href="mailto:info@eversafe-fire.com">info@eversafe-fire.com</a>
-        <a href="/">eversafe-fire.com</a>
-        <p class="footer-region">Central Florida &amp; the statewide Florida market</p>
+        <p class="footer-region">Based in Central Florida. Serving all of Florida.</p>
+        <p class="footer-region">FBPE Registry No. 40449</p>
       </div>
     </div>
     <div class="footer-bottom">
       <div class="container footer-bottom-inner">
-        <span>&copy; <span id="year">2026</span> EverSafe Fire Protection. Florida Licensed Professional Engineering.</span>
+        <span>&copy; <span id="year">2026</span> EverSafe Fire Protection. FBPE Registry No. 40449.</span>
         <span class="footer-tagline">Stay Compliant. Stay EverSafe.</span>
       </div>
     </div>
   </footer>
+  <!-- FOOTER:END -->
 
-  <script src="script.js?v=6"></script>
+  <script src="script.js?v=7"></script>
 </body>
 </html>
